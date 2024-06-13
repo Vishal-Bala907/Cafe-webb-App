@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section style="background-color: #ffd29540;" th:fragment="hero">
+		<div class="hero">
+			<div class="img-container">
+				<img class="hero-img" th:src="@{/Images/hero.jpg}" alt="Hero image" />
+			</div>
+			<div class="hero-text">
+
+				<h1 class="hero-heading">Your Neighborhood Gathering Spot</h1>
+
+
+				<p class="hero-para">Connect with friends, family, and neighbors
+					in a warm and welcoming environment. We're more than just a café;
+					we're a community.</p>
+			</div>
+
+		</div>
+		<div class="common-text">
+			<div class="text-boxes">
+				<h2>"Fresh Ingredients, Local Love"</h2>
+				<p>"Indulge in our delicious, freshly prepared dishes made from
+					locally sourced ingredients. Taste the difference quality makes!"</p>
+			</div>
+			<div class="text-boxes">
+				<h2>"Sweeten Your Day"</h2>
+				<p>"From pastries to cakes, our bakery offers a delightful array
+					of sweet treats to complement your coffee. Treat yourself today!"</p>
+			</div>
+		</div>
+
+		<!--  CROUSEL -->
+		<div class="crousel-container">
+			<div class="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img th:src="@{/Images/crousel/chc-icm.jpg}" alt="Image 1" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/coffe1.jpg}" alt="Image 2" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/donuts.jpg}" alt="Image 3" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/extra-cheese-pizza.jpg}" alt="Image 3" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/GreenTea.jpg}" alt="Image 3" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/Masala_Chai.jpeg}" alt="Image 3" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/mix-veg-pizza.jpg}" alt="Image 3" />
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/Images/crousel/stb-icm.jpg}" alt="Image 3" />
+					</div>
+				</div>
+				<button class="prev button" onclick="prevSlide()">&#10094;</button>
+				<button class="next button" onclick="nextSlide()">&#10095;</button>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

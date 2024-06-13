@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{publicLayout::publicBase(~{::section})}">
+<head>
+<title>Spring Security Example</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/index.css}">
+</head>
+
+<body>
+	<h1>Welcome!</h1>
+
+	<section>
+		<div th:replace="~{/Public/Hero::hero}"></div>
+		<div class="login-sigup">
+			<p>Get sign-in Or Log-in</p>
+			<div class="link-button">
+				<a class="l-s-button" th:href="@{/public/login-page}">Login</a>
+				<p style="color: black">
+					<strong>or</strong>
+				</p>
+				<a class="l-s-button" th:href="@{/public/signup-page}">Sign-Up</a>
+			</div>
+		</div>
+		<div class="down-banner-images" id="scrollableElement">
+			<div class="image">
+				<img th:src="@{/Images/down-banner1.jpg}" alt="banner image 1" />
+			</div>
+			<div class="image">
+				<img th:src="@{/Images/down-banner2.jpg}" alt="banner image 2" />
+			</div>
+			<div class="image">
+				<img th:src="@{/Images/down-banner3.jpg}" alt="banner image 3" />
+			</div>
+			<div class="image">
+				<img th:src="@{/Images/down-banner4.jpg}" alt="banner image 4" />
+			</div>
+		</div>
+		<div class="index-cards">
+			<div class="two-cards">
+				<div class="card">
+					<img class="index-card-img" th:src="@{/Images/coffee-card.jpg}" alt="coffee" />
+					<h3>The Perfect Coffee Pairings</h3>
+					<hr />
+					<p>Discover how to enhance your coffee experience with the
+						perfect pairings. From rich chocolate cake to delicate cookies,
+						find out which treats complement your favorite brew.</p>
+				</div>
+				<div class="card">
+					<img class="index-card-img" th:src="@{/Images/cake-card.jpg}" alt="coffee" />
+					<h3>Decadent Cakes to Enjoy with Your Morning Brew</h3>
+					<hr />
+					<p>Elevate your mornings with a slice of indulgence. Whether
+						it's a classic sponge or a rich chocolate cake, these recipes are
+						designed to perfectly accompany your morning coffee.</p>
+				</div>
+			</div>
+
+			<div class="two-cards">
+				<div class="card">
+					<img class="index-card-img" th:src="@{/Images/juice-card.jpg}" alt="coffee" />
+					<h3>Freshly Squeezed Juices to Start Your Day Right</h3>
+					<hr />
+					<p>Kickstart your day with a burst of freshness. Explore our
+						range of juice recipes that are not only healthy but also pair
+						wonderfully with your breakfast or afternoon snack.</p>
+				</div>
+				<div class="card">
+					<img class="index-card-img" th:src="@{/Images/cookie-card.jpg}" alt="coffee" />
+					<h3>Cookies That Make Coffee Breaks Special</h3>
+					<hr />
+					<p>Take your coffee breaks to the next level with these
+						delicious cookies. From classic chocolate chip to exotic spice
+						blends, there's a cookie for every coffee lover.</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="about-us">
+			<div class="container">
+				<div class="section">
+					<h2>Products</h2>
+					<ul>
+						<li class="pro-list">High-quality, expertly brewed coffee
+							options including espresso, cappuccino, and latte.</li>
+						<li class="pro-list">Daily offerings of pastries, breads,
+							and cakes made in-house or sourced from local bakeries.</li>
+						<li class="pro-list"> Artisan sandwiches made with fresh
+							ingredients and unique flavor combinations.</li>
+						<li class="pro-list"> A variety of organic and herbal teas
+							catering to diverse taste preferences.</li>
+						<li class="pro-list"> Rotating menus that highlight seasonal
+							produce and ingredients for fresh and exciting dining
+							experiences.</li>
+					</ul>
+				</div>
+				<div class="section">
+					<h2>Services</h2>
+					<ul>
+						<li class="service-list"> Friendly and attentive service ensuring a
+							pleasant dining experience.</li>
+						<li class="service-list">Convenient options to enjoy
+							favorite dishes at home or on the go.</li>
+						<li class="service-list"> Customized catering for events,
+							meetings, and special occasions.</li>
+						<li class="service-list">Reward programs offering discounts and
+							promotions for frequent customers.</li>
+						<li class="service-list">Free internet access and
+							charging points for a comfortable visit.</li>
+					</ul>
+				</div>
+				<div class="section">
+					<h2>Customers</h2>
+					<ul>
+						<li class="customer-list"> Loyal customers who visit frequently and
+							have a strong connection with the cafe.</li>
+						<li class="customer-list"> Visitors exploring the area who seek a local
+							dining experience.</li>
+						<li class="customer-list"> Individuals using the cafe as a
+							workspace, taking advantage of Wi-Fi.</li>
+						<li class="customer-list"> Groups seeking a friendly and accommodating
+							environment for all ages.</li>
+						<li class="customer-list"> Customers interested in unique and
+							high-quality culinary experiences.</li>
+					</ul>
+				</div>
+				<div class="section">
+					<h2>Staff</h2>
+					<ul>
+						<li class="staff-list"> Skilled professionals preparing and serving a
+							variety of coffee beverages.</li>
+						<li class="staff-list"> Culinary experts creating delicious and
+							visually appealing dishes.</li>
+						<li class="staff-list"> Attentive and friendly staff ensuring guests
+							have an enjoyable dining experience.</li>
+						<li class="staff-list"> Leaders overseeing daily operations, ensuring
+							everything runs smoothly.</li>
+						<li class="staff-list"> Dedicated team maintaining cleanliness and
+							hygiene standards in the establishment.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>

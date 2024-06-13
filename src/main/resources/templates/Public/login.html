@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{publicLayout::publicBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+	<section>
+		<div class="form-main-container">
+			<div class="login-form-box">
+
+				<form class="form" th:action="@{/public/login}" method="post">
+
+
+					<div class="input-container">
+						<label class="inp-label" for="name">Username:</label> <input
+							class="form-login-input form-control" type="text" id="name"
+							name="username" placeholder="Enter username" required>
+						<!-- <span
+							class="input-error" style="color: red;"
+							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span> -->
+
+						<!-- <span style="color: white; font-weight: 500;"
+							th:unless="${#fields.hasErrors('username')}">Enter
+							Username</span> -->
+					</div>
+
+					<div class="input-container">
+						<label class="inp-label" for="pass">Passowrd:</label>
+
+						<div class="password-cover">
+
+							<input class="form-login-input form-control" type="password"
+								id="pass" name="password" placeholder="Enter password" required>
+							<span class="material-symbols-outlined" id="eye"
+							onclick="hideAndShowPassword(event)"
+							> visibility </span>
+						</div>
+						<!-- <span
+							class="input-error" style="color: red;"
+							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+
+						<span style="color: white; font-weight: 500;"
+							th:unless="${#fields.hasErrors('password')}">Enter
+							password</span> -->
+					</div>
+
+
+
+					<div>
+						<button class="user-submit" type="submit">Login</button>
+					</div>
+
+					<section>
+						<p class="form-alt-link">
+							Didn't have an account <strong><a
+								th:href="@{/public/signup-page}"> Signup... </a></strong>
+						</p>
+					</section>
+
+				</form>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

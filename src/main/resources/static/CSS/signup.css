@@ -1,0 +1,155 @@
+.form-main-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	padding: 10em 0;
+	background-color: #e3ebff;
+}
+
+.selected-image {
+	width: 10em;
+	height: 10em;
+	border-radius: 50%;
+}
+
+.form-box {
+	width: 80%;
+	height: 50em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+	background-image: url("../Images/login.jpg");
+	background-size: cover;
+	border-radius: 3em;
+	overflow: hidden;
+	box-shadow: 5px 5px 31px #00000094, inset 5px 5px 15px #fff9f98a, inset
+		-5px -5px 25px #838383;
+	background-color: white;
+}
+
+.form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	backdrop-filter: blur(15px);
+}
+
+.input-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 1em 0;
+}
+
+.form-login-input {
+	width: 300px;
+	height: 30px;
+	font-size: x-large;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid rgb(255, 255, 255);
+	outline: none;
+	color: rgb(0, 255, 255);
+	padding-left: 10px;
+}
+
+#eye, #con-eye {
+	position: relative;
+	left: -35px;
+	cursor: pointer
+}
+
+
+.inp-label {
+	color: white;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-size: 1.5em;
+}
+
+.input-error {
+	color: red;
+	background-color: #37f7f6b0;
+	font-weight: 500;
+	padding: 2px 4px;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.matched-password {
+	color: lime;
+	font-weight: 500;
+	background-color: aliceblue;
+	padding: 0 5px;
+	margin-top: 3px;
+}
+
+.matched-password {
+	color: lime;
+	font-weight: 500;
+	background-color: aliceblue;
+	padding: 0 20px;
+	margin-top: 3px;
+}
+
+.matched-not-password {
+	color: red;
+	font-weight: 500;
+	background-color: aliceblue;
+	padding: 0 20px;
+	margin-top: 3px;
+	border-radius: 10px;
+}
+
+.user-submit {
+	padding: .6em 2em;
+	border-radius: 10px;
+	border: none;
+	font-weight: 500;
+	font-size: 1rem;
+	background-color: white;
+	cursor: pointer;
+	box-shadow: 2px 2px 9px #ffffff7a, inset 1px 1px 5px #5f5f5f, inset
+		-.51px -1px 6px #00000096;
+}
+
+.form-alt-link {
+	color: red;
+	font-weight: 500;
+	margin-top: 10px;
+}
+
+.input-file {
+	opacity: 0;
+	z-index: -1;
+	border: 2px solid black;
+}
+
+.div-file-inp {
+	background-color: aliceblue;
+	color: black;
+	padding: 1em;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.div-file-inp:hover {
+	background-color: white;
+	color: black;
+	box-shadow: 2px 2px 6px black;
+}
+
+.user-submit:hover {
+	color: white;
+	background-color: black;
+	cursor: pointer;
+}

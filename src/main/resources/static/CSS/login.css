@@ -1,0 +1,28 @@
+.login-form-box {
+	width: 80%;
+	height: 30em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+	background-image: url("../Images/login-img.jpg");
+	background-size: cover;
+	border-radius: 3em;
+	overflow: hidden;
+	box-shadow: 5px 5px 31px #00000094, inset 5px 5px 15px #fff9f98a, inset
+		-5px -5px 25px #838383;
+	background-color: white;
+}
+
+.form-login-input{
+		width: 300px;
+	height: 30px;
+	font-size: x-large;
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid rgb(255, 255, 255);
+	outline: none;
+	color: rgb(0, 255, 255);
+	padding-left: 10px;
+}

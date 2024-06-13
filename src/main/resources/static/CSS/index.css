@@ -1,0 +1,149 @@
+.login-sigup {
+	width: 100%;
+	height: 10em;
+	background-color: #4ed8e98c;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.login-sigup>p {
+	color: black;
+	font-size: 2em;
+}
+
+.link-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	gap: 1em;
+}
+
+.l-s-button {
+	color: black;
+	text-decoration: none;
+	border: 2px solid black;
+	padding: .6em 2em;
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+	z-index: 4;
+}
+
+.l-s-button::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transform: scaleX(0);
+	transform-origin: left;
+	background-color: white;
+	transition: transform .4s ease-in-out;
+}
+
+.l-s-button:hover::after {
+	z-index: -2;
+	transform: scaleX(1);
+}
+
+.l-s-button:hover {
+	color: black;
+}
+/* Cards */
+.index-cards {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	gap: 5%;
+	flex-wrap: wrap;
+	background-color: #d8d8d870;
+}
+
+.two-cards {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	width: 80%;
+	height: auto;
+	gap: 5%;
+	flex-wrap: wrap;
+	margin: 2em 0;
+	gap: 30px;
+}
+
+.card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 30em;
+	height: auto;
+	background-color: #e4e2dfa1;
+	box-shadow: 5px 5px 10px #00000057, inset 5px 5px 15px #9191918a, inset
+		-5px -5px 25px white;
+	border-radius: 20px;
+	padding: 2em 1em;
+}
+
+.card>img {
+	width: 80%;
+	height: 50%;
+	object-fit: contain;
+	border-radius: 2em;
+}
+
+.card>h3, .card>p {
+	text-align: center;
+}
+
+.down-banner-images {
+	width: 100%;
+	height: 30em;
+	/* overflow: auto; */
+	display: flex;
+	scroll-snap-type: x mandatory;
+	overflow: hidden; /* Hide default scrollbar */
+	overflow-x: scroll; /* Ensure vertical scrolling */
+	display: flex;
+	background-color: #002f2d;
+	padding: 1rem 0rem 1rem 1rem;
+	gap: 2em;
+	box-sizing: border-box;
+}
+
+.down-banner-images::-webkit-scrollbar {
+	width: 10px;
+}
+
+.down-banner-images::-webkit-scrollbar-track {
+	background-color: #002f2d;
+}
+
+.down-banner-images::-webkit-scrollbar-thumb {
+	background-color: white;
+}
+
+.image {
+	width: auto;
+	height: auto;
+	scroll-snap-align: center;
+	padding: 0 15em;
+	border-right: 2px solid black;
+	box-shadow: 5px 5px 10px #ffffffc7, inset 5px 5px 15px #000000, inset
+		-5px -5px 25px black;
+}
+
+.image>img {
+	height: 100%;
+	object-fit: contain;
+	box-sizing: border-box;
+}
