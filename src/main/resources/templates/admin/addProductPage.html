@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{adminTemplate::adminBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+		<div class="add-category">
+			<form th:action="@{/admin/addCategory}" method="post"
+				enctype="multipart/form-data" th:object="${category}"
+				class="addcategory-form">
+
+				<div class="selected-cover-image">
+					<img id="category-image-tag" class="category-image"
+						th:src="@{/Images/profile-icon.png}" alt="" />
+				</div>
+
+				<!-- NAME -->
+
+				<div class="cate-name-cover">
+					<label class="inp-label" for="name">Category name:</label> <input
+						type="text" class="cate-name-input" id="name"
+						th:field="*{catagoryName}" placeholder="Enter Category name"
+						required> <span class="input-error" style="color: red;"
+						th:if="${#fields.hasErrors('catagoryName')}"
+						th:errors="*{catagoryName}"></span>
+
+
+				</div>
+
+				<!-- IMAGE  -->
+				<div class="cover-image-div">
+					<label class="cover-lable" title="click here to choose a image"
+						for="cover-img">Select Cover Image</label> <input type="file"
+						class="cover-img" id="cover-img" name="cover-image">
+
+				</div>
+
+				<div>
+					<button class="cover-submit" type="submit">Submit</button>
+				</div>
+
+			</form>
+		</div>
+
+		<div class="or-section">
+			<hr />
+			<span>or</span>
+			<hr />
+		</div>
+		<!-- ADD ITEM FORM -->
+		<div class="add-item" id="add-item-container">
+			<form th:action="@{/admin/addItem}" method="post"
+				enctype="multipart/form-data" th:object="${products}"
+				class="add-itm-form">
+
+				<div class="selected-item-image">
+					<img id="item-image-tag" class="category-image"
+						th:src="@{/Images/profile-icon.png}" alt="" />
+				</div>
+
+				<!-- NAME -->
+
+				<div class="itm-cover">
+					<label class="inp-label" for="name">Item name:</label> <input
+						type="text" class="itm-name-input" id="name"
+						th:field="*{productName}" placeholder="Enter Product name"
+						required> <span class="input-error" style="color: red;"
+						th:if="${#fields.hasErrors('productName')}"
+						th:errors="*{productName}"></span>
+				</div>
+
+				<div class="itm-cover f-grow-p5">
+					<label class="inp-label" for="price">Item Price:</label> <input
+						type="number" class="itm-name-input" id="price"
+						th:field="*{productPrice}" placeholder="Enter Product name"
+						required> <span class="input-error" style="color: red;"
+						th:if="${#fields.hasErrors('productPrice')}"
+						th:errors="*{productPrice}"></span>
+				</div>
+
+				<div class="itm-cover f-grow-p5">
+					<label class="inp-label" for="dis">Discount:</label> <input
+						type="number" class="itm-name-input" id="dis"
+						th:field="*{discount}" placeholder="Enter Product name" required>
+					<span class="input-error" style="color: red;"
+						th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}"></span>
+				</div>
+
+
+				<div class="itm-cover f-grow-np2">
+					<label class="inp-label" for="sold">Sold:</label> <input
+						type="number" class="itm-name-input" id="sold" th:field="*{sold}"
+						placeholder="Enter Product name" required> <span
+						class="input-error" style="color: red;"
+						th:if="${#fields.hasErrors('sold')}" th:errors="*{sold}"></span>
+				</div>
+
+				<!-- Category name  -->
+				<div class="itm-cover f-grow-np2">
+					<label class="inp-label" for="cname">Sold:</label>
+					<!--  <input
+						type="number" class="itm-name-input" id="name" th:field="*{sold}"
+						placeholder="Enter Product name" required> -->
+					<select class="itm-name-input select-cate" id="cate_name"
+						th:field="*{categoryName}">
+
+					</select> <span class="input-error" style="color: red;"
+						th:if="${#fields.hasErrors('categoryName')}"
+						th:errors="*{categoryName}"></span>
+				</div>
+
+
+				<!-- IMAGE  -->
+				<div class="cover-image-div f-grow-p5">
+					<label class="cover-lable" title="click here to choose a image"
+						for="itm-img">Select Cover Image</label> <input type="file"
+						class="cover-img" id="itm-img" name="itmimage">
+				</div>
+
+				<div>
+					<button class="cover-submit" type="submit">Submit</button>
+				</div>
+
+			</form>
+		</div>
+	</section>
+</body>
+</html>

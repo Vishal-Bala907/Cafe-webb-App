@@ -11,7 +11,7 @@
 		<div class="form-main-container">
 			<div class="form-box">
 
-				<form class="form" th:action="@{/public/register}" method="post"
+				<form class="form" th:action="@{/register}" method="post"
 					enctype="multipart/form-data" th:object="${userDAO}">
 
 					<div class="selected-image">
@@ -75,7 +75,7 @@
 					<section>
 						<p class="form-alt-link">
 							Already have an account <strong><a
-								th:href="@{/public/login}"> Login... </a></strong>
+								th:href="@{/login}"> Login... </a></strong>
 						</p>
 					</section>
 

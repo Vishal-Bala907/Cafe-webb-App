@@ -21,10 +21,16 @@
 	transform: scale(1);
 }
 
-.nav-header>ul>li>a {
+.nav-header>ul>li>a , .sidebar-ul>li>a{
 	text-decoration: none;
 	color: white;
+	text-align: center;
 }
+.nav-header>ul>li , .sidebar-ul>li{
+	text-align: center;
+}
+
+
 
 .hero-img {
 	height: 350px;
@@ -35,16 +41,6 @@
 	text-align: center;
 }
 
-
-/* .hero-heading::after {
-	content:"";
-	width: 5px;
-	height:100%;
-	margin-left:10px;
-	background-color:black;
-	
-	position: absolute;
-} */
 @keyframes typing { 
 	0%{
 	color: black;
@@ -80,6 +76,7 @@
 	flex-direction: column;
 	justify-content: center;
 }
+
 
 @media screen and (max-width: 716px) and (min-width: 200px) {
 	.nav-header {

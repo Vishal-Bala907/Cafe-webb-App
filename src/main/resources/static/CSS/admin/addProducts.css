@@ -1,0 +1,140 @@
+.category-image {
+	height: 100px;
+}
+
+.addcategory-form {
+	display: flex;
+	background-color: #e0f4f1ba;
+	padding: 2em;
+	gap: 1em;
+	justify-content: center;
+	align-items: center;
+	height: fit-content;
+	flex-wrap: wrap;
+}
+
+.cate-name-cover {
+	background-color: #7fc8ff;
+	padding: 1em;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	gap: 1em;
+	border-radius: 20px;
+	flex-grow: 2;
+}
+
+.cate-name-cover>.cate-name-input {
+	border: none;
+	background: transparent;
+	border-bottom: 2px solid;
+	font-size: 1em;
+	outline: none;
+}
+
+.cover-img {
+	opacity: 0;
+	z-index: -1;
+	border: 2px solid black;
+}
+
+.cover-lable {
+	background-color: #7fc8ff;
+	color: white;
+	padding: 1em;
+	border-radius: 20px;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 24px;
+	box-shadow: 3px 3px 10px, inset 2px 2px 5px #0000ff30, inset -2px -2px
+		4px #0000004f;
+}
+
+.cover-lable:hover, .cover-submit:hover {
+	background-color: white;
+	color: black;
+}
+
+.cover-submit {
+	padding: .5em 2em;
+	background-color: blue;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.cover-image-div {
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+	flex-direction: column;
+	margin: 1em 0;
+	position: relative;
+}
+
+.or-section {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	gap: 2em;
+	margin: 15px 0px;
+}
+
+.or-section>hr {
+	width: 40%;
+}
+
+/* Add item form  */
+.add-item {
+	padding: 2em;
+}
+
+.add-itm-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1em;
+}
+
+.itm-cover {
+	background-color: #7fc8ff;
+	padding: 1em;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	gap: 1em;
+	border-radius: 20px;
+}
+
+.itm-cover>input {
+	border: none;
+	background: transparent;
+	border-bottom: 2px solid;
+	font-size: 1em;
+	outline: none;
+}
+
+.f-grow-p5 {
+	flex-grow: .5;
+}
+
+.f-grow-np2 {
+	flex-grow: 2;
+}
+
+.select-cate {
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid;
+}
+
+.option {
+	background: transparent;
+	background-color: #001be6;
+	color: white;
+	font-size: 1.2em;
+	padding: 1em;
+}

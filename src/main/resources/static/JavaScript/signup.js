@@ -8,8 +8,9 @@ document.getElementById('img').addEventListener('change', function(event) {
 	if (file) {
 		const reader = new FileReader();
 		reader.onload = function(e) {
-			const imagePreview = document.getElementById("selected-image");
+			const imagePreview = document.getElementById("selected-image-tag");
 			imagePreview.src = e.target.result;
+				
 		};
 		reader.readAsDataURL(file);
 	}

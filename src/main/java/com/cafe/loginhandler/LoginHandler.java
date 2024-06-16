@@ -27,9 +27,9 @@ public class LoginHandler extends SimpleUrlAuthenticationSuccessHandler {
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		for(GrantedAuthority authority : authorities) {
 			if(authority.getAuthority().equals("ROLE_ADMIN")) {
-				return "admin/test";
+				return "/admin/test";
 			}else if(authority.getAuthority().equals("ROLE_USER")) {
-				return "user/test";
+				return "/user/test";
 			}
 		}
 		return "public/login-page";
