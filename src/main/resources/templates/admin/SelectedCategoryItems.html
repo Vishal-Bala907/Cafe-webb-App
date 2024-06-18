@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{adminTemplate::adminBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section id="items-cards">
+		<div class="item-card">
+			<div class="imagecover">
+				<img class="cover-card-img" th:src="@{/Images/crousel/donuts.jpg}"
+					alt="Image 3" /> <span id="discount">5% off</span>
+			</div>
+			<div class="name">
+				<p>
+					<b>AnyThing</b>
+				</p>
+			</div>
+			<div class="price">
+				<p class="mrp" style="text-decoration: line-through;">Rs: 299</p>
+				<p class="actual">Rs: 199 only</p>
+			</div>
+
+			<div class="button">
+				<input class="qt" type="number" />
+				<button class="item-buy-buttons" >Add</button>
+				<button class="item-buy-buttons" >Buy</button>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>

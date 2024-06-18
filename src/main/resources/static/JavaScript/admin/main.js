@@ -6,6 +6,35 @@ let sidebarCover = document.getElementById("sidebar-cover");
 let sidebarUl = document.getElementById("sidebar-ul");
 let SideBarOpenCloseButton = document.getElementById("SideBarOpenCloseButton");
 
+
+window.addEventListener("load", () => {
+
+	fetchCartData()
+		.then(data => {
+			// saving cart to session
+			sessionStorage.setItem("cart", JSON.stringify(data));
+			document.getElementById("cart").innerText = data.length;
+		}).catch(error => {
+			console.log(error)
+		})
+
+})
+
+async function fetchCartData() {
+	try {
+		const res = await fetch("/common/getCart");
+		if (!res.ok) {
+			console.error("Error occred while fetching cart info")
+			throw new Error("cart fetching error")
+		}
+		const data = await res.json();
+		return data;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+
 function SideBarOpenClosefunction() {
 	sideBarOpenCloseCount++;
 	if (sideBarOpenCloseCount % 2 != 0) {

@@ -22,28 +22,36 @@
 				<!-- NAME -->
 
 				<div class="cate-name-cover">
-					<label class="inp-label" for="name">Category name:</label> <input
-						type="text" class="cate-name-input" id="name"
-						th:field="*{catagoryName}" placeholder="Enter Category name"
-						required> <span class="input-error" style="color: red;"
+					<div class="first">
+						<label class="inp-label" for="name">Category name:</label> <input
+							type="text" class="cate-name-input" id="name"
+							th:field="*{catagoryName}" placeholder="Enter Category name"
+							required>
+					</div>
+					<span
+						th:classappend="${#fields.hasErrors('catagoryName')} ? 'error-message' : ''"
 						th:if="${#fields.hasErrors('catagoryName')}"
 						th:errors="*{catagoryName}"></span>
+
 
 
 				</div>
 
 				<!-- IMAGE  -->
 				<div class="cover-image-div">
-					<label class="cover-lable" title="click here to choose a image"
-						for="cover-img">Select Cover Image</label> <input type="file"
-						class="cover-img" id="cover-img" name="cover-image">
-
+					<div class="first">
+						<label class="cover-lable" title="click here to choose a image"
+							for="cover-img">Select Cover Image</label> <input type="file"
+							class="cover-img display-none" id="cover-img" name="cover-image">
+					</div>
+					<span th:classappend="${imageError} ? 'error-message' : ''">
+						<span th:text="${imageError}"></span>
+					</span>
 				</div>
 
-				<div>
+				
 					<button class="cover-submit" type="submit">Submit</button>
-				</div>
-
+				
 			</form>
 		</div>
 
@@ -102,7 +110,7 @@
 
 				<!-- Category name  -->
 				<div class="itm-cover f-grow-np2">
-					<label class="inp-label" for="cname">Sold:</label>
+					<label class="inp-label" for="cname">Category:</label>
 					<!--  <input
 						type="number" class="itm-name-input" id="name" th:field="*{sold}"
 						placeholder="Enter Product name" required> -->

@@ -3,7 +3,9 @@ package com.cafe.loginService;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,6 +31,13 @@ public class LoginUserService implements UserDetailsService {
 		return new User(username, byUsername.getPassword(),
 				Collections.singleton(new SimpleGrantedAuthority(byUsername.getROLE())));
 //		return null;
+	}
+
+	public UserDAO getLoggedInUser() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		UserDAO byUsername = repo.findByUsername(username);
+		return byUsername;
 	}
 
 }

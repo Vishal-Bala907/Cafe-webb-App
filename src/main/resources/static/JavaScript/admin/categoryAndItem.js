@@ -1,10 +1,10 @@
 
-window.addEventListener("load",()=>{
-	alert("hello everyone")
+window.addEventListener("load", () => {
 	setCategoryOptions()
 })
 
-// fetching category data
+
+// fetching category data(name array)
 const category = [];
 let fetchedCategory;
 
@@ -15,7 +15,7 @@ async function fetchCategory() {
 			// If the response status is not OK (e.g., 404, 500), throw an error
 			throw new Error(`HTTP error! status: ${res.status}`);
 		}
-		const data = res.json();
+		const data = await res.json();
 		return data;
 	} catch (error) {
 		console.error('Error fetching category data:', error);
@@ -61,7 +61,43 @@ function setCategoryOptions() {
 		// Append the option to the select element
 		select.appendChild(option);
 	});
-	
-	alert("done")
 }
+
+/******************* CATEGOTRY FULL DATA *******************************/
+async function fullCategoryData() {
+	try {
+		// list of categores with items
+		const res = await fetch('/common/category-list');
+		if (!res.ok) {
+			throw new Error("Failed to fetch categories");
+		}
+		const data = await res.json();
+		return data;
+	} catch (error) {
+		console.error("Error fetching categories:", error);
+		throw error;
+	}
+}
+
+document.getElementById("fetch-categories").addEventListener("click", () => {
+
+	console.log("Fetch categories button clicked"); // Debugging statement
+	fullCategoryData()
+		.then(data => {
+			console.log("Categories fetched successfully:", data); // Debugging statement
+			let categoryData = JSON.stringify(data);
+			sessionStorage.setItem("cate-data", categoryData);
+		})
+		.catch(error => {
+			console.error("Error handling categories:", error); // Log error for debugging
+		});
+});
+
+/*function setCategories(data) {
+	console.log("Setting categories in sessionStorage"); // Debugging statement
+	let categoryData = JSON.stringify(data);
+	sessionStorage.setItem("cate-data", categoryData);
+}*/
+
+
 

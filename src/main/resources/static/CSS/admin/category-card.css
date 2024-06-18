@@ -1,0 +1,68 @@
+#category-cards {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	cursor: pointer;
+}
+
+.category-card {
+	height: 20em;
+	width: 25em;
+	background-color: #bdbdbd;
+	padding: 10px;
+	margin: 15px;
+	box-shadow: 3px 3px 10px #00000091;
+}
+
+.category-card:hover {
+	box-shadow: 5px 5px 13px #00000091;
+}
+
+.cate-card-img {
+	width: 25em;
+	height: 20em;
+	object-fit: cover;
+}
+
+.cate-name {
+	font-size: 2em;
+	background-color: #acacf8;
+	text-align: center;
+	position: relative;
+	top: -60%;
+}
+
+/* ITEM CARD */
+.item-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #d4efef;
+	width: fit-content;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 10px 10px;
+}
+
+.item-card:hover {
+	box-shadow: 2px 2px 10px #006a80, -2px -2px 5px #0000004d, inset -2px
+		-2px 10px #2c84d06b;
+}
+
+.imagecover {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.cover-card-img {
+	width: 200px;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 20px;
+}

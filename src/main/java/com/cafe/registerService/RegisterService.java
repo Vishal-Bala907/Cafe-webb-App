@@ -78,17 +78,8 @@ public class RegisterService {
 			newuser.setOrders(ordersList);
 			newuser.setAttendence(attendences);
 
-//			try {
-//				UserDAO savedUser = userRepo.save(newuser);
-//				System.out.println("User saved successfully");
-				return newuser;
-//			} catch (Exception e) {
-//				System.out.println("Error saving user: " + e.getMessage());
-//				e.printStackTrace();
-//				throw e;
-//			}
+			return newuser;
 
-		
 		}
 
 	}

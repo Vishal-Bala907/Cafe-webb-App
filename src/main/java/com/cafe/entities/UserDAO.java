@@ -1,62 +1,71 @@
 package com.cafe.entities;
 
 import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class UserDAO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long u_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long u_id;
 
-    @Column(name = "ROLE")
-    private String ROLE;
+	@Column(name = "ROLE")
+	private String ROLE;
 
-    @Length(min = 5, max = 20, message = "Username must be 5 to 20 characters in length")
-    private String username;
+	@Length(min = 5, max = 20, message = "Username must be 5 to 20 characters in length")
+	private String username;
 
-    @Length(min = 5, message = "Password must be 5 to 20 characters in length")
-    private String password;
+	@Length(min = 5, message = "Password must be 5 to 20 characters in length")
+	private String password;
 
-    private long salary;
-    private String post;
-    private String user_image;
-    private String DOJ;
-    private String DOL;
+	private long salary;
+	private String post;
+	private String user_image;
+	private String DOJ;
+	private String DOL;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_id", referencedColumnName = "add_id")
-    private Address address;
+	@OneToMany(mappedBy = "userDAO")
+	private List<UserBag> cart;
 
-    @OneToMany(mappedBy = "user_details", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orders> orders;
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "address_id", referencedColumnName = "add_id")
+	private Address address;
 
-    @OneToMany(mappedBy = "att_user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Attendence> attendence;
+	@OneToMany(mappedBy = "user_details", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Orders> orders;
 
-    // Constructors, getters, and setters
-    public UserDAO() {}
+	@OneToMany(mappedBy = "att_user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Attendence> attendence;
 
-	public UserDAO(String rOLE,
-			@Length(min = 5, max = 20, message = "Username must be 5 to 20 characters in length") String username,
-			@Length(min = 5, max = 20, message = "Password must be 5 to 20 characters in length") String password,
-			long salary, String post, String user_image, String dOJ, String dOL, Address address, List<Orders> orders,
-			List<Attendence> attendence) {
-		super();
-		ROLE = rOLE;
-		this.username = username;
-		this.password = password;
-		this.salary = salary;
-		this.post = post;
-		this.user_image = user_image;
-		DOJ = dOJ;
-		DOL = dOL;
-		this.address = address;
-		this.orders = orders;
-		this.attendence = attendence;
+	// Constructors, getters, and setters
+	public UserDAO() {
 	}
+
+	
+
+	public List<UserBag> getCart() {
+		return cart;
+	}
+
+
+
+	public void setCart(List<UserBag> cart) {
+		this.cart = cart;
+	}
+
+
 
 	public long getU_id() {
 		return u_id;
@@ -158,8 +167,30 @@ public class UserDAO {
 	public String toString() {
 		return "UserDAO [u_id=" + u_id + ", ROLE=" + ROLE + ", username=" + username + ", password=" + password
 				+ ", salary=" + salary + ", post=" + post + ", user_image=" + user_image + ", DOJ=" + DOJ + ", DOL="
-				+ DOL + ", address=" + address + ", orders=" + orders + ", attendence=" + attendence + "]";
+				+ DOL + ", cart=" + cart + ", address=" + address + ", orders=" + orders + ", attendence=" + attendence
+				+ "]";
 	}
 
-    
+	public UserDAO(String rOLE,
+			@Length(min = 5, max = 20, message = "Username must be 5 to 20 characters in length") String username,
+			@Length(min = 5, message = "Password must be 5 to 20 characters in length") String password, long salary,
+			String post, String user_image, String dOJ, String dOL, List<UserBag> cart, Address address,
+			List<Orders> orders, List<Attendence> attendence) {
+		super();
+		ROLE = rOLE;
+		this.username = username;
+		this.password = password;
+		this.salary = salary;
+		this.post = post;
+		this.user_image = user_image;
+		DOJ = dOJ;
+		DOL = dOL;
+		this.cart = cart;
+		this.address = address;
+		this.orders = orders;
+		this.attendence = attendence;
+	}
+
+	
+
 }

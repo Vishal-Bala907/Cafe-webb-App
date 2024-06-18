@@ -15,7 +15,7 @@ import com.cafe.entities.UserDAO;
 @Service
 public class FileService {
 	public UserDAO setAndUploadFile(String path, UserDAO dao, MultipartFile file) {
-		
+
 		String name = file.getOriginalFilename();
 		String newPath = path + File.separator + name;
 
@@ -38,48 +38,46 @@ public class FileService {
 		}
 		return dao;
 	}
+
 	// path = path in the project
-	public Category getAndSetCategoryImage(String path , Category category , MultipartFile file) {
-		
+	public Category getAndSetCategoryImage(String path, Category category, MultipartFile file) throws IOException {
+
 		String originalFileName = file.getOriginalFilename();
 		String newPath = path + File.separator + originalFileName; // path for image
-		
+
 		File f = new File(path);
-		if(!f.exists()) {
+		if (!f.exists()) {
 			f.mkdir();
 		}
-		
+
 		// copy file
 		category.setCover("Images/cover/" + originalFileName);
-		try {
+		
 			Files.copy(file.getInputStream(), Paths.get(newPath));
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
 		
 		return category;
 	}
+
 	// path = path in the project
-	public Products getAndSetProductImage(String path , Products products , MultipartFile file) {
-		
+	public Products getAndSetProductImage(String path, Products products, MultipartFile file) {
+
 		String originalFileName = file.getOriginalFilename();
 		String newPath = path + File.separator + originalFileName; // path for image
-		
+
 		File f = new File(path);
-		if(!f.exists()) {
+		if (!f.exists()) {
 			f.mkdir();
 		}
-		
+
 		// copy file
-		products.setProductImage("Images/cover/" + originalFileName);
+		products.setProductImage("Images/products/" + originalFileName);
 		try {
 			Files.copy(file.getInputStream(), Paths.get(newPath));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
-		
+
 		return products;
 	}
 }

@@ -1,3 +1,11 @@
+#cart{
+	    position: relative;
+    top: -18px;
+
+}
+
+/***************🚫🚫 CTRL + SHIFT + F 🚫🚫**********************/
+
 .nav-item-group>li {
 	cursor: pointer;
 	position: relative;

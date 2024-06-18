@@ -13,29 +13,29 @@ import com.cafe.passEncoDeco.PassEncoDeco;
 
 @Configuration
 public class SecurityConfiguration {
-	
+
 	@Autowired
 	LoginHandler loginHandler;
 	@Autowired
 	LoginUserService loginUserService;
 	@Autowired
 	PassEncoDeco deco;
-	
+
 	@Bean
 	SecurityFilterChain chain(HttpSecurity security) throws Exception {
-		security.authorizeHttpRequests((auth) -> auth.requestMatchers("/", "/CSS/**", "/JavaScript/**", "/Public/**",
-				"/Images/**", "/login","/signup-page","/register").permitAll()
-				.requestMatchers("admin/**","/admin/**").hasRole("ADMIN")
-				.requestMatchers("/common/**").hasAnyRole("ADMIN","USER")
-				.anyRequest().authenticated());
+		security.authorizeHttpRequests((auth) -> auth
+				.requestMatchers("/", "/CSS/**", "/JavaScript/**", "/Public/**", "/Images/**",
 
-        security.csrf(csrf -> csrf.disable());
-		security.formLogin((form)->
-			form.loginPage("/public/login").successHandler(loginHandler).permitAll()
-				);
+						"/common/**", "/Images/cover/**", "/login", "/signup-page", "/register")
+				.permitAll().requestMatchers("admin/**", "/admin/**").hasRole("ADMIN").requestMatchers("/common/**")
+				.hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
+				.rememberMe(me -> me.tokenValiditySeconds(60 * 60 * 24 * 7));
+
+		security.csrf(csrf -> csrf.disable());
+		security.formLogin((form) -> form.loginPage("/login").successHandler(loginHandler).permitAll());
 		return security.build();
 	}
-	
+
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception {
 		builder.userDetailsService(loginUserService).passwordEncoder(deco);

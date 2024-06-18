@@ -1,5 +1,7 @@
 package com.cafe.entities;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Entity;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Products {
@@ -25,6 +28,9 @@ public class Products {
 	private String productImage;
 	private String categoryName;
 
+	@OneToMany(mappedBy = "productsInCart")
+	private List<UserBag> cart;
+
 	@ManyToOne
 	private Category category;
 
@@ -35,8 +41,8 @@ public class Products {
 
 	public Products(
 			@Length(min = 3, max = 20, message = "product name must be 3 to 20 characters in length") String productName,
-			@Length(min = 10, message = "product price must be atlest or more than 10rs") double productPrice,
-			double discount, long sold, String productImage, String categoryName, Category category) {
+			double productPrice, double discount, long sold, String productImage, String categoryName, List<UserBag> cart,
+			Category category) {
 		super();
 		this.productName = productName;
 		this.productPrice = productPrice;
@@ -44,7 +50,23 @@ public class Products {
 		this.sold = sold;
 		this.productImage = productImage;
 		this.categoryName = categoryName;
+		this.cart = cart;
 		this.category = category;
+	}
+
+	public List<UserBag> getCart() {
+		return cart;
+	}
+
+	public void setCart(List<UserBag> cart) {
+		this.cart = cart;
+	}
+
+	@Override
+	public String toString() {
+		return "Products [pro_Id=" + pro_Id + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", discount=" + discount + ", sold=" + sold + ", productImage=" + productImage + ", categoryName="
+				+ categoryName + ", cart=" + cart + ", category=" + category + "]";
 	}
 
 	public String getCategoryName() {

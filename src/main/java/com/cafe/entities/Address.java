@@ -17,7 +17,7 @@ public class Address {
     private int postal_code;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "u_id")
+    @JoinColumn(name = "user_id")
     private UserDAO add_user;
 
     // Constructors, getters, and setters

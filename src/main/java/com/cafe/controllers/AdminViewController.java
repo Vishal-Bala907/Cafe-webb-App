@@ -1,7 +1,6 @@
 package com.cafe.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cafe.common.services.CommonServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.fileService.FileService;
@@ -32,6 +32,8 @@ public class AdminViewController {
 	CategoryRepo categoryRepo;
 	@Autowired
 	ProductsRepo productsRepo;
+	@Autowired
+	CommonServices commonServices;
 
 	@Value("${project.cover}")
 	private String coverImagePath;
@@ -55,44 +57,38 @@ public class AdminViewController {
 	// Adding category
 	@PostMapping("/addCategory")
 	public String addNewCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult,
-			@RequestParam("cover-image") MultipartFile file, Model model) {
+			@RequestParam("cover-image") MultipartFile file, Model model, Products product) {
 
 		// Handle validation errors
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("category", new Category());
-			model.addAttribute("products", new Products());
 			return "admin/addProductPage";
 		}
 
-		Category andSetCategoryImage = fileService.getAndSetCategoryImage(coverImagePath, category, file);
+//		SAVING IMAGE
+		try {
+			fileService.getAndSetCategoryImage(coverImagePath, category, file);
+		} catch (IOException e) {
+			model.addAttribute("imageError", "Cover iamge is already existed");
+			return "admin/addProductPage";
+		}
 
-		Products products = new Products();
-		products.setDiscount(10);
-		products.setProductImage("null");
-		products.setProductName("none");
-		products.setProductPrice(234);
-		products.setSold(0);
-		products.setCategory(andSetCategoryImage);
+// Saving cate
+		try {
 
-		List<Products> proList = new ArrayList<Products>();
-		proList.add(products);
-
-//		 saving a new category
-		@Valid
-		Category save = categoryRepo.save(category);
-		// deleting extra data
-		productsRepo.deleteByForeingKey(save.getC_Id());
+			commonServices.CategorySaveService(category);
+		} catch (Exception e) {
+			bindingResult.rejectValue("catagoryName", "category.catagoryName",
+					"a category with the same name is already exists");
+			return "admin/addProductPage";
+		}
 
 		category = new Category();
-
-		model.addAttribute("category", new Category());
-		model.addAttribute("products", new Products());
 		return "admin/addProductPage";
 	}
 
 	// Adding category
 	@PostMapping("/addItem")
-	public String addNewCategory(@Valid @ModelAttribute("products") Products products, BindingResult bindingResult,
+	public String addNewProduct(@Valid @ModelAttribute("products") Products products, BindingResult bindingResult,
 			@RequestParam("itmimage") MultipartFile file, Model model) {
 		// Handle validation errors
 		if (bindingResult.hasErrors()) {
@@ -101,15 +97,25 @@ public class AdminViewController {
 			return "admin/addProductPage";
 		}
 		fileService.getAndSetProductImage(productImagePath, products, file);
-		
+
 		Category bycatagoryName = categoryRepo.findBycatagoryName(products.getCategoryName());
+		products.setProductName(products.getProductName().toLowerCase());
 		
 		products.setCategory(bycatagoryName);
 		productsRepo.save(products);
-		
-		
+
 		model.addAttribute("category", new Category());
 		model.addAttribute("products", new Products());
 		return "admin/addProductPage";
+	}
+
+	@GetMapping("/menu")
+	public String getProductsList() {
+		return "admin/menu";
+	}
+	
+	@GetMapping("/selectedItemPage")
+	public String getSelectedItemPage() {
+		return "admin/SelectedCategoryItems";
 	}
 }

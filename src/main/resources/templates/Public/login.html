@@ -11,7 +11,7 @@
 		<div class="form-main-container">
 			<div class="login-form-box">
 
-				<form class="form" th:action="@{/public/login}" method="post">
+				<form class="form" th:action="@{/login}" method="post">
 
 
 					<div class="input-container">
@@ -35,8 +35,13 @@
 							<input class="form-login-input form-control" type="password"
 								id="pass" name="password" placeholder="Enter password" required>
 							<span class="material-symbols-outlined" id="eye"
-							onclick="hideAndShowPassword(event)"
-							> visibility </span>
+								onclick="hideAndShowPassword(event)"> visibility </span>
+						</div>
+
+						<div class="password-cover">
+
+							<input type="checkbox" name="remember-me" />Remember me
+
 						</div>
 						<!-- <span
 							class="input-error" style="color: red;"
