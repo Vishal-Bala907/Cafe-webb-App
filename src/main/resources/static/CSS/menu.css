@@ -1,0 +1,45 @@
+.cate-ul {
+	display: flex;
+	/* justify-content: center; */
+	place-content: flex-start;
+	align-items: center;
+	list-style: none;
+	gap: 10px;
+	flex-wrap: wrap;
+	padding: 10px;
+	background-color: #175373;
+	color: white;
+	font-weight: 300;
+}
+
+.cate-ul>li {
+	cursor: pointer;
+	position: relative;
+}
+
+.cate-ul>li::after {
+	cursor: pointer;
+	position: absolute;
+	content: "";
+	bottom: -4px;
+	left: 0;
+	height: 3px;
+	width: 100%;
+	background-color: aliceblue;
+	transform: scale(0);
+	transition: transform .2s ease-in-out;
+}
+
+.cate-ul>li:hover::after {
+	transform: scale(1);
+}
+
+#menu-section {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	cursor: pointer
+}

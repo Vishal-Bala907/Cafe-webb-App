@@ -61,7 +61,6 @@ async function fetchDataOfTheCategory(id) {
 }
 
 function getMyData(cate) {
-	console.log(cate)
 	fetchDataOfTheCategory(cate.c_Id)
 		.then(data => {
 			sessionStorage.setItem("selected-cate", JSON.stringify(data));

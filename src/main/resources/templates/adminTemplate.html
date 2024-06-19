@@ -31,8 +31,11 @@ body {
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/publicLayout.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/main.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/addProducts.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/category-card.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/admin/addProducts.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/admin/category-card.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/menu.css}">
 </head>
 <body>
 	<header th:fragment="header">
@@ -49,8 +52,7 @@ body {
 			<ul class="nav-item-group">
 				<li><a href="#">Help</a></li>
 				<li><a class="material-symbols-outlined" href="#">shopping_cart</a>
-					<span id="cart">0</span>
-				</li>
+					<span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined" href="#">account_circle</a></li>
 				<li><a th:href="@{/login}">login</a></li>
 			</ul>
@@ -64,7 +66,8 @@ body {
 		<aside id="sidebar-cover" class="sidebar-cover">
 			<ul id="sidebar-ul" class="sidebar-ul">
 				<li>DashBoard</li>
-				<li id="fetch-categories"><a th:href="@{/admin/menu}" >Menu & Bill</a></li>
+				<li id="fetch-categories"><a th:href="@{/admin/categories}">Categories</a></li>
+				<li id="fetch-categories"><a th:href="@{/admin/menu}">Menu</a></li>
 				<li><a th:href="@{/admin/addProduct}" id="fetch-cate-data">Add</a></li>
 				<li>Manage Item</li>
 				<li>Manage Employee</li>
@@ -87,12 +90,15 @@ body {
 </body>
 <script type="text/javascript" th:src="@{/JavaScript/header.js}">
 </script>
-<script type="text/javascript" th:src="@{/JavaScript/addCategoryToPage.js}">
+<script type="text/javascript"
+	th:src="@{/JavaScript/addCategoryToPage.js}">
 </script>
-<script type="text/javascript" th:src="@{/JavaScript/admin/addProduct.js}">
+<script type="text/javascript"
+	th:src="@{/JavaScript/admin/addProduct.js}">
 </script>
 <script type="text/javascript" th:src="@{/JavaScript/admin/main.js}">
 </script>
-<script type="text/javascript" th:src="@{/JavaScript/admin/categoryAndItem.js}">
+<script type="text/javascript"
+	th:src="@{/JavaScript/admin/categoryAndItem.js}">
 </script>
 </html>

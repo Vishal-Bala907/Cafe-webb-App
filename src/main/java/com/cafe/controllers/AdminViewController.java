@@ -17,7 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cafe.common.services.CommonServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
+import com.cafe.entities.UserDAO;
 import com.cafe.fileService.FileService;
+import com.cafe.loginService.LoginUserService;
 import com.cafe.repos.CategoryRepo;
 import com.cafe.repos.ProductsRepo;
 
@@ -34,6 +36,8 @@ public class AdminViewController {
 	ProductsRepo productsRepo;
 	@Autowired
 	CommonServices commonServices;
+	@Autowired
+	LoginUserService loginUserService;
 
 	@Value("${project.cover}")
 	private String coverImagePath;
@@ -64,7 +68,7 @@ public class AdminViewController {
 			return "admin/addProductPage";
 		}
 
-//		SAVING IMAGE
+		// SAVING IMAGE
 		try {
 			fileService.getAndSetCategoryImage(coverImagePath, category, file);
 		} catch (IOException e) {
@@ -72,7 +76,7 @@ public class AdminViewController {
 			return "admin/addProductPage";
 		}
 
-// Saving cate
+		// Saving cate
 		try {
 
 			commonServices.CategorySaveService(category);
@@ -100,8 +104,10 @@ public class AdminViewController {
 
 		Category bycatagoryName = categoryRepo.findBycatagoryName(products.getCategoryName());
 		products.setProductName(products.getProductName().toLowerCase());
-		
+
 		products.setCategory(bycatagoryName);
+
+		// Saved item
 		productsRepo.save(products);
 
 		model.addAttribute("category", new Category());
@@ -109,13 +115,22 @@ public class AdminViewController {
 		return "admin/addProductPage";
 	}
 
-	@GetMapping("/menu")
+	@GetMapping("/categories")
 	public String getProductsList() {
 		return "admin/menu";
 	}
-	
+
 	@GetMapping("/selectedItemPage")
 	public String getSelectedItemPage() {
 		return "admin/SelectedCategoryItems";
 	}
+	
+	@GetMapping("/menu")
+	public String getMenuPage(Model model) {
+		UserDAO loggedInUser = loginUserService.getLoggedInUser();
+
+		model.addAttribute("role", loggedInUser.getROLE());
+		return "common/menuPage";
+	}
+	
 }

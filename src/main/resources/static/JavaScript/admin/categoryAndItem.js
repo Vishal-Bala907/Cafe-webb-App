@@ -93,11 +93,7 @@ document.getElementById("fetch-categories").addEventListener("click", () => {
 		});
 });
 
-/*function setCategories(data) {
-	console.log("Setting categories in sessionStorage"); // Debugging statement
-	let categoryData = JSON.stringify(data);
-	sessionStorage.setItem("cate-data", categoryData);
-}*/
+
 
 
 

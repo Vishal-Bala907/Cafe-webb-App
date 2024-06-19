@@ -11,6 +11,8 @@ window.addEventListener("load", () => {
 })
 
 /*SETTINUP PRODUCTS*/
+
+/*/*<input id="selected-${prod.pro_Id}" class="qt" type="number" />*/
 function setProducts() {
 	selectedCategoryProds.forEach((prod) => {
 
@@ -30,7 +32,7 @@ function setProducts() {
 			</div>
 
 			<div class="button">
-				<input id="selected-${prod.pro_Id}" class="qt" type="number" />
+				
 				<button id="add-button-${prod.pro_Id}" class="item-buy-buttons" >Add</button>
 				<button class="item-buy-buttons" >Buy</button>
 			</div>
@@ -68,7 +70,6 @@ async function sendToStoreInCartToBackend(prod) {
 }
 
 function addToBagClicked(prod) {
-	console.log(prod)
 	// adding one item each time when user clicks
 	//document.getElementById(`selected-${prod.pro_Id}`).value++;
 

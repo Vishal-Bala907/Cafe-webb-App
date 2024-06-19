@@ -74,14 +74,10 @@ public class CommonServices {
 		List<Products> products = byId.getProducts();
 		List<Products> listToSend = new ArrayList<Products>();
 
-		int i = 0;
-
 		for (Products product : products) {
 			product.setCategory(null);
 			product.setCart(null);
-//			product.setCart(null);
 			listToSend.add(product);
-			i++;
 		}
 //		
 		return listToSend;
