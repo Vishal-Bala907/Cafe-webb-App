@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{adminTemplate::adminBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section id="man-category-cards">
+		<div class="man-category-card">
+
+			<img class="man-cate-card-img" th:src="@{/Images/crousel/donuts.jpg}"
+				alt="Image 3" />
+
+
+			<p class="man-cate-name">AnyThing</p>
+
+
+
+		</div>
+		
+		
+		
+		<script type="text/javascript"
+		th:src="@{/JavaScript/admin/manageProds.js}"
+		></script>
+	</section>
+
+	
+</body>
+</html>

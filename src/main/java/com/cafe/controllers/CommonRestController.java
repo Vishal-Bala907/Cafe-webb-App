@@ -4,17 +4,20 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.DeleteExchange;
 
 import com.cafe.common.services.CommonServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.repos.CategoryRepo;
+import com.cafe.repos.ProductsRepo;
 
 @RestController
 @RequestMapping("/common")
@@ -64,5 +67,18 @@ public class CommonRestController {
 		List<Products> saveToCart = commonServices.getCart();
 		return ResponseEntity.ok().body(saveToCart);
 	}
+	
+	@GetMapping("/manage-prod/{id}")
+	public ResponseEntity<Category> getFullCategoryDataForManage(@PathVariable long id){
+		Category categoryForManage = commonServices.getCategoryForManage(id);
+		return ResponseEntity.ok().body(categoryForManage);
+	}
+	
+	@DeleteMapping("/deleteProduct")
+	public ResponseEntity<List<Products>> deleteProduct(@RequestBody Products products) {
+		List<Products> deleteProduct = commonServices.deleteProduct(products);
+		return ResponseEntity.ok().body(deleteProduct);
+	}
+	
 
 }

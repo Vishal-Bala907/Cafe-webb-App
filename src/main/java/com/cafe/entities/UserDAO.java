@@ -54,7 +54,7 @@ public class UserDAO {
 	}
 
 	
-
+	@OneToMany(mappedBy = "userDAO")
 	public List<UserBag> getCart() {
 		return cart;
 	}

@@ -1,4 +1,4 @@
-let categoryCards = "";
+let c = "";
 let selectedCategory;
 
 //
@@ -18,7 +18,7 @@ window.addEventListener("load", () => {
 })
 
 function createCateCard(data) {
-
+	console.log("vishal bala",data)
 	data.forEach(cate => {
 		let template = `<div id='cate-${cate.c_Id}' class="category-card">
 
@@ -32,10 +32,10 @@ function createCateCard(data) {
 
 		</div>`
 
-		categoryCards = categoryCards + template;
+		c = c + template;
 	})
 
-	document.getElementById('category-cards').innerHTML = categoryCards;
+	document.getElementById('category-cards').innerHTML = c;
 
 	// Attach event listeners to remove items from bag
 	data.forEach(cate => {

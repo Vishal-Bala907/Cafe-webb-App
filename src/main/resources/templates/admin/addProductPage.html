@@ -43,7 +43,9 @@
 					<div class="first">
 						<label class="cover-lable" title="click here to choose a image"
 							for="cover-img">Select Cover Image</label> <input type="file"
-							class="cover-img display-none" id="cover-img" name="cover-image">
+							class="cover-img display-none" id="cover-img" name="cover-image"
+							required="required"
+							>
 					</div>
 					<span th:classappend="${imageError} ? 'error-message' : ''">
 						<span th:text="${imageError}"></span>
@@ -116,7 +118,7 @@
 						type="number" class="itm-name-input" id="name" th:field="*{sold}"
 						placeholder="Enter Product name" required> -->
 					<select class="itm-name-input select-cate" id="cate_name"
-						th:field="*{categoryName}">
+						th:field="*{categoryName}" required>
 
 					</select> <span class="input-error" style="color: red;"
 						th:if="${#fields.hasErrors('categoryName')}"
@@ -128,7 +130,7 @@
 				<div class="cover-image-div f-grow-p5">
 					<label class="cover-lable" title="click here to choose a image"
 						for="itm-img">Select Cover Image</label> <input type="file"
-						class="cover-img" id="itm-img" name="itmimage">
+						class="cover-img" id="itm-img" name="itmimage" required>
 				</div>
 
 				<div>

@@ -1,6 +1,19 @@
 
 window.addEventListener("load", () => {
-	setCategoryOptions()
+	try {
+		populateCategory();
+
+	}catch(err){
+		
+	}
+	
+	try {
+		setCategoryOptions()
+
+	}catch(err){
+		
+	}
+	
 })
 
 
@@ -39,6 +52,7 @@ document.getElementById("fetch-cate-data").addEventListener("click", () => {
 
 // adding options
 function setCategoryOptions() {
+
 
 	const mycate = sessionStorage.getItem('category');
 	// Parse the JSON string to get the array

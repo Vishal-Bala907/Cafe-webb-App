@@ -1,19 +1,20 @@
 
-let selectedCategoryProds;
-let productsTemplate = "";
+//
+let productsTemplateCate = "";
 let shoppingBag = [];
 
 
 window.addEventListener("load", () => {
 	selectedCategoryProds = JSON.parse(sessionStorage.getItem("selected-cate"));
 	console.log(selectedCategoryProds);
-	setProducts();
+	setProducts(selectedCategoryProds);
+	
 })
 
 /*SETTINUP PRODUCTS*/
 
 /*/*<input id="selected-${prod.pro_Id}" class="qt" type="number" />*/
-function setProducts() {
+function setProducts(selectedCategoryProds) {
 	selectedCategoryProds.forEach((prod) => {
 
 		let SameCateProds = `<div class="item-card">
@@ -39,9 +40,9 @@ function setProducts() {
 
 		</div>`
 
-		productsTemplate = productsTemplate + SameCateProds;
+		productsTemplateCate = productsTemplateCate + SameCateProds;
 	})
-	document.getElementById("items-cards").innerHTML = productsTemplate;
+	document.getElementById("items-cards").innerHTML = productsTemplateCate;
 	selectedCategoryProds.forEach((prod) => {
 		document.getElementById(`add-button-${prod.pro_Id}`).addEventListener('click', () => {
 			addToBagClicked(prod);
@@ -70,10 +71,6 @@ async function sendToStoreInCartToBackend(prod) {
 }
 
 function addToBagClicked(prod) {
-	// adding one item each time when user clicks
-	//document.getElementById(`selected-${prod.pro_Id}`).value++;
-
-	//shoppingBag = [...JSON.parse(sessionStorage.getItem("bag"))]
 	shoppingBag.push(prod)
 	sendToStoreInCartToBackend(prod)
 		.then(data => {

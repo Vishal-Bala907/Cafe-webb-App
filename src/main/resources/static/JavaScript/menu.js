@@ -76,7 +76,7 @@ function setMenuLayout() {
 	document.getElementById("menu-section").innerHTML = "";
 	document.getElementById("menu-section").innerHTML = productsTemplate;
 
-	selectedCategoryProds.forEach((prod) => {
+	menuItems.forEach((prod) => {
 		document.getElementById(`add-button-${prod.pro_Id}`).addEventListener('click', () => {
 			addToBagClicked(prod);
 		})

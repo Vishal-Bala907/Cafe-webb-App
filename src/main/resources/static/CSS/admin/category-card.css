@@ -1,4 +1,4 @@
-#category-cards {
+#category-cards , #man-category-cards {
 	width: 100%;
 	height: fit-content;
 	display: flex;
@@ -8,7 +8,7 @@
 	cursor: pointer;
 }
 
-.category-card {
+.category-card, .man-category-card {
 	height: 20em;
 	width: 25em;
 	background-color: #bdbdbd;
@@ -17,17 +17,17 @@
 	box-shadow: 3px 3px 10px #00000091;
 }
 
-.category-card:hover {
+.category-card:hover , .man-category-card:hover {
 	box-shadow: 5px 5px 13px #00000091;
 }
 
-.cate-card-img {
+.cate-card-img, .man-cate-card-img {
 	width: 25em;
 	height: 20em;
 	object-fit: cover;
 }
 
-.cate-name {
+.cate-name , .man-cate-name{
 	font-size: 2em;
 	background-color: #acacf8;
 	text-align: center;

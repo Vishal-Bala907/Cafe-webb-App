@@ -1,0 +1,33 @@
+.manage-item {
+	/* backdrop-filter: blur(20px); */
+	position: absolute;
+	top: 50%;
+	/* right: 50%; */
+	transform: translate(-50%, -50%);
+	left: 50%;
+	width: 50%;
+	/* display: flex; */
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	display: none;
+}
+
+.manage-item>form {
+	height: 100%;
+	width: 100%;
+	padding: 10%;
+	backdrop-filter: blur(20px);
+}
+
+#itemUpdate {
+	position: absolute;
+	top: 15px;
+	right: 25px;
+	font-size: 3em;
+	cursor: pointer;
+}
+
+.add-item {
+	flex-wrap: wrap;
+}

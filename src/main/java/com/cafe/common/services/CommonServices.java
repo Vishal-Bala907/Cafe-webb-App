@@ -1,19 +1,25 @@
 package com.cafe.common.services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserBag;
 import com.cafe.entities.UserDAO;
+import com.cafe.fileService.FileService;
 import com.cafe.loginService.LoginUserService;
 import com.cafe.repos.BagRepo;
 import com.cafe.repos.CategoryRepo;
 import com.cafe.repos.ProductsRepo;
+
+import jakarta.validation.Valid;
 
 @Service
 public class CommonServices {
@@ -25,6 +31,14 @@ public class CommonServices {
 	LoginUserService loginUserService;
 	@Autowired
 	BagRepo bagRepo;
+	@Autowired
+	FileService fileService;
+
+	@Value("${project.delete.cover}")
+	String deleteCoverPath;
+
+	@Value("${project.delete.products}")
+	String deleteProductPath;
 
 	public Category CategorySaveService(Category category) throws Exception {
 
@@ -54,6 +68,26 @@ public class CommonServices {
 
 	}
 
+	public Category categoryUpdateService(Category category, String coverimagepath, MultipartFile file) {
+		// fetching old category
+		Category cId = categoryRepo.findById(category.getC_Id());
+		cId.setCatagoryName(category.getCatagoryName());
+		if (file.getSize() != 0) {
+			System.out.println("removing file");
+			// removing existing image
+			fileService.removeFile(cId, deleteCoverPath);
+			try {
+				// saving new image
+				fileService.getAndSetCategoryImage(coverimagepath, cId, file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		categoryRepo.save(cId);
+		return null;
+	}
+
 	public List<Category> getCategoryList() {
 		List<Category> list = categoryRepo.findAll();
 		List<Category> listToSend = new ArrayList<Category>();
@@ -79,9 +113,7 @@ public class CommonServices {
 			product.setCart(null);
 			listToSend.add(product);
 		}
-//		
 		return listToSend;
-
 	}
 
 	public List<Products> saveToCart(long id) {
@@ -119,6 +151,66 @@ public class CommonServices {
 		}
 
 		return bag;
+	}
+
+	public Category getCategoryForManage(long id) {
+		Category cat = categoryRepo.findById(id);
+		Category catToSend = new Category();
+		List<Products> list = new ArrayList<>();
+		// System.out.println(cat.getProducts());
+		List<Products> products = cat.getProducts();
+//		System.out.println(products.size());
+		for (Products p : products) {
+			Products newP = new Products();
+			newP.setCart(null);
+			newP.setCategory(null);
+			newP.setCategoryName(p.getCategoryName());
+			newP.setDiscount(p.getDiscount());
+			newP.setPro_Id(p.getPro_Id());
+			newP.setProductImage(p.getProductImage());
+			newP.setProductName(p.getProductName());
+			newP.setProductPrice(p.getProductPrice());
+			newP.setSold(p.getSold());
+
+			list.add(newP);
+
+		}
+
+		catToSend.setC_Id(cat.getC_Id());
+		catToSend.setCatagoryName(cat.getCatagoryName());
+		catToSend.setCover(cat.getCover());
+		catToSend.setProducts(list);
+
+		return catToSend;
+	}
+
+	public void updateProduct(@Valid Products products, MultipartFile file, String productImagePath) {
+		Products prod = productsRepo.findByproId(products.getPro_Id());
+
+		prod.setProductName(products.getProductName());
+		prod.setDiscount(products.getDiscount());
+		prod.setProductPrice(products.getProductPrice());
+		prod.setSold(products.getSold());
+		if (file.getSize() != 0) {
+			fileService.deleteProductImage(prod, deleteProductPath);
+			fileService.getAndSetProductImage(productImagePath, prod, file);
+		}
+		productsRepo.save(prod);
+		// +
+
+	}
+
+	public List<Products> deleteProduct(Products products) {
+		
+		Products productToDelete = productsRepo.findByproId(products.getPro_Id());
+		
+		long c_Id = productToDelete.getCategory().getC_Id();
+		productsRepo.deleteById(productToDelete.getPro_Id());
+		// remove image also
+		fileService.deleteProductImage(productToDelete, deleteProductPath);
+		
+		List<Products> selectedProducts = this.getSelectedProducts(c_Id);
+		return selectedProducts;
 	}
 
 }

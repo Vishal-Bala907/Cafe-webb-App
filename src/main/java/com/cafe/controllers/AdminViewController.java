@@ -124,7 +124,7 @@ public class AdminViewController {
 	public String getSelectedItemPage() {
 		return "admin/SelectedCategoryItems";
 	}
-	
+
 	@GetMapping("/menu")
 	public String getMenuPage(Model model) {
 		UserDAO loggedInUser = loginUserService.getLoggedInUser();
@@ -132,5 +132,42 @@ public class AdminViewController {
 		model.addAttribute("role", loggedInUser.getROLE());
 		return "common/menuPage";
 	}
-	
+
+	@GetMapping("/manage-cate")
+	public String manageCategory(Model model) {
+		return "admin/manageItemCategory.html";
+	}
+
+	@GetMapping("/man-cateAndProd-page")
+	public String getProdManagingPage(Products products, Category category) {
+		return "admin/manageProdPage";
+	}
+
+	@PostMapping("/updateCategory")
+	public String updateCate(@Valid @ModelAttribute("category") Category category, Products products,
+			BindingResult bindingResult, @RequestParam("cover-image") MultipartFile file, Model model) {
+		// Handle validation errors
+		if (bindingResult.hasErrors()) {
+			return "admin/manageProdPage";
+		}
+		
+		commonServices.categoryUpdateService(category, coverImagePath, file);
+		return "admin/manageProdPage";
+	}
+
+	@PostMapping("/manageItem")
+	public String manageItem(@Valid @ModelAttribute("products") Products products, BindingResult bindingResult,
+			@RequestParam("itmimage") MultipartFile file, Model model, Category category) {
+		// Handle validation errors
+		if (bindingResult.hasErrors()) {
+			return "admin/addProductPage";
+		}
+		commonServices.updateProduct(products , file ,productImagePath);
+		
+		
+		
+		
+		return "admin/manageProdPage";
+	}
+
 }

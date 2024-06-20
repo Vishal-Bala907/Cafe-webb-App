@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

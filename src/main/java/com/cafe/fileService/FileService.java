@@ -3,6 +3,7 @@ package com.cafe.fileService;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
+
+import jakarta.validation.Valid;
 
 @Service
 public class FileService {
@@ -52,9 +55,9 @@ public class FileService {
 
 		// copy file
 		category.setCover("Images/cover/" + originalFileName);
-		
-			Files.copy(file.getInputStream(), Paths.get(newPath));
-		
+
+		Files.copy(file.getInputStream(), Paths.get(newPath));
+
 		return category;
 	}
 
@@ -79,5 +82,30 @@ public class FileService {
 		}
 
 		return products;
+	}
+
+	public Category removeFile(@Valid Category category, String path) {
+		Path path2 = Paths.get(path + File.separator + category.getCover());
+
+		try {
+			Files.delete(path2);
+			category.setCover("");
+		} catch (Exception e) {
+			System.out.println("path :::: " + path2 + " | " + category.getCover());
+		}
+
+		return category;
+	}
+
+	public Products deleteProductImage(Products prod, String deleteProductPath) {
+		
+		Path path = Paths.get(deleteProductPath + File.separator + prod.getProductImage());
+		try {
+			Files.delete(path);
+			prod.setProductImage("");
+		}catch (Exception e) {
+			System.out.println("Exception while removing product image "+e);
+		}
+		return prod;
 	}
 }
