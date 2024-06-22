@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe.common.services.CommonServices;
+import com.cafe.empAndUserServices.UserAndEmployeeServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
@@ -38,6 +39,8 @@ public class AdminViewController {
 	CommonServices commonServices;
 	@Autowired
 	LoginUserService loginUserService;
+	@Autowired
+	UserAndEmployeeServices andEmployeeServices;
 
 	@Value("${project.cover}")
 	private String coverImagePath;
@@ -150,7 +153,7 @@ public class AdminViewController {
 		if (bindingResult.hasErrors()) {
 			return "admin/manageProdPage";
 		}
-		
+
 		commonServices.categoryUpdateService(category, coverImagePath, file);
 		return "admin/manageProdPage";
 	}
@@ -162,12 +165,31 @@ public class AdminViewController {
 		if (bindingResult.hasErrors()) {
 			return "admin/addProductPage";
 		}
-		commonServices.updateProduct(products , file ,productImagePath);
-		
-		
-		
-		
+		commonServices.updateProduct(products, file, productImagePath);
 		return "admin/manageProdPage";
+	}
+
+	@GetMapping("/addEmp")
+	public String addEmployee(UserDAO userDAO, Model model) {
+		return "admin/addEmp";
+	}
+
+	@PostMapping("/registerEmp")
+	public String addEmployeeToWork(@Valid UserDAO dao, BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors()) {
+
+			return "admin/addEmp";
+		}
+		
+		if(dao.getU_id() == 0) {
+			model.addAttribute("error","user not exists");
+			return "admin/addEmp";
+		}
+		model.addAttribute("error","");
+		andEmployeeServices.addEmployee(dao);
+
+		return "admin/addEmp";
 	}
 
 }

@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.DeleteExchange;
 
 import com.cafe.common.services.CommonServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.repos.CategoryRepo;
-import com.cafe.repos.ProductsRepo;
 
 @RestController
 @RequestMapping("/common")

@@ -37,6 +37,7 @@ body {
 	th:href="@{/CSS/admin/category-card.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/menu.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/manageProdPage.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/emp.css}">
 </head>
 <body>
 	<header th:fragment="header">
@@ -47,8 +48,6 @@ body {
 				<li><a href="#">Tea</a></li>
 				<li><a href="#">Pastries</a></li>
 				<li><a href="#">Cakes</a></li>
-				<li><a href="#">Cookies</a></li>
-				<li><a href="#">Breads</a></li>
 			</ul>
 			<ul class="nav-item-group">
 				<li><a href="#">Help</a></li>
@@ -71,9 +70,9 @@ body {
 				<li id="fetch-categories"><a th:href="@{/admin/menu}">Menu</a></li>
 				<li><a th:href="@{/admin/addProduct}" id="fetch-cate-data">Add</a></li>
 				<li id="manage-categories"><a th:href="@{/admin/manage-cate}">Manage Item</a></li>
+				<li id="manage-categories"><a th:href="@{/admin/addEmp}">Add Emp.</a></li>
 				<li>Manage Employee</li>
 				<li>Manage Booking</li>
-				<li>Manage Orders</li>
 				<li>Manage Orders</li>
 			</ul>
 			<span class="SideBarOpenCloseButton material-symbols-outlined"

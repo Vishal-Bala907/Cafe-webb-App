@@ -32,9 +32,10 @@ public class UserDAO {
 
 	private long salary;
 	private String post;
-	private String user_image;
-	private String DOJ;
 	private String DOL;
+	private String DOJ;
+	
+	private String user_image;
 
 	@OneToMany(mappedBy = "userDAO")
 	private List<UserBag> cart;

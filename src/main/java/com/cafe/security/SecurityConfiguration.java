@@ -25,10 +25,10 @@ public class SecurityConfiguration {
 	SecurityFilterChain chain(HttpSecurity security) throws Exception {
 		security.authorizeHttpRequests((auth) -> auth
 				.requestMatchers("/", "/CSS/**", "/JavaScript/**", "/Public/**", "/Images/**",
-
 						"/common/**", "/Images/cover/**", "/login", "/signup-page", "/register")
-				.permitAll().requestMatchers("admin/**", "/admin/**").hasRole("ADMIN").requestMatchers("/common/**")
-				.hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
+				.permitAll()
+				.requestMatchers("admin/**", "/admin/**", "/empAndCus/**").hasRole("ADMIN")
+				.requestMatchers("/common/**").hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
 				.rememberMe(me -> me.tokenValiditySeconds(60 * 60 * 24 * 7));
 
 		security.csrf(csrf -> csrf.disable());

@@ -1,5 +1,6 @@
 package com.cafe.registerService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,20 +36,20 @@ public class RegisterService {
 			UserDAO newuser = fileservice.setAndUploadFile(path, user, file);
 			// password , id , username ,image
 			newuser.setROLE("ROLE_USER");
-			newuser.setDOJ("123");
-			newuser.setDOL("1234");
-			newuser.setSalary(12000);
+			newuser.setDOJ(LocalDate.now().toString());
+			newuser.setDOL(LocalDate.now().toString());
+			newuser.setSalary(0);
 			newuser.setPost("customer");
 			newuser.setPassword(encoDeco.encode(newuser.getPassword()));
 
 			Address address = new Address();
 			address.setAdd_user(newuser);
-			address.setCity("Kota");
+			address.setCity("City");
 			address.setCountry("india");
-			address.setHouse_no("46-b");
-			address.setPostal_code(324009);
-			address.setState("Rajasthan");
-			address.setStreet("Modi college road");
+			address.setHouse_no("house no");
+			address.setPostal_code(000000);
+			address.setState("state");
+			address.setStreet("street");
 
 			newuser.setAddress(address);
 

@@ -1,0 +1,106 @@
+.add-emp-search {
+	width: 100%;
+	background-color: #eff5f5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 11px;
+	flex-wrap: wrap;
+	height: fit-content;
+	padding: 10px 0px;
+}
+
+#add-emp-search {
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid green;
+	width: 15rem;
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
+.add-emp-search>button {
+	padding: 5px;
+	border-radius: 10px;
+	background-color: beige;
+	cursor: pointer;
+}
+
+#isUserExists {
+	color: red;
+	background-color: white;
+	border-radius: 4px;
+}
+
+/*FORM*/
+.addEmpForm {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 10%;
+	justify-content: center;
+	align-items: center;
+	row-gap: 4em;
+}
+
+.addEmpinp {
+	display: flex;
+	gap: 12px;
+}
+
+.addEmptxtinp {
+	background: transparent;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid green;
+	width: 15rem;
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
+.addEmpSelectinp {
+	border: none;
+	outline: none;
+	border-bottom: 2px solid green;
+	width: 5rem;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+#role {
+	width: 7rem;
+}
+
+.addEmpDateinp {
+	border: none;
+	outline: none;
+	border-bottom: 2px solid green;
+	width: 8rem;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.addEmp {
+	padding: 10px;
+	border-radius: 10px;
+	border: none;
+	background-color: cadetblue;
+	color: white;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.addEmpCover {
+	width: 100%;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+	gap: 2;
+	column-gap: 2rem;
+}
+
+.addEmp:hover {
+	box-shadow: 5px 4px 24px #63d5d9;
+}

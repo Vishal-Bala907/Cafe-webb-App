@@ -7,4 +7,7 @@ import com.cafe.entities.UserDAO;
 public interface UserRepo extends JpaRepository<UserDAO, Long> {
 	
 	UserDAO findByUsername(String username);
+	
+	
+	UserDAO findById(long id);
 }

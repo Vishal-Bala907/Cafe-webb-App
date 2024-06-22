@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{adminTemplate::adminBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="add-emp-search">
+			<input type="search" name="username" id="add-emp-search" />
+			<button onclick="searchEmp()">Search</button>
+			<span id="isUserExists" class="userNotFountError"></span>
+		</div>
+
+		<div class="empAddForm">
+
+			<form th:action="@{/admin/registerEmp}" class="addEmpForm"
+				th:method="post" th:object="${userDAO}">
+
+				<span style="color: red;" th:if="${#fields.hasErrors('username')}"
+					th:errors="*{username}"></span>
+				<p style="color: red;" th:text="${error}"></p>
+
+
+
+				<input type="text" th:field="*{u_id}" id="u_id" hidden="true" />
+
+				<!--  USERNAME  -->
+				<div class="addEmpinp">
+					<label for="name">Enter username</label> <input type="text"
+						th:field="*{username}" id="name" class="addEmptxtinp"
+						placeholder="username" required="required" />
+
+
+				</div>
+
+				<!-- POST -->
+				<div class="addEmpinp">
+					<label for="post">Select Post</label> <select th:field="*{post}"
+						id="post" class="addEmpSelectinp" required="required">
+						<option value="manager">Manger</option>
+						<option value="cashier" selected="selected">cashier</option>
+						<option value="cook">cook</option>
+						<option value="waiter">waiter</option>
+						<option value="clenaer">cleaner</option>
+						<option value="accountant">accountant</option>
+					</select>
+				</div>
+
+				<!-- ROLE -->
+				<div class="addEmpinp">
+					<label for="role">Select Role</label> <select th:field="*{ROLE}"
+						id="role" class="addEmpSelectinp" required="required">
+						<option value="ROLE_USER" selected="selected">CUSTOMER</option>
+						<option value="ROLE_EMPLOYEE">EMPOLYEE</option>
+					</select>
+				</div>
+
+				<!-- Date of joining -->
+				<div class="addEmpinp">
+					<label for="doj">Date of joining</label> <input type="date"
+						th:field="*{DOJ}" id="doj" class="addEmpDateinp"
+						required="required" />
+				</div>
+
+				<!-- Date of Leave -->
+				<div class="addEmpinp">
+					<label for="doj">Date of joining (optional)</label> <input
+						type="date" th:field="*{DOL}" id="dol" class="addEmpDateinp" />
+				</div>
+
+				<!--  USERNAME  -->
+				<div class="addEmpinp">
+					<label for="salary">Enter Salary</label> <input type="text"
+						th:field="*{salary}" id="salary" class="addEmptxtinp"
+						placeholder="Enter Salary" required="required" />
+				</div>
+
+				<!-- Buttons -->
+				<div class="addEmpCover">
+					<button type="submit" id="addEmp" class="addEmp">Add
+						Employee</button>
+					<button type="reset" class="addEmp">Cancel</button>
+				</div>
+			</form>
+
+		</div>
+
+		<script type="text/javascript" th:src="@{/JavaScript/admin/emp.js}"></script>
+	</section>
+</body>
+</html>
