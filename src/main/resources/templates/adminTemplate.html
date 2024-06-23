@@ -38,6 +38,7 @@ body {
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/menu.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/manageProdPage.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/emp.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/viewEmpOrCustomers.css}">
 </head>
 <body>
 	<header th:fragment="header">
@@ -70,8 +71,8 @@ body {
 				<li id="fetch-categories"><a th:href="@{/admin/menu}">Menu</a></li>
 				<li><a th:href="@{/admin/addProduct}" id="fetch-cate-data">Add</a></li>
 				<li id="manage-categories"><a th:href="@{/admin/manage-cate}">Manage Item</a></li>
-				<li id="manage-categories"><a th:href="@{/admin/addEmp}">Add Emp.</a></li>
-				<li>Manage Employee</li>
+				<li id="manage-categories"><a th:href="@{/admin/addEmp}">Manage/Add Emp.</a></li>
+				<li id="manage-categories"><a th:href="@{/admin/viewCusOrEmp}">View Customer/Emp</a></li>
 				<li>Manage Booking</li>
 				<li>Manage Orders</li>
 			</ul>

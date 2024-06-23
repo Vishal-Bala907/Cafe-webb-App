@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{adminTemplate::adminBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section class="main-section">
+		<div class="add-emp-search emp-cus">
+			<input type="search" name="username" id="add-emp-search" />
+			<button onclick="searchEmpOrCustomer()">Search</button>
+			<hr class="hr" />
+			<select class="addEmpSelectinp" name="sort" id="role"
+				onchange="sortUser()">
+				<option value="ALL" selected="selected">ALL</option>
+				<option value="ROLE_USER">CUSTOMER</option>
+				<option value="ROLE_EMPLOYEE">EMPOLYEE</option>
+			</select> <span id="isUserExists" class="userNotFountError"></span>
+		</div>
+
+		<div class="cards-container" id="cards-container">
+
+			<div class="card">
+				<img th:src="@{/Images/cookie-card.jpg}" alt="aimage" />
+				<div class="contents">
+					<h2 id="name" class="name">Name something</h2>
+					<p id="role" class="role">Role here</p>
+					<p class="position" id="position">Position here</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="details" id="details">
+			<span onclick="closeDetailsSection()" id="empAndCus"
+				class="material-symbols-outlined">close</span>
+			<div class="info" id="printable-content">
+
+				<div class="img-cover-user-emp">
+					<img id="userimage" th:src="@{/Images/cookie-card.jpg}"
+						alt="profile picture" />
+				</div>
+				<div class="user-info">
+					<p>Name :</p>
+					<p id="username">Username</p>
+				</div>
+
+				<div class="user-info">
+					<p>Post :</p>
+					<p id="post">Post</p>
+				</div>
+
+				<div class="user-info">
+					<p>Role :</p>
+					<p id="userRole">Role</p>
+				</div>
+
+				<div class="user-info">
+					<p>Salary :</p>
+					<p id="salary">Salary</p>
+				</div>
+
+				<div class="user-info">
+					<p>Date of Joining :</p>
+					<p id="doj">12/12/12</p>
+				</div>
+
+				<div class="user-info">
+					<p>Date of Leaving :</p>
+					<p id="dol">12/12/12</p>
+				</div>
+
+				<div class="devider">
+
+					<hr class="div-hr" />
+					<span>Address</span>
+					<hr class="div-hr" />
+				</div>
+
+
+
+
+				<div class="address">
+
+					<div class="userAdd">
+						<p>City :</p>
+						<p id="city">City</p>
+					</div>
+
+					<div class="userAdd">
+						<p>Country :</p>
+						<p id="country">Country</p>
+					</div>
+
+					<div class="userAdd">
+						<p>House no. :</p>
+						<p id="house_no">House no</p>
+					</div>
+
+					<div class="userAdd">
+						<p>Postal code :</p>
+						<p id="postal_code">Postal code</p>
+					</div>
+
+					<div class="userAdd">
+						<p>State :</p>
+						<p id="state">State</p>
+					</div>
+
+					<div class="userAdd">
+						<p>Street :</p>
+						<p id="street">Street</p>
+					</div>
+
+				</div>
+				
+				<button class="print" onclick="printDiv()">Print Details</button>
+			</div>
+		</div>
+
+		<script type="text/javascript"
+			th:src="@{/JavaScript/admin/viewEmpOrCustomers.js}"></script>
+	</section>
+
+
+</body>
+</html>

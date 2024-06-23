@@ -112,5 +112,5 @@ function openSideBarForSmallScreens() {
 		} else if (smallScreenSidebar == 75) {
 			clearInterval(timeId)
 		}
-	}, 5)
+	}, 2)
 }

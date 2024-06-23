@@ -191,5 +191,10 @@ public class AdminViewController {
 
 		return "admin/addEmp";
 	}
+	
+	@GetMapping("/viewCusOrEmp")
+	public String getEmpOrCustomer() {
+		return "admin/viewEmpORCustomers";
+	}
 
 }

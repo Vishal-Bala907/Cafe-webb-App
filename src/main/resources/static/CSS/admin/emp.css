@@ -66,6 +66,7 @@
 	width: 5rem;
 	font-weight: bold;
 	font-size: 1rem;
+	background: transparent;
 }
 
 #role {
@@ -103,4 +104,11 @@
 
 .addEmp:hover {
 	box-shadow: 5px 4px 24px #63d5d9;
+}
+
+.hr {
+	width: 2.2rem;
+	transform: rotate(90deg);
+	background-color: black;
+	height: 1px;
 }

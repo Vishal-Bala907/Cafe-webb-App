@@ -1,6 +1,9 @@
 package com.cafe.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,5 +28,12 @@ public class EmpAndCustomerRestController {
 			return null;
 		}
 		return  userByUserName;
+	}
+	
+	@GetMapping("/getEmpOrCus/{sort}")
+	public ResponseEntity<List<UserDAO>> getEmpOrCustomers(@PathVariable String sort){
+		
+		List<UserDAO> myUsers = andEmployeeServices.getMyUsers(sort);
+		return ResponseEntity.ok().body(myUsers);
 	}
 }

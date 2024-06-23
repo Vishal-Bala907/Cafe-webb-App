@@ -2,10 +2,13 @@ package com.cafe.empAndUserServices;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cafe.entities.Address;
 import com.cafe.entities.UserDAO;
 import com.cafe.repos.UserRepo;
 
@@ -50,6 +53,37 @@ public class UserAndEmployeeServices {
 		UserDAO save = userRepo.save(byUsername);
 
 		return save;
+	}
+
+	public List<UserDAO> getMyUsers(String sort) {
+		List<UserDAO> users;
+		if(sort.equals("ALL")) {
+			System.out.println("getting all");
+			users = userRepo.findAll();
+		}else {
+			System.out.println("getting users");
+			users = userRepo.findByROLE(sort);
+			
+		}
+		
+		// making ready the list to send to frontend
+		List<UserDAO> listToSend = new ArrayList<UserDAO>();
+		for(UserDAO userDAO : users) {
+			
+			userDAO.setCart(null);
+			userDAO.setOrders(null);
+			userDAO.setAttendence(null);
+			userDAO.getAddress().setAdd_user(null);
+			
+			Address address = new Address();
+			address = userDAO.getAddress();
+			address.setAdd_user(null);
+			
+			listToSend.add(userDAO);
+		}
+		System.out.println(users.size());
+		return listToSend;
+		
 	}
 
 }

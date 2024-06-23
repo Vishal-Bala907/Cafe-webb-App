@@ -8,7 +8,7 @@
 </head>
 <body>
 	<section>
-		<div class="add-emp-search">
+		<div th:fragment="empSearch" class="add-emp-search">
 			<input type="search" name="username" id="add-emp-search" />
 			<button onclick="searchEmp()">Search</button>
 			<span id="isUserExists" class="userNotFountError"></span>
