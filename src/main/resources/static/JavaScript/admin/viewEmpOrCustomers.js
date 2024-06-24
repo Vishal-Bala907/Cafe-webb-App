@@ -51,8 +51,8 @@ function populateUsers(data) {
 		let role;
 		if (user.role === "ROLE_EMPLOYEE") {
 			role = "EMPLOYEE";
-		} else if (user.role === "ROLE_USER") {
-			role = "USER";
+		} else if (user.role === "ROLE_CUSTOMER") {
+			role = "CUSTOMER";
 		} else if (user.role === "ROLE_ADMIN") {
 			role = "ADMIN";
 		}
@@ -88,8 +88,8 @@ function cardClicked(user) {
 	let role;
 	if (user.role === "ROLE_EMPLOYEE") {
 		role = "EMPLOYEE";
-	} else if (user.role === "ROLE_USER") {
-		role = "USER";
+	} else if (user.role === "ROLE_CUSTOMER") {
+		role = "CUSTOMER";
 	} else if (user.role === "ROLE_ADMIN") {
 		role = "ADMIN";
 	}

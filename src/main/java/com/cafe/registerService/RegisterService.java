@@ -35,7 +35,7 @@ public class RegisterService {
 		} else {
 			UserDAO newuser = fileservice.setAndUploadFile(path, user, file);
 			// password , id , username ,image
-			newuser.setROLE("ROLE_USER");
+			newuser.setROLE("ROLE_CUSTOMER");
 			newuser.setDOJ(LocalDate.now().toString());
 			newuser.setDOL(LocalDate.now().toString());
 			newuser.setSalary(0);

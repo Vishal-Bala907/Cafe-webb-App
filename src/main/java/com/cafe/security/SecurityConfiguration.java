@@ -28,7 +28,7 @@ public class SecurityConfiguration {
 						"/common/**", "/Images/cover/**", "/login", "/signup-page", "/register")
 				.permitAll()
 				.requestMatchers("admin/**", "/admin/**", "/empAndCus/**").hasRole("ADMIN")
-				.requestMatchers("/common/**").hasAnyRole("ADMIN", "USER").anyRequest().authenticated())
+				.requestMatchers("/common/**").hasAnyRole("ADMIN", "CUSTOMER","EMPLOYEE").anyRequest().authenticated())
 				.rememberMe(me -> me.tokenValiditySeconds(60 * 60 * 24 * 7));
 
 		security.csrf(csrf -> csrf.disable());

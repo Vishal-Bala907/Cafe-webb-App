@@ -66,7 +66,7 @@ function closeSideBar() {
 		} else if (sideBarWidth == 5) {
 			clearInterval(timeId)
 		}
-	}, 10)
+	}, 2)
 }
 function closeSideBarForSmallScreens() {
 	console.log("decreasing")
@@ -94,7 +94,7 @@ function openSideBarForBigScreens() {
 		} else if (sideBarWidth == 25) {
 			clearInterval(timeId)
 		}
-	}, 10)
+	}, 2)
 }
 
 // Small screen size no problem

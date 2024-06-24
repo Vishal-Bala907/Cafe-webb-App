@@ -56,6 +56,9 @@ public class UserAndEmployeeServices {
 	}
 
 	public List<UserDAO> getMyUsers(String sort) {
+		
+		System.out.println(sort);
+		
 		List<UserDAO> users;
 		if(sort.equals("ALL")) {
 			System.out.println("getting all");
