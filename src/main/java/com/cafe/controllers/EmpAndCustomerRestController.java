@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cafe.common.services.CommonServices;
 import com.cafe.empAndUserServices.UserAndEmployeeServices;
+import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
 
 
@@ -20,6 +22,8 @@ import com.cafe.entities.UserDAO;
 public class EmpAndCustomerRestController {
 	@Autowired
 	UserAndEmployeeServices andEmployeeServices;
+	@Autowired
+	CommonServices commonServices;
 	
 	@GetMapping("/userByName/{username}")
 	public UserDAO getUserDetailsByName(@PathVariable String username,Model model) {
@@ -35,5 +39,13 @@ public class EmpAndCustomerRestController {
 		
 		List<UserDAO> myUsers = andEmployeeServices.getMyUsers(sort);
 		return ResponseEntity.ok().body(myUsers);
+	}
+	
+	@GetMapping("/remove-from-cart/{id}")
+	public ResponseEntity<List<Products>> removeFromCart(@PathVariable("id") long id){
+		andEmployeeServices.removeFromCart(id);
+		List<Products> cart = commonServices.getCart();
+		System.out.println(id);
+		return ResponseEntity.ok().body(cart);
 	}
 }

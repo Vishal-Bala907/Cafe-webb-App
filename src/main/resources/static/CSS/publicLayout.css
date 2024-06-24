@@ -82,7 +82,7 @@
 	justify-content: center;
 }
 
-@media screen and (min-width: 716px) {
+@media screen and (max-width: 716px) {
 	.nav-header {
 		display: flex;
 		flex-direction: column;
@@ -148,7 +148,7 @@
 	}
 }
 
-@media screen and (max-width: 716px) {
+@media screen and (min-width: 716px) {
 	.nav-header {
 		display: flex;
 		justify-content: center;

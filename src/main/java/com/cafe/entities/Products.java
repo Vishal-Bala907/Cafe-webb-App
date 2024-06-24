@@ -23,6 +23,9 @@ public class Products {
 	 * @Length(min = 10, message = "product price must be atlest or more than 10rs")
 	 */
 	private double productPrice;
+
+	private double discountedPrice;
+
 	private double discount;
 	private long sold;
 	private String productImage;
@@ -41,47 +44,17 @@ public class Products {
 
 	public Products(
 			@Length(min = 3, max = 20, message = "product name must be 3 to 20 characters in length") String productName,
-			double productPrice, double discount, long sold, String productImage, String categoryName, List<UserBag> cart,
-			Category category) {
+			double productPrice, double discountedPrice, double discount, long sold, String productImage,
+			String categoryName, List<UserBag> cart, Category category) {
 		super();
 		this.productName = productName;
 		this.productPrice = productPrice;
+		this.discountedPrice = discountedPrice;
 		this.discount = discount;
 		this.sold = sold;
 		this.productImage = productImage;
 		this.categoryName = categoryName;
 		this.cart = cart;
-		this.category = category;
-	}
-
-	public List<UserBag> getCart() {
-		return cart;
-	}
-
-	public void setCart(List<UserBag> cart) {
-		this.cart = cart;
-	}
-
-	@Override
-	public String toString() {
-		return "Products [pro_Id=" + pro_Id + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", discount=" + discount + ", sold=" + sold + ", productImage=" + productImage + ", categoryName="
-				+ categoryName + ", cart=" + cart + ", category=" + category + "]";
-	}
-
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
 		this.category = category;
 	}
 
@@ -109,6 +82,14 @@ public class Products {
 		this.productPrice = productPrice;
 	}
 
+	public double getDiscountedPrice() {
+		return discountedPrice;
+	}
+
+	public void setDiscountedPrice(double discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
+
 	public double getDiscount() {
 		return discount;
 	}
@@ -131,6 +112,30 @@ public class Products {
 
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public List<UserBag> getCart() {
+		return cart;
+	}
+
+	public void setCart(List<UserBag> cart) {
+		this.cart = cart;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

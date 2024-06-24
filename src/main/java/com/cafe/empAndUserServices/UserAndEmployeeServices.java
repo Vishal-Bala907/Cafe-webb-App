@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cafe.entities.Address;
 import com.cafe.entities.UserDAO;
+import com.cafe.repos.BagRepo;
 import com.cafe.repos.UserRepo;
 
 import jakarta.validation.Valid;
@@ -18,6 +19,8 @@ import jakarta.validation.Valid;
 public class UserAndEmployeeServices {
 	@Autowired
 	UserRepo userRepo;
+	@Autowired
+	BagRepo bagRepo;
 
 	public UserDAO getUserByUserName(String username) {
 
@@ -49,44 +52,48 @@ public class UserAndEmployeeServices {
 
 		byUsername.setDOJ(doj.toString());
 		byUsername.setDOL(dol.toString());
-		
+
 		UserDAO save = userRepo.save(byUsername);
 
 		return save;
 	}
 
 	public List<UserDAO> getMyUsers(String sort) {
-		
+
 		System.out.println(sort);
-		
+
 		List<UserDAO> users;
-		if(sort.equals("ALL")) {
+		if (sort.equals("ALL")) {
 			System.out.println("getting all");
 			users = userRepo.findAll();
-		}else {
+		} else {
 			System.out.println("getting users");
 			users = userRepo.findByROLE(sort);
-			
+
 		}
-		
+
 		// making ready the list to send to frontend
 		List<UserDAO> listToSend = new ArrayList<UserDAO>();
-		for(UserDAO userDAO : users) {
-			
+		for (UserDAO userDAO : users) {
+
 			userDAO.setCart(null);
 			userDAO.setOrders(null);
 			userDAO.setAttendence(null);
 			userDAO.getAddress().setAdd_user(null);
-			
+
 			Address address = new Address();
 			address = userDAO.getAddress();
 			address.setAdd_user(null);
-			
+
 			listToSend.add(userDAO);
 		}
 		System.out.println(users.size());
 		return listToSend;
-		
+
+	}
+
+	public void removeFromCart(long id) {
+		bagRepo.deleteById(id);
 	}
 
 }

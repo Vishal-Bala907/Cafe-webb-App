@@ -109,6 +109,8 @@ public class AdminViewController {
 		products.setProductName(products.getProductName().toLowerCase());
 
 		products.setCategory(bycatagoryName);
+		products.setDiscountedPrice(
+				products.getProductPrice() - (products.getDiscount() / 100) * products.getDiscount());
 
 		// Saved item
 		productsRepo.save(products);
@@ -181,20 +183,26 @@ public class AdminViewController {
 
 			return "admin/addEmp";
 		}
-		
-		if(dao.getU_id() == 0) {
-			model.addAttribute("error","user not exists");
+
+		if (dao.getU_id() == 0) {
+			model.addAttribute("error", "user not exists");
 			return "admin/addEmp";
 		}
-		model.addAttribute("error","");
+		model.addAttribute("error", "");
 		andEmployeeServices.addEmployee(dao);
 
 		return "admin/addEmp";
 	}
-	
+
 	@GetMapping("/viewCusOrEmp")
 	public String getEmpOrCustomer() {
 		return "admin/viewEmpORCustomers";
+	}
+
+	@GetMapping("/cart")
+	public String getAdminCart(Model model) {
+		model.addAttribute("title", "Admin cart");
+		return "admin/adminrCart";
 	}
 
 }

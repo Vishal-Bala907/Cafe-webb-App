@@ -1,0 +1,62 @@
+#cart-items-cover {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.cart-items-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	flex-wrap: wrap;
+	width: 65%;
+	overflow: scroll;
+}
+
+.cart-items-area::-webkit-scrollbar {
+	width: 10px;
+}
+
+.cart-items-area::-webkit-scrollbar-track {
+	background-color: #002f2d;
+}
+
+.cart-items-area::-webkit-scrollbar-thumb {
+	background-color: #408080;
+}
+
+.billing-area {
+	width: 35%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 3em 0 1em 0em;
+}
+
+.bill-table {
+	width: 100%;
+	text-align: center;
+	border: 2px solid;
+}
+
+.bill-table thead {
+	font-size: 2rem;
+	padding: 10px;
+	background-color: navy;
+	color: white;
+}
+
+.bill-table thead tr td, .bill-table tbody tr td {
+	height: 3rem;
+	border-bottom: 1px solid;
+}
+
+.paybutton {
+	padding: 7px;
+	background-color: #00008040;
+	cursor: pointer;
+	border-radius: 7px;
+	border: none;
+	box-shadow: 2px 2px 4px #000000ab, inset 2px 2px 4px black;
+}

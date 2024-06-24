@@ -55,4 +55,10 @@ public class UserBag {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+
+	@Override
+	public String toString() {
+		return "UserBag [cartId=" + cartId + ", productsInCart=" + productsInCart + ", userDAO=" + userDAO + "]";
+	}
+	
 }

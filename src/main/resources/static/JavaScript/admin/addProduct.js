@@ -29,7 +29,7 @@ function setProducts(selectedCategoryProds) {
 			</div>
 			<div class="price">
 				<p class="mrp" style="text-decoration: line-through;">Rs: ${prod.productPrice}</p>
-				<p class="actual">Rs: ${parseInt(prod.productPrice - prod.productPrice * (prod.discount / 100))} only</p>
+				<p class="actual">Rs: ${prod.discountedPrice} only</p>
 			</div>
 
 			<div class="button">

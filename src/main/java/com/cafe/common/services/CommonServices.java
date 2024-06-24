@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cafe.entities.Address;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserBag;
@@ -140,17 +141,65 @@ public class CommonServices {
 
 	public List<Products> getCart() {
 		UserDAO loggedInUser = loginUserService.getLoggedInUser();
+		Address address = loggedInUser.getAddress();
+		address.setAdd_user(null);
+		
+		
 		List<Products> bag = new ArrayList<Products>();
 		List<UserBag> existedCart = loggedInUser.getCart();
-//		// getting all card items
+		Products p;
+
+		// Getting all cart items
 		for (UserBag b : existedCart) {
-			Products p = b.getProductsInCart();
+			List<UserBag> bags = new ArrayList<>(); // New list created each iteration
+			p = b.getProductsInCart();
+
+			Products pro = new Products();
+			pro.setCategory(null);
+			pro.setDiscount(p.getDiscount());
+			pro.setPro_Id(p.getPro_Id());
+			pro.setProductName(p.getProductName());
+			pro.setCategoryName(p.getCategoryName());
+			pro.setSold(p.getSold());
+			pro.setDiscountedPrice(p.getDiscountedPrice());
+			pro.setProductImage(p.getProductImage());
+			pro.setProductPrice(p.getProductPrice());
+
+			b.setUserDAO(null);
+			b.setProductsInCart(null);
+
+			// System.out.println("Processing UserBag: " + b);
+			bags.add(b);
+
+			pro.setCart(bags);
+			System.out.println(p.getPro_Id());
 			p.setCart(null);
 			p.setCategory(null);
-			bag.add(p);
+			p.setCart(bags); // Assign the list to the product's cart
+
+			bag.add(pro);
+
+			// Debugging to verify the current state
+			/*
+			 * System.out.println("Added Product ID: " + p.getPro_Id() +
+			 * " with UserBag ID: " + b.getCartId());
+			 * System.out.println("Current bags list: " + bags);
+			 * System.out.println("Product's cart after addition: " + p.getCart());
+			 */
+		}
+
+		// Verify the final contents of the bag list
+
+		System.out.println("Final bag list contents:");
+		for (Products pr : bag) {
+			System.out.println("Product ID: " + pr.getPro_Id() + ", Cart:");
+			for (UserBag bg : pr.getCart()) {
+				System.out.println(" - UserBag ID: " + bg.getCartId());
+			}
 		}
 
 		return bag;
+
 	}
 
 	public Category getCategoryForManage(long id) {
@@ -201,14 +250,14 @@ public class CommonServices {
 	}
 
 	public List<Products> deleteProduct(Products products) {
-		
+
 		Products productToDelete = productsRepo.findByproId(products.getPro_Id());
-		
+
 		long c_Id = productToDelete.getCategory().getC_Id();
 		productsRepo.deleteById(productToDelete.getPro_Id());
 		// remove image also
 		fileService.deleteProductImage(productToDelete, deleteProductPath);
-		
+
 		List<Products> selectedProducts = this.getSelectedProducts(c_Id);
 		return selectedProducts;
 	}

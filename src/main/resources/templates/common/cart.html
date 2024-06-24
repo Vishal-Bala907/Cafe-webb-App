@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section th:fragment="cart" id="cart-items-cover">
+		<div class="cart-items-area" id="cart-items-area"></div>
+		<div class="billing-area">
+
+
+			<table class="bill-table">
+				<thead>
+					<tr>
+						<th>Hello Cafe</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="actualPrice">Actual price <span
+							style="text-decoration: line-through;"
+							id="act-amt"
+							>299</span> rs
+						</td>
+					</tr>
+					<tr>
+						<td class="discounted">Pay only <b id="amt" >259</b> rs
+						</td>
+					</tr>
+					<tr>
+						<td class="discounted">
+							<button class="paybutton">Pay and Make Order</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+
+		<script type="text/javascript" th:src="@{/JavaScript/common/cart.js}"></script>
+	</section>
+</body>
+</html>

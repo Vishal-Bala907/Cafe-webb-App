@@ -3,6 +3,8 @@
 	xmlns:th="https://www.thymeleaf.org" th:fragment="adminBase(content)">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title th:text="${title}">Document</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -39,6 +41,7 @@ body {
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/manageProdPage.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/emp.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/viewEmpOrCustomers.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/cart.css}">
 </head>
 <body>
 	<header th:fragment="header">
@@ -52,7 +55,7 @@ body {
 			</ul>
 			<ul class="nav-item-group">
 				<li><a href="#">Help</a></li>
-				<li><a class="material-symbols-outlined" href="#">shopping_cart</a>
+				<li><a class="material-symbols-outlined" th:href="@{/admin/cart}">shopping_cart</a>
 					<span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined" href="#">account_circle</a></li>
 				<li><a th:href="@{/login}">login</a></li>
