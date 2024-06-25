@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.cafe.entities.Address;
 import com.cafe.entities.UserDAO;
+import com.cafe.loginService.LoginUserService;
+import com.cafe.repos.AddressRepo;
 import com.cafe.repos.BagRepo;
 import com.cafe.repos.UserRepo;
 
@@ -21,6 +23,10 @@ public class UserAndEmployeeServices {
 	UserRepo userRepo;
 	@Autowired
 	BagRepo bagRepo;
+	@Autowired 
+	LoginUserService loginUserService;
+	@Autowired
+	AddressRepo addressRepo;
 
 	public UserDAO getUserByUserName(String username) {
 
@@ -94,6 +100,35 @@ public class UserAndEmployeeServices {
 
 	public void removeFromCart(long id) {
 		bagRepo.deleteById(id);
+	}
+
+	public Address getAddress() {
+		UserDAO loggedInUser = loginUserService.getLoggedInUser();
+		Address address = loggedInUser.getAddress();
+		UserDAO add_user = address.getAdd_user();
+		add_user.setCart(null);
+		add_user.setAttendence(null);
+		add_user.setOrders(null);
+		add_user.setAddress(null);
+		
+		address.setAdd_user(add_user);
+		
+		return address;
+		
+	}
+
+	public Address updateAddress(Address address) {
+		//long userId = address.getAdd_user().getU_id();
+		Address updatedAddress = addressRepo.findById(address.getAdd_id());
+		updatedAddress.setCity(address.getCity());
+		updatedAddress.setCountry(address.getCountry());
+		updatedAddress.setHouse_no(address.getHouse_no());
+		updatedAddress.setPostal_code(address.getPostal_code());
+		updatedAddress.setState(address.getState());
+		updatedAddress.setStreet(address.getStreet());
+		
+		Address save = addressRepo.save(updatedAddress);
+		return save;
 	}
 
 }

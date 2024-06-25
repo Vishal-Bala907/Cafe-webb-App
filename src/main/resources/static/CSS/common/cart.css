@@ -29,9 +29,10 @@
 .billing-area {
 	width: 35%;
 	display: flex;
-	justify-content: center;
+	/* 	justify-content: center; */
 	align-items: flex-start;
 	margin: 3em 0 1em 0em;
+	flex-direction: column;
 }
 
 .bill-table {
@@ -59,4 +60,51 @@
 	border-radius: 7px;
 	border: none;
 	box-shadow: 2px 2px 4px #000000ab, inset 2px 2px 4px black;
+}
+
+.add-form-container {
+	width: 100%;
+	margin: 2rem 0 1rem 0;
+}
+
+#addressForm {
+	width: 100%;
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+	padding: 0 10px 0 10px;
+	box-sizing: border-box;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.form-group input:focus {
+	border: 2px solid #9e9edf;
+	box-shadow: 3px 3px 8px #8ac4ff6e, -2px -2px 8px #8ac4ff70;
+}
+
+#addUpdateButton {
+	flex-grow: .5;
+	padding: .5rem;
+	background-color: #007BFF;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	align-self: end;
 }

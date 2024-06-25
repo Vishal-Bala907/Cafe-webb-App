@@ -40,14 +40,14 @@ public class UserDAO {
 	@OneToMany(mappedBy = "userDAO")
 	private List<UserBag> cart;
 
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "add_id")
 	private Address address;
 
-	@OneToMany(mappedBy = "user_details", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user_details", cascade = CascadeType.ALL)
 	private List<Orders> orders;
 
-	@OneToMany(mappedBy = "att_user", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "att_user", cascade = CascadeType.ALL)
 	private List<Attendence> attendence;
 
 	// Constructors, getters, and setters

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cafe.common.services.CommonServices;
 import com.cafe.empAndUserServices.UserAndEmployeeServices;
+import com.cafe.entities.Address;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
+import com.cafe.payment.PaymentService;
 
 
 
@@ -48,4 +50,12 @@ public class EmpAndCustomerRestController {
 		System.out.println(id);
 		return ResponseEntity.ok().body(cart);
 	}
+	
+	@GetMapping("/get-address")
+	public ResponseEntity<Address> getAddress(){
+		Address adress = andEmployeeServices.getAddress();
+		return ResponseEntity.ok().body(adress);
+	}
+	
+
 }

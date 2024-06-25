@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
 	userCartInSession = JSON.parse(sessionStorage.getItem('cart'))
 	populateCart();
 	calculateTotal();
+	setAddressDetails();
 })
 
 function populateCart() {
@@ -78,4 +79,35 @@ function calculateTotal(){
 	})
 	document.getElementById('act-amt').innerText = actualAmt;
 	document.getElementById('amt').innerText = amt;
+}
+
+
+// Address work
+function setAddressDetails(){
+	fetch("/empAndCus/get-address")
+	.then(res=>{
+		if(!res.ok){
+			throw new Error("Unable to fetch address")
+		}
+		return res.json();
+	})
+	.then(data=>{
+		console.log(data)
+		fillAddressDetails(data);
+	})
+	.catch(error=>{
+		console.error(error)
+	})
+}
+
+function fillAddressDetails(data){
+	document.getElementById('country').value = data.country;
+	document.getElementById('state').value = data.state;
+	document.getElementById('city').value = data.city;
+	document.getElementById('street').value = data.street;
+	document.getElementById('house_no').value = data.house_no;
+	document.getElementById('postal_code').value = data.postal_code;
+	document.getElementById('add_id').value = data.add_id;
+	
+	
 }

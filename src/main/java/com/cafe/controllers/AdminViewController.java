@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe.common.services.CommonServices;
 import com.cafe.empAndUserServices.UserAndEmployeeServices;
+import com.cafe.entities.Address;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
@@ -200,9 +201,17 @@ public class AdminViewController {
 	}
 
 	@GetMapping("/cart")
-	public String getAdminCart(Model model) {
+	public String getAdminCart(Model model,Address address) {
 		model.addAttribute("title", "Admin cart");
 		return "admin/adminrCart";
 	}
+	
+	@PostMapping("/update-address")
+	public String updateAddress(Address address){
+		System.out.println(address);
+		Address updateAddress = andEmployeeServices.updateAddress(address);
+		return "admin/adminrCart";
+	}
+
 
 }
