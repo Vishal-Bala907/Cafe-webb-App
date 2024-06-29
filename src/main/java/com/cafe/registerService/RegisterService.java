@@ -60,7 +60,7 @@ public class RegisterService {
 			orders.setO_p_name("cake");
 			orders.setO_p_price(200);
 			orders.setOrder_date("2354");
-			orders.setQuantity(34);
+//			orders.setQuantity(34);
 			orders.setUser_details(newuser);
 
 //			**************

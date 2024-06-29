@@ -1,6 +1,7 @@
 package com.cafe.empAndUserServices;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe.entities.Address;
+import com.cafe.entities.Orders;
+import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
 import com.cafe.loginService.LoginUserService;
 import com.cafe.repos.AddressRepo;
 import com.cafe.repos.BagRepo;
+import com.cafe.repos.OrdersRepo;
 import com.cafe.repos.UserRepo;
 
 import jakarta.validation.Valid;
@@ -27,6 +31,8 @@ public class UserAndEmployeeServices {
 	LoginUserService loginUserService;
 	@Autowired
 	AddressRepo addressRepo;
+	@Autowired
+	OrdersRepo ordersRepo;
 
 	public UserDAO getUserByUserName(String username) {
 
@@ -70,12 +76,9 @@ public class UserAndEmployeeServices {
 
 		List<UserDAO> users;
 		if (sort.equals("ALL")) {
-			System.out.println("getting all");
 			users = userRepo.findAll();
 		} else {
-			System.out.println("getting users");
 			users = userRepo.findByROLE(sort);
-
 		}
 
 		// making ready the list to send to frontend
@@ -83,17 +86,19 @@ public class UserAndEmployeeServices {
 		for (UserDAO userDAO : users) {
 
 			userDAO.setCart(null);
+			
 			userDAO.setOrders(null);
+			
 			userDAO.setAttendence(null);
+			
 			userDAO.getAddress().setAdd_user(null);
 
 			Address address = new Address();
 			address = userDAO.getAddress();
 			address.setAdd_user(null);
-
+			
 			listToSend.add(userDAO);
 		}
-		System.out.println(users.size());
 		return listToSend;
 
 	}
@@ -129,6 +134,49 @@ public class UserAndEmployeeServices {
 		
 		Address save = addressRepo.save(updatedAddress);
 		return save;
+	}
+
+	public void createOrders(List<Products> orders) {
+		
+		for(Products p : orders) {
+			// saving Order datails in the database
+			Orders create = new Orders();
+			create.setO_p_discount((float) p.getDiscount());
+			create.setO_p_id(p.getPro_Id());
+			create.setO_p_name(p.getProductName());
+			create.setO_p_price(p.getProductPrice());
+			create.setDiscountedPrice(p.getDiscountedPrice());
+			create.setOrder_date(LocalDate.now().toString());
+			create.setTime(LocalTime.now().toString());
+			create.setUser_details(loginUserService.getLoggedInUser());
+			create.setDispatched(false);
+			ordersRepo.save(create);
+			
+			// now delete from bag
+			bagRepo.deleteById(p.getCart().get(0).getCartId());
+			
+		}
+		
+	}
+	
+	public List<Orders> getAllUnDispatchedOrders(){
+		List<Orders> unDispatchedOrders = ordersRepo.findUnDispatchedOrders();
+		List<Orders> listTosend = new ArrayList<>();
+		for(Orders o : unDispatchedOrders) {
+			
+			UserDAO user = o.getUser_details();
+			user.setCart(null);
+			user.setAttendence(null);
+			user.setOrders(null);
+			
+			Address address =	user.getAddress();
+			address.setAdd_user(null);
+			user.setAddress(address);
+			
+			o.setUser_details(user);
+			listTosend.add(o);
+		}
+		return listTosend;
 	}
 
 }

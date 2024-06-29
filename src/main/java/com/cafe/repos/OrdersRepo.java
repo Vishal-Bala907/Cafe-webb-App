@@ -1,5 +1,7 @@
 package com.cafe.repos;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +16,7 @@ public interface OrdersRepo extends JpaRepository<Orders, Long> {
 	@Transactional
 	@Query("DELETE FROM Orders o WHERE o.user_details.u_id =:key")
 	void deleteByForeingKey(@Param("key") long key);
+	
+	@Query("SELECT o FROM Orders o WHERE o.dispatched = false")
+	List<Orders> findUnDispatchedOrders();
 }

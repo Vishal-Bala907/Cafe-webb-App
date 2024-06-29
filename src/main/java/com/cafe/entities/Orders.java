@@ -12,9 +12,13 @@ public class Orders {
     private String order_date;
     private String o_p_name;
     private long o_p_id;
-    private int o_p_price;
-    private float o_p_discount;
-    private int quantity;
+    private double o_p_price;
+    private double discountedPrice;
+   	private double o_p_discount;
+    private String time;
+    
+    private boolean dispatched;
+    
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "u_id")
@@ -22,18 +26,6 @@ public class Orders {
 
     // Constructors, getters, and setters
     public Orders() {}
-
-	public Orders(String order_date, String o_p_name, long o_p_id, int o_p_price, float o_p_discount, int quantity,
-			UserDAO user_details) {
-		super();
-		this.order_date = order_date;
-		this.o_p_name = o_p_name;
-		this.o_p_id = o_p_id;
-		this.o_p_price = o_p_price;
-		this.o_p_discount = o_p_discount;
-		this.quantity = quantity;
-		this.user_details = user_details;
-	}
 
 	public long getO_id() {
 		return o_id;
@@ -67,28 +59,44 @@ public class Orders {
 		this.o_p_id = o_p_id;
 	}
 
-	public int getO_p_price() {
+	public double getO_p_price() {
 		return o_p_price;
 	}
 
-	public void setO_p_price(int o_p_price) {
+	public void setO_p_price(double o_p_price) {
 		this.o_p_price = o_p_price;
 	}
 
-	public float getO_p_discount() {
+	public double getDiscountedPrice() {
+		return discountedPrice;
+	}
+
+	public void setDiscountedPrice(double discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
+
+	public double getO_p_discount() {
 		return o_p_discount;
 	}
 
-	public void setO_p_discount(float o_p_discount) {
+	public void setO_p_discount(double o_p_discount) {
 		this.o_p_discount = o_p_discount;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public String getTime() {
+		return time;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public boolean isDispatched() {
+		return dispatched;
+	}
+
+	public void setDispatched(boolean dispatched) {
+		this.dispatched = dispatched;
 	}
 
 	public UserDAO getUser_details() {
@@ -102,10 +110,9 @@ public class Orders {
 	@Override
 	public String toString() {
 		return "Orders [o_id=" + o_id + ", order_date=" + order_date + ", o_p_name=" + o_p_name + ", o_p_id=" + o_p_id
-				+ ", o_p_price=" + o_p_price + ", o_p_discount=" + o_p_discount + ", quantity=" + quantity
-				+ ", user_details=" + user_details + "]";
+				+ ", o_p_price=" + o_p_price + ", discountedPrice=" + discountedPrice + ", o_p_discount=" + o_p_discount
+				+ ", time=" + time + ", dispatched=" + dispatched + "]";
 	}
 
-    // Add other constructors, getters, and setters as needed
-    
+	
 }

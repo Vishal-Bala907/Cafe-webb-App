@@ -7,15 +7,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cafe.common.services.CommonServices;
 import com.cafe.empAndUserServices.UserAndEmployeeServices;
 import com.cafe.entities.Address;
+import com.cafe.entities.Orders;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
-import com.cafe.payment.PaymentService;
 
 
 
@@ -55,6 +57,20 @@ public class EmpAndCustomerRestController {
 	public ResponseEntity<Address> getAddress(){
 		Address adress = andEmployeeServices.getAddress();
 		return ResponseEntity.ok().body(adress);
+	}
+	
+	@PostMapping("/create-order")
+	public ResponseEntity<List<Products>> createOrder(@RequestBody List<Products> orders){
+		
+		andEmployeeServices.createOrders(orders);
+		List<Products> cart = commonServices.getCart();
+		
+		return ResponseEntity.ok().body(cart);
+	}
+	@GetMapping("/undispathced-orders")
+	public ResponseEntity<List<Orders>> getUndispathcedOrders(){
+		List<Orders> allUnDispatchedOrders = andEmployeeServices.getAllUnDispatchedOrders();
+		return ResponseEntity.ok().body(allUnDispatchedOrders);
 	}
 	
 
