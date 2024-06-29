@@ -4,16 +4,6 @@
 	justify-content: center;
 }
 
-.cart-items-area {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	flex-wrap: wrap;
-	width: 65%;
-	overflow: scroll;
-}
-
 .cart-items-area::-webkit-scrollbar {
 	width: 10px;
 }
@@ -24,15 +14,6 @@
 
 .cart-items-area::-webkit-scrollbar-thumb {
 	background-color: #408080;
-}
-
-.billing-area {
-	width: 35%;
-	display: flex;
-	/* 	justify-content: center; */
-	align-items: flex-start;
-	margin: 3em 0 1em 0em;
-	flex-direction: column;
 }
 
 .bill-table {
@@ -107,4 +88,64 @@
 	cursor: pointer;
 	font-size: 16px;
 	align-self: end;
+}
+
+/* 1st */
+@media screen and (min-width: 688px) {
+	.cart-items-area {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		flex-wrap: wrap;
+		width: 65%;
+		overflow: scroll;
+	}
+	.billing-area {
+		width: 35%;
+		display: flex;
+		align-items: flex-start;
+		margin: 3em 0 1em 0em;
+		flex-direction: column;
+	}
+	.payment-open-close {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 687px) {
+	.cart-items-area {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		flex-wrap: wrap;
+		width: 100%;
+		overflow: scroll;
+	}
+	.billing-area {
+		position: absolute;
+		right: 0;
+		height: fit-content;
+		width: 60%;
+		display: none;
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 0px 15px;
+		top: 0;
+		background-color: #f0ffff7d;
+		backdrop-filter: blur(13px);
+		padding: 40px 25px;
+	}
+	.payment-open-close {
+		position: absolute;
+		top: 4px;
+		right: 26px;
+		font-size: 1.2rem;
+		padding: 5px;
+		background-color: azure;
+		border-radius: 10px;
+		border: 2px solid;
+		cursor:pointer;
+	}
 }

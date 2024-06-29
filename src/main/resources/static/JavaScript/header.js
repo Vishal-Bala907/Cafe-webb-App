@@ -6,6 +6,9 @@ let openCloseButton = document.getElementById("openCloseButton");
 header.style.height = headerCurrentHeight + "em";
 let clickCount = 0;
 
+/*document.getElementById("openCloseButton").addEventListener("click",()=>{
+	navbarfunction();
+})*/
 
 function navbarfunction() {
 	clickCount++;

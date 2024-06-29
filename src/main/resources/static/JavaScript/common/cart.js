@@ -1,4 +1,7 @@
+/*
+		Line no 120 -> responsiveness of the payment form for mobile devices
 
+ */
 let userCartInSession = [];
 
 window.addEventListener('load', () => {
@@ -69,11 +72,11 @@ function removeFromCart(cart) {
 	document.getElementById(`cart-item-${cart.cart[0].cartId}`).innerHTML = ""
 }
 
-function calculateTotal(){
+function calculateTotal() {
 	let total = JSON.parse(sessionStorage.getItem('cart'))
 	let actualAmt = 0;
 	let amt = 0;
-	total.forEach(item=>{
+	total.forEach(item => {
 		actualAmt += item.productPrice;
 		amt += item.discountedPrice;
 	})
@@ -83,24 +86,24 @@ function calculateTotal(){
 
 
 // Address work
-function setAddressDetails(){
+function setAddressDetails() {
 	fetch("/empAndCus/get-address")
-	.then(res=>{
-		if(!res.ok){
-			throw new Error("Unable to fetch address")
-		}
-		return res.json();
-	})
-	.then(data=>{
-		console.log(data)
-		fillAddressDetails(data);
-	})
-	.catch(error=>{
-		console.error(error)
-	})
+		.then(res => {
+			if (!res.ok) {
+				throw new Error("Unable to fetch address")
+			}
+			return res.json();
+		})
+		.then(data => {
+			console.log(data)
+			fillAddressDetails(data);
+		})
+		.catch(error => {
+			console.error(error)
+		})
 }
 
-function fillAddressDetails(data){
+function fillAddressDetails(data) {
 	document.getElementById('country').value = data.country;
 	document.getElementById('state').value = data.state;
 	document.getElementById('city').value = data.city;
@@ -108,6 +111,35 @@ function fillAddressDetails(data){
 	document.getElementById('house_no').value = data.house_no;
 	document.getElementById('postal_code').value = data.postal_code;
 	document.getElementById('add_id').value = data.add_id;
-	
-	
+
+
 }
+
+/*******/
+
+let billClickCount_mobD = 0;
+document.getElementById("payment-open-close").addEventListener('click', () => {
+	if (billClickCount_mobD % 2 == 0) {
+		document.getElementById("billing-area").style.display = "flex";
+		document.getElementById("payment-open-close").innerText = "close"
+		document.getElementById("payment-open-close").style.zIndex = 2;
+	} else {
+		document.getElementById("billing-area").style.display = "none";
+		document.getElementById("payment-open-close").innerText = "bill"
+		document.getElementById("payment-open-close").style.zIndex = 1;
+	}
+	billClickCount_mobD++;
+})
+
+//RESIZE EVEN
+window.addEventListener("resize", () => {
+	if (window.innerWidth <= 687) {
+		document.getElementById("billing-area").style.display = "none";
+		document.getElementById("payment-open-close").innerText = "bill"
+		document.getElementById("payment-open-close").style.zIndex = 1;
+	} else {
+		document.getElementById("billing-area").style.display = "flex";
+		document.getElementById("payment-open-close").innerText = "close"
+		document.getElementById("payment-open-close").style.zIndex = 2;
+	}
+})
