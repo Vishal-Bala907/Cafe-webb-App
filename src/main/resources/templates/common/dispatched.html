@@ -1,15 +1,46 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="https://www.thymeleaf.org"
-	>
+	xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Document</title>
 </head>
 <body>
 	<!-- Products will be dynamically added on addProducts.js -->
-	<section th:fragment="unDispatchedOrders" >
-		undispatched orders
+	<section th:fragment="unDispatchedOrders" class="orders-section">
+		<div class="orders-container" id="orders-container">
+			<div class="single-order">
+				<div class="o-info">
+					<b>Pro. name :</b>
+					<p id="pro_name">Anything</p>
+				</div>
+				<hr />
+				<div class="o-info">
+					<b>Pro. Price :</b>
+					<p id="pro_price">123</p>
+				</div>
+				<hr />
+				<div class="o-info">
+					<b>Cust. name :</b>
+					<p id="customer_name">jhon doe</p>
+				</div>
+				<hr />
+				<div class="o-info-buttons">
+					<button id="dispatch">Dispatch</button>
+					<button id="cancel-order">Cancel</button>
+				</div>
+			</div>
+
+
+		</div>
+		
+		
+		
+		
+		
+		<script type="text/javascript"
+		th:src="@{/JavaScript/admin/orders.js}"
+		></script>
 	</section>
 </body>
 </html>

@@ -40,8 +40,10 @@ body {
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/menu.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/manageProdPage.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/emp.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/undispatched.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/viewEmpOrCustomers.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/common/cart.css}">
+
 </head>
 <body>
 	<header th:fragment="header">
@@ -72,12 +74,11 @@ body {
 				<li>DashBoard</li>
 				<li id="fetch-categories"><a th:href="@{/admin/categories}">Categories</a></li>
 				<li id="fetch-categories"><a th:href="@{/admin/menu}">Menu</a></li>
+				<li><a th:href="@{/admin/<get-undispatched-page></get-undispatched-page>}">Manage Orders</a></li>
 				<li><a th:href="@{/admin/addProduct}" id="fetch-cate-data">Add</a></li>
 				<li id="manage-categories"><a th:href="@{/admin/manage-cate}">Manage Item</a></li>
 				<li id="manage-categories"><a th:href="@{/admin/addEmp}">Manage/Add Emp.</a></li>
 				<li id="manage-categories"><a th:href="@{/admin/viewCusOrEmp}">View Customer/Emp</a></li>
-				<li>Manage Booking</li>
-				<li>Manage Orders</li>
 			</ul>
 			<span class="SideBarOpenCloseButton material-symbols-outlined"
 				id="SideBarOpenCloseButton" onclick="SideBarOpenClosefunction()">arrow_forward</span>

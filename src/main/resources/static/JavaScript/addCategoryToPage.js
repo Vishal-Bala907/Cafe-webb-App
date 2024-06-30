@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 	fullCategoryData()
 		.then(data => {
 			console.log("Categories fetched successfully:", data); // Debugging statement
-			setCategories(data);
+			createCateCard(data);
 		})
 		.catch(error => {
 			console.error("Error handling categories:", error); // Log error for debugging

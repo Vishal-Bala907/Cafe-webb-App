@@ -71,6 +71,7 @@
 	box-sizing: border-box;
 	border: 1px solid #ccc;
 	border-radius: 4px;
+	outline: #1616bd;
 }
 
 .form-group input:focus {
@@ -146,6 +147,6 @@
 		background-color: azure;
 		border-radius: 10px;
 		border: 2px solid;
-		cursor:pointer;
+		cursor: pointer;
 	}
 }

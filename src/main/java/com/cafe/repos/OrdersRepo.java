@@ -17,6 +17,9 @@ public interface OrdersRepo extends JpaRepository<Orders, Long> {
 	@Query("DELETE FROM Orders o WHERE o.user_details.u_id =:key")
 	void deleteByForeingKey(@Param("key") long key);
 	
-	@Query("SELECT o FROM Orders o WHERE o.dispatched = false")
+	@Query("SELECT o FROM Orders o WHERE o.dispatched = false and o.cancled = false")
 	List<Orders> findUnDispatchedOrders();
+	
+	@Query("SELECT o FROM Orders o WHERE o.o_id =:id")
+	Orders findById(@Param("id") long id);
 }
