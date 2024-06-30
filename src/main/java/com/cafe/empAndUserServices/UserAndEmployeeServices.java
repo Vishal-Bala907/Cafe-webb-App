@@ -1,10 +1,14 @@
 package com.cafe.empAndUserServices;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -196,6 +200,13 @@ public class UserAndEmployeeServices {
 		Orders update = ordersRepo.findById(oId);
 		System.out.println(update);
 		update.setDispatched(true);
+
+		// getting todays timestamp
+		LocalDate date = LocalDate.now();
+		LocalDateTime dateTime = date.atStartOfDay();
+		long timestamp = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+		update.setTimestamp(timestamp);
+
 		ordersRepo.save(update);
 
 		return "Order created successfully";
@@ -211,6 +222,58 @@ public class UserAndEmployeeServices {
 		ordersRepo.save(update);
 
 		return "Order canceled successfully";
+	}
+
+	public Map<String, Long> getDataForGraph(String time) {
+
+		LocalDate date = null;
+		LocalDateTime dateTime = null; // = date.atStartOfDay();
+		long timestamp; // = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+		Map<Long, Long> map = new HashMap<>();
+
+		if (time.equals("today")) {
+			date = LocalDate.now();
+
+		} else if (time.equals("yesturday")) {
+
+			date = LocalDate.now().minusDays(1);
+
+		} else if (time.equals("last week")) {
+			date = LocalDate.now().minusWeeks(1);
+
+		} else if (time.equals("last year")) {
+			date = LocalDate.now().minusYears(1);
+		} else if (time.equals("all time")) {
+
+		}
+
+		dateTime = date.atStartOfDay();
+		timestamp = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+		List<Products> all = productsRepo.findAll();
+
+		List<Orders> data = ordersRepo.findByDate(timestamp);
+		for (Orders o : data) {
+
+			// if two prods are same
+			if (map.containsKey(o.getO_p_id())) {
+				// update the value
+				long value = map.get(o.getO_p_id()) + 1;
+				map.put(o.getO_p_id(), value);
+			} else {				
+				map.put(o.getO_p_id(), (long) 1);
+			}
+		}
+		
+		Map<String, Long> namemap = new HashMap<>();
+		for(Products p : all) {
+			if(map.containsKey(p.getPro_Id())) {
+				namemap.put(p.getProductName(), map.get(p.getPro_Id()));
+			}else {
+				namemap.put(p.getProductName(), (long) 0);
+			}
+		}
+		
+		return namemap;
 	}
 
 }

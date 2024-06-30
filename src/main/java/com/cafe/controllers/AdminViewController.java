@@ -216,6 +216,11 @@ public class AdminViewController {
 	public String getUndispatchedOrdersPage() {
 		return "admin/unDispatchedOrders";
 	}
+	@GetMapping("/dashboard")
+	public String getDashboard(Model model) {
+		model.addAttribute("title","Dashboard");
+		return "admin/dashboard";
+	}
 
 
 }

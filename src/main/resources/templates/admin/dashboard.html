@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{adminTemplate::adminBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+		Dashboard
+
+		<script type="text/javascript"
+			th:src="@{/JavaScript/admin/dashboard.js}"></script>
+	</section>
+
+</body>
+</html>

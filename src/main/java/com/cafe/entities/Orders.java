@@ -20,6 +20,7 @@ public class Orders {
     private boolean dispatched;
     private boolean cancled;
     
+    private long timestamp;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "u_id")
@@ -167,6 +168,18 @@ public class Orders {
 
 	public void setCancled(boolean cancled) {
 		this.cancled = cancled;
+	}
+
+
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	

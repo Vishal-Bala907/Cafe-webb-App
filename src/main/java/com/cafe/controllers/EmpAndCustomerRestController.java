@@ -1,8 +1,8 @@
 package com.cafe.controllers;
 
 import java.util.List;
+import java.util.Map;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -88,6 +88,13 @@ public class EmpAndCustomerRestController {
 		String jsonObject = andEmployeeServices.cancelOrder(order);
 
 		return ResponseEntity.ok().body(jsonObject);
+	}
+	@GetMapping("/graph-data/{time}")
+	public ResponseEntity<Map<String,Long>> graphData(@PathVariable("time") String time) {
+		
+		Map<String, Long> dataForGraph = andEmployeeServices.getDataForGraph("today");
+		
+		return ResponseEntity.ok().body(dataForGraph);
 	}
 
 }
