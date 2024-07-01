@@ -3,13 +3,6 @@
 	body * {
 		visibility: hidden;
 	}
-	/* #printable-content: Contains the content that will be printed */
-	/* 
-	
-	The @media print rule hides all content (visibility: hidden) except for the content 
-	within the #printable-content div (visibility: visible).
-	
-	 */
 	#printable-content, #printable-content * {
 		visibility: visible;
 	}
@@ -21,8 +14,6 @@
 	.print {
 		display: none !important;
 	}
-	
-	
 }
 
 .cards-container {

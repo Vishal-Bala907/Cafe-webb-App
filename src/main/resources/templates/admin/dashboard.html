@@ -9,7 +9,110 @@
 <body>
 
 	<section>
-		Dashboard
+		<section class="dashboardHeader">
+			<ul class="time-selection">
+				<li onclick="fetchDashboardData('yesturday')">Yesterday</li>
+				<li onclick="fetchDashboardData('today')">Today</li>
+				<li onclick="fetchDashboardData('last-week')">Last Week</li>
+				<li onclick="fetchDashboardData('last-year')">Last Year</li>
+				<li onclick="fetchDashboardData('all-time')">All Time</li>
+			</ul>
+		</section>
+
+
+		<div id="print-graph">
+			<section class="salesDetails" id="dashboard-print">
+
+				<div class="sales-card-cover">
+					<div class="sales-details-card" id="max-s">
+						<img th:src="@{/Images/bar-chart.png}" alt="" id="max-sales" />
+						<hr class="sales-hr" />
+
+						<div class="sales-info">
+							<p>
+								Name : <b id="max-sold-item">Demo</b>
+							</p>
+							<p>
+								Q.T. : <b id="max-sold-qt">12</b>
+							</p>
+						</div>
+					</div>
+					<p id="label">Max Sold</p>
+				</div>
+
+
+				<div class="sales-card-cover">
+					<div class="sales-details-card" id="min-s">
+						<img th:src="@{/Images/arrow.png}" alt="" id="min-sales" />
+
+						<hr class="sales-hr" />
+
+						<div class="sales-info">
+							<p>
+								Name : <b id="min-sold-item">Demo</b>
+							</p>
+							<p>
+								Q.T. : <b id="min-sold-qt">12</b>
+							</p>
+						</div>
+
+					</div>
+					<p id="label">Min. Sold</p>
+				</div>
+
+
+				<div class="sales-card-cover">
+					<div class="sales-details-card" id="min-s">
+						<img th:src="@{/Images/business-and-finance.png}" alt=""
+							id="min-sales" />
+
+						<hr class="sales-hr" />
+
+						<div class="sales-info">
+							<p>
+								Name : <b id="max-income-item">Demo</b>
+							</p>
+							<p>
+								Rs : <b id="max-sold-income">12</b>
+							</p>
+						</div>
+
+					</div>
+					<p id="label">Max. Income</p>
+				</div>
+
+				<div class="sales-card-cover">
+					<div class="sales-details-card" id="min-s">
+						<img th:src="@{/Images/chart-down.png}" alt="" id="min-sales" />
+
+						<hr class="sales-hr" />
+
+						<div class="sales-info">
+							<p>
+								Name : <b id="min-income-item">Demo</b>
+							</p>
+							<p>
+								Rs : <b id="min-sold-income">12</b>
+							</p>
+						</div>
+
+					</div>
+					<p id="label">Min. Income</p>
+				</div>
+
+
+
+			</section>
+
+			<section class="graph">
+				<canvas id="myChart"
+					style="width: 70%; height: 400px; box-sizing: border-box; display: block;"></canvas>
+			</section>
+
+		</div>
+		<button onclick="printContent()" class="print-button-dash">Print</button>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
 		<script type="text/javascript"
 			th:src="@{/JavaScript/admin/dashboard.js}"></script>

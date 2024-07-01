@@ -4,7 +4,7 @@ let selectedCategory;
 //
 window.addEventListener("load", () => {
 	let data = JSON.parse(sessionStorage.getItem('cate-data'));
-	createCateCard(data);
+	//createCateCard(data);
 	//	console.log(data)
 	console.log("Fetch categories button clicked"); // Debugging statement
 	fullCategoryData()

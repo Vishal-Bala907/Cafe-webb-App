@@ -1,0 +1,100 @@
+.salesDetails {
+	display: flex;
+	justify-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	height: fit-content;
+	gap: 2rem;
+	padding: 1rem;
+	background-color: #eafff8;
+}
+
+.time-selection {
+	display: flex;
+	gap: 2rem;
+	list-style: none;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.time-selection li {
+	padding: 5px;
+}
+
+.time-selection li:hover {
+	background-color: #18a9ff;
+	color: white;
+}
+
+.sales-card-cover {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background-color: #89ecfb9c;
+	padding: 10px;
+	/* border: 2px solid; */
+	border-radius: 20px;
+	box-shadow: 3px 3px 10px #8484ff, -6px -6px 10px white, inset 1px 1px
+		5px #ffffffc9;
+}
+
+#label {
+	width: 100%;
+	text-align: center;
+	background-color: #0000ff69;
+	color: white;
+	border: 2px solid #f5deb3cc;
+	border-radius: 10px;
+}
+
+.sales-hr {
+	height: 88px;
+	width: 2px;
+	background-color: black;
+	border: none;
+	margin: 0 4px;
+}
+
+.sales-details-card {
+	display: flex;
+	height: fit-content;
+	width: 275px;
+}
+
+.sales-details-card img {
+	height: 6rem;
+	width: 6rem;
+	object-fit: cover;
+}
+
+.sales-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 10px;
+}
+
+#myChart {
+	width: 100%;
+}
+
+.graph {
+	width: 100%;
+	height: 400px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+}
+
+.print-button-dash {
+	position: relative;
+	bottom: 28.7em;
+	left: 4em;
+	padding: 6px;
+	background-color: blanchedalmond;
+	border: 1px solid;
+	border-radius: 10px;
+	cursor: pointer;
+}

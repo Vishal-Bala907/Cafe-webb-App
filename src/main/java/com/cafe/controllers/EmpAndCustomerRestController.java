@@ -81,7 +81,7 @@ public class EmpAndCustomerRestController {
 
 		return ResponseEntity.ok().body(jsonObject);
 	}
-	
+
 	@PutMapping("/cancel-order")
 	public ResponseEntity<String> cancelOrder(@RequestBody Orders order) {
 
@@ -89,11 +89,12 @@ public class EmpAndCustomerRestController {
 
 		return ResponseEntity.ok().body(jsonObject);
 	}
+
 	@GetMapping("/graph-data/{time}")
-	public ResponseEntity<Map<String,Long>> graphData(@PathVariable("time") String time) {
-		
-		Map<String, Long> dataForGraph = andEmployeeServices.getDataForGraph("today");
-		
+	public ResponseEntity<List<Map<String, Double>>> graphData(@PathVariable("time") String time) {
+
+		List<Map<String, Double>> dataForGraph = andEmployeeServices.getDataForGraph(time);
+
 		return ResponseEntity.ok().body(dataForGraph);
 	}
 

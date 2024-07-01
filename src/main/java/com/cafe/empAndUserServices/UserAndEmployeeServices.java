@@ -224,34 +224,46 @@ public class UserAndEmployeeServices {
 		return "Order canceled successfully";
 	}
 
-	public Map<String, Long> getDataForGraph(String time) {
+	public List<Map<String, Double>> getDataForGraph(String time) {
 
 		LocalDate date = null;
 		LocalDateTime dateTime = null; // = date.atStartOfDay();
 		long timestamp; // = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+		boolean isTimeStamp = true;
+		List<Orders> data = null;
 		Map<Long, Long> map = new HashMap<>();
+
+		System.out.println(time);
 
 		if (time.equals("today")) {
 			date = LocalDate.now();
+			isTimeStamp = true;
 
 		} else if (time.equals("yesturday")) {
-
 			date = LocalDate.now().minusDays(1);
+			isTimeStamp = true;
 
-		} else if (time.equals("last week")) {
+		} else if (time.equals("last-week")) {
 			date = LocalDate.now().minusWeeks(1);
+			isTimeStamp = true;
 
-		} else if (time.equals("last year")) {
+		} else if (time.equals("last-year")) {
 			date = LocalDate.now().minusYears(1);
-		} else if (time.equals("all time")) {
-
+			isTimeStamp = true;
+		} else if (time.equals("all-time")) {
+			isTimeStamp = false;
 		}
 
-		dateTime = date.atStartOfDay();
-		timestamp = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
 		List<Products> all = productsRepo.findAll();
 
-		List<Orders> data = ordersRepo.findByDate(timestamp);
+		if (isTimeStamp) {
+			dateTime = date.atStartOfDay();
+			timestamp = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+			data = ordersRepo.findByDate(timestamp);
+		} else {
+			data = ordersRepo.findAll();
+		}
+
 		for (Orders o : data) {
 
 			// if two prods are same
@@ -259,21 +271,99 @@ public class UserAndEmployeeServices {
 				// update the value
 				long value = map.get(o.getO_p_id()) + 1;
 				map.put(o.getO_p_id(), value);
-			} else {				
+			} else {
 				map.put(o.getO_p_id(), (long) 1);
 			}
 		}
-		
-		Map<String, Long> namemap = new HashMap<>();
-		for(Products p : all) {
-			if(map.containsKey(p.getPro_Id())) {
-				namemap.put(p.getProductName(), map.get(p.getPro_Id()));
-			}else {
-				namemap.put(p.getProductName(), (long) 0);
+
+		// updating the names and also getting all products that has not been sold yet
+		Map<String, Double> namemap = new HashMap<>();
+		Map<String, Double> totalIncomeByProd = new HashMap<>();
+
+		for (Products p : all) {
+			if (map.containsKey(p.getPro_Id())) {
+				namemap.put(p.getProductName(), (double) map.get(p.getPro_Id()));
+			} else {
+				namemap.put(p.getProductName(), (double) 0);
+			}
+
+			totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
+		}
+
+		// Max income and min Income
+		Map<String, Double> income = new HashMap<>();
+		Map<String, Double> sold = new HashMap<>();
+		double baseHigh = 0;
+		String baseHighName = "";
+
+		double baseLow = Double.MAX_VALUE;
+		String baseLowName = "";
+
+		double highest = 0;
+		String highestName = "";
+
+		double lowest = Double.MAX_VALUE;
+		String lowestName = "";
+
+		for (Map.Entry<Long, Long> entry : map.entrySet()) {
+			double price = productsRepo.findByproId(entry.getKey()).getDiscountedPrice() * entry.getValue();
+			String name = productsRepo.findByproId(entry.getKey()).getProductName();
+			if (baseHigh <= price) {
+				baseHigh = price;
+				baseHighName = name;
+			}
+
+			else if (baseLow >= price) {
+				baseLow = price;
+				baseLowName = name;
+			}
+
+			// most sold items
+			if (highest <= entry.getValue()) {
+				highest = entry.getValue();
+				highestName = name;
+			}
+			// most sold items
+			else if (lowest >= entry.getValue()) {
+				lowest = entry.getValue();
+				lowestName = name;
 			}
 		}
-		
-		return namemap;
+
+		// setting highest
+
+		/*
+		 * for (Map.Entry<Long, Long> entry : map.entrySet()) { // lowest sold String
+		 * name = productsRepo.findByproId(entry.getKey()).getProductName(); if (lowest
+		 * >= entry.getValue()) { // if (map.isEmpty()) { sold.put(name,
+		 * (double)entry.getValue()); } else { for (Map.Entry<String, Double> s :
+		 * sold.entrySet()) {
+		 * 
+		 * // if existed value is greater than entry.getValue() // then remove the
+		 * existed value and place the new one if (s.getValue() > entry.getValue()) {
+		 * sold.remove(s.getKey()); } else { sold.put(name, (double) entry.getValue());
+		 * }
+		 * 
+		 * } } } }
+		 */
+		if (lowest == Double.MAX_VALUE)
+			lowest = 0;
+		if (baseLow == Double.MAX_VALUE)
+			baseLow = 0;
+
+		income.put(baseHighName, baseHigh); // income
+		income.put(baseLowName, baseLow);
+
+		sold.put(highestName, highest);
+		sold.put(lowestName, lowest);
+
+		List<Map<String, Double>> dataToDisplay = new ArrayList<>();
+		dataToDisplay.add(income);
+		dataToDisplay.add(sold);
+		dataToDisplay.add(namemap);
+		dataToDisplay.add(totalIncomeByProd);
+
+		return dataToDisplay;
 	}
 
 }

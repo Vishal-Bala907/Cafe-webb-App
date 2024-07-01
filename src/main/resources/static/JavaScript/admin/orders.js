@@ -14,7 +14,7 @@ function fetchAllUndispatchedOrders() {
 			}
 			return res.json();
 		}).then(data => {
-
+			console.log(data)
 			loadAllUndispathedOrders(data);
 		}).catch(err => {
 			console.error(err)
