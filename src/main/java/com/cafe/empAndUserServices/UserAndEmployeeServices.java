@@ -228,7 +228,7 @@ public class UserAndEmployeeServices {
 
 		LocalDate date = null;
 		LocalDateTime dateTime = null; // = date.atStartOfDay();
-		long timestamp; // = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+		long timestamp = 0; // = dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
 		boolean isTimeStamp = true;
 		List<Orders> data = null;
 		Map<Long, Long> map = new HashMap<>();
@@ -255,6 +255,7 @@ public class UserAndEmployeeServices {
 		}
 
 		List<Products> all = productsRepo.findAll();
+		// todays time stamp
 
 		if (isTimeStamp) {
 			dateTime = date.atStartOfDay();
@@ -270,7 +271,7 @@ public class UserAndEmployeeServices {
 			if (map.containsKey(o.getO_p_id())) {
 				// update the value
 				long value = map.get(o.getO_p_id()) + 1;
-				map.put(o.getO_p_id(), value);
+				map.replace(o.getO_p_id(), value);
 			} else {
 				map.put(o.getO_p_id(), (long) 1);
 			}
@@ -278,17 +279,20 @@ public class UserAndEmployeeServices {
 
 		// updating the names and also getting all products that has not been sold yet
 		Map<String, Double> namemap = new HashMap<>();
+
 		Map<String, Double> totalIncomeByProd = new HashMap<>();
 
 		for (Products p : all) {
 			if (map.containsKey(p.getPro_Id())) {
 				namemap.put(p.getProductName(), (double) map.get(p.getPro_Id()));
 			} else {
-				namemap.put(p.getProductName(), (double) 0);
+				// namemap.put(p.getProductName(), (double) 0);
+				totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
 			}
 
-			totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
 		}
+
+		// System.out.println(totalIncomeByProd);
 
 		// Max income and min Income
 		Map<String, Double> income = new HashMap<>();
@@ -313,7 +317,8 @@ public class UserAndEmployeeServices {
 				baseHighName = name;
 			}
 
-			else if (baseLow >= price) {
+			System.out.println(price);
+			if (baseLow >= price) {
 				baseLow = price;
 				baseLowName = name;
 			}
@@ -323,29 +328,13 @@ public class UserAndEmployeeServices {
 				highest = entry.getValue();
 				highestName = name;
 			}
-			// most sold items
-			else if (lowest >= entry.getValue()) {
+			// min sold items
+			if (lowest >= entry.getValue()) {
 				lowest = entry.getValue();
 				lowestName = name;
 			}
 		}
 
-		// setting highest
-
-		/*
-		 * for (Map.Entry<Long, Long> entry : map.entrySet()) { // lowest sold String
-		 * name = productsRepo.findByproId(entry.getKey()).getProductName(); if (lowest
-		 * >= entry.getValue()) { // if (map.isEmpty()) { sold.put(name,
-		 * (double)entry.getValue()); } else { for (Map.Entry<String, Double> s :
-		 * sold.entrySet()) {
-		 * 
-		 * // if existed value is greater than entry.getValue() // then remove the
-		 * existed value and place the new one if (s.getValue() > entry.getValue()) {
-		 * sold.remove(s.getKey()); } else { sold.put(name, (double) entry.getValue());
-		 * }
-		 * 
-		 * } } } }
-		 */
 		if (lowest == Double.MAX_VALUE)
 			lowest = 0;
 		if (baseLow == Double.MAX_VALUE)
@@ -364,6 +353,21 @@ public class UserAndEmployeeServices {
 		dataToDisplay.add(totalIncomeByProd);
 
 		return dataToDisplay;
+	}
+
+	public UserDAO profile() {
+		UserDAO loggedInUser = loginUserService.getLoggedInUser();
+		loggedInUser.setCart(null);
+		loggedInUser.setAttendence(null);
+		loggedInUser.setOrders(null);
+		loggedInUser.setPassword(null);
+
+		Address address = addressRepo.findById(loggedInUser.getAddress().getAdd_id());
+		address.setAdd_user(null);
+		loggedInUser.setAddress(address);
+
+		return loggedInUser;
+
 	}
 
 }

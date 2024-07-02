@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section th:fragment="profile" id="profile-cover">
+		<div class="profile-container">
+			<div class="profile-image-cover">
+				<img th:src="@{/Images/profile-icon.png}" alt=""
+					class="profile-image" id="profile-image" />
+			</div>
+			<section class="profile-info">
+
+				<div class="pro-inf">
+					<p id="userName">username</p>
+				</div>
+				<div class="pro-inf">
+					<p>Role :</p>
+					<p id="role">Role</p>
+				</div>
+				<div class="pro-inf"
+					th:classappend="${userrole == 'admin' ?'': 'hidden'}">
+					<p>Salary :</p>
+					<p id="salary">1200</p>
+				</div>
+				<div class="pro-inf"
+					th:classappend="${userrole == 'admin' ?'': 'hidden'}">
+					<p>Post :</p>
+					<p id="post">Post</p>
+				</div>
+				<div class="pro-inf">
+					<p>D.O.J :</p>
+					<p id="doj"></p>
+				</div>
+				<div class="pro-inf">
+					<p>D.O.L :</p>
+					<p id="dol"></p>
+				</div>
+			</section>
+
+			<!-- 			<form th:action="@{/saveUser}" th:object="${userDAO}" method="post"
+				id="userForm">
+				<input type="hidden" th:field="*{u_id}" />
+				<div class="profile-form-group">
+					<label for="username">Username</label> <input type="text"
+						id="username" th:field="*{username}" required>
+					<div class="error" th:if="${#fields.hasErrors('username')}"
+						th:errors="*{username}">Invalid username</div>
+				</div>
+				<div class="profile-form-group">
+					<label for="role">Role</label> <input type="text" id="role"
+						th:field="*{ROLE}" required>
+				</div>
+
+				<div class="profile-form-group">
+					<label for="password">Password</label> <input type="password"
+						id="password" th:field="*{password}" required>
+					<div class="error" th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}">Invalid password</div>
+				</div>
+				<div class="profile-form-group">
+					<label for="salary">Salary</label> <input type="number" id="salary"
+						th:field="*{salary}" required disabled>
+				</div>
+				<div class="profile-form-group">
+					<label for="post">Post</label> <input type="text" id="post"
+						th:field="*{post}" required disabled>
+				</div>
+				<div class="profile-form-group">
+					<label for="DOJ">Date of Joining</label> <input type="date"
+						id="DOJ" th:field="*{DOJ}" required disabled>
+				</div>
+				<div class="profile-form-group">
+					<label for="DOL">Date of Leaving</label> <input type="date"
+						id="DOL" th:field="*{DOL}" disabled>
+				</div>
+				<div class="profile-form-group">
+					<button class="profile-update-button" type="submit">Submit</button>
+				</div>
+			</form> -->
+		</div>
+		<hr class="pro-hr" />
+		<section style="margin-top: 2rem;">
+			<div class="pro-add-container profile-info">
+
+				<div class="pro-inf">
+					<p>Country :</p>
+					<p id="country">country</p>
+				</div>
+				<div class="pro-inf">
+					<p>state :</p>
+					<p id="state">Role</p>
+				</div>
+				<div class="pro-inf">
+					<p>city :</p>
+					<p id="city">1200</p>
+				</div>
+				<div class="pro-inf">
+					<p>street :</p>
+					<p id="street">Post</p>
+				</div>
+				<div class="pro-inf">
+					<p>postal code :</p>
+					<p id="postal_code"></p>
+				</div>
+				<div class="pro-inf">
+					<p>house no :</p>
+					<p id="house_no"></p>
+				</div>
+
+			</div>
+		</section>
+
+		<script type="text/javascript"
+			th:src="@{/JavaScript/common/profile.js}"></script>
+	</section>
+</body>
+</html>

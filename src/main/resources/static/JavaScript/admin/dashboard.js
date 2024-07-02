@@ -55,7 +55,15 @@ function setDashboardCardInfo() {
 
 		document.getElementById('min-sold-item').innerText = ""
 		document.getElementById('min-sold-qt').innerText = ""
-	} else {
+	}
+	else if(qtKey.length == 1){
+		document.getElementById('max-sold-item').innerText = qtKey[0];
+		document.getElementById('max-sold-qt').innerText = qtValue[0];
+
+		document.getElementById('min-sold-item').innerText = qtKey[0];
+		document.getElementById('min-sold-qt').innerText = qtValue[0];
+	}
+	 else {
 		let i = qtValue[0] > qtValue[1] ? 0 : 1;
 		let j = i == 1 ? 0 : 1;
 
@@ -65,6 +73,7 @@ function setDashboardCardInfo() {
 		document.getElementById('min-sold-item').innerText = qtKey[j];
 		document.getElementById('min-sold-qt').innerText = qtValue[j];
 	}
+	
 	// setting income data
 	if (incomeKey[0] == '') {
 		alert("no data to display")
@@ -73,7 +82,15 @@ function setDashboardCardInfo() {
 
 		document.getElementById('min-income-item').innerText = ""
 		document.getElementById('min-sold-income').innerText = ""
-	} else {
+	}
+	else if(incomeKey.length == 1){
+document.getElementById('max-income-item').innerText = incomeKey[0];
+		document.getElementById('max-sold-income').innerText = incomeValue[0];
+
+		document.getElementById('min-income-item').innerText = incomeKey[0];
+		document.getElementById('min-sold-income').innerText = incomeValue[0];
+	}
+	 else {
 		document.getElementById('max-income-item').innerText = incomeKey[1];
 		document.getElementById('max-sold-income').innerText = incomeValue[1];
 

@@ -46,6 +46,7 @@ body {
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/admin/viewEmpOrCustomers.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/common/cart.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/profile.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/dashboard.css}">
 
 </head>
@@ -63,7 +64,7 @@ body {
 				<li><a href="#">Help</a></li>
 				<li><a class="material-symbols-outlined"
 					th:href="@{/admin/cart}">shopping_cart</a> <span id="cart">0</span></li>
-				<li><a class="material-symbols-outlined" href="#">account_circle</a></li>
+				<li><a class="material-symbols-outlined" th:href="@{/admin/profile}">account_circle</a></li>
 				<li><a th:href="@{/login}">login</a></li>
 			</ul>
 		</nav>

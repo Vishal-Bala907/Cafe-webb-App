@@ -23,6 +23,6 @@ public interface OrdersRepo extends JpaRepository<Orders, Long> {
 	@Query("SELECT o FROM Orders o WHERE o.o_id =:id")
 	Orders findById(@Param("id") long id);
 
-	@Query("SELECT o FROM Orders o WHERE o.timestamp >=:date")
-	List<Orders> findByDate(@Param("date") long date); 
+	@Query("SELECT o FROM Orders o WHERE o.timestamp >=:timestamp")
+	List<Orders> findByDate(@Param("timestamp") long timestamp); 
 }

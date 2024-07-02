@@ -94,8 +94,12 @@ public class EmpAndCustomerRestController {
 	public ResponseEntity<List<Map<String, Double>>> graphData(@PathVariable("time") String time) {
 
 		List<Map<String, Double>> dataForGraph = andEmployeeServices.getDataForGraph(time);
-
 		return ResponseEntity.ok().body(dataForGraph);
+	}
+	@GetMapping("/getprofile")
+	public ResponseEntity<UserDAO> getProfile(){
+		UserDAO profile = andEmployeeServices.profile();
+		return ResponseEntity.ok().body(profile);
 	}
 
 }

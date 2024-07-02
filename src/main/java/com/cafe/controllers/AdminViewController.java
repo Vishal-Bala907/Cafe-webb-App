@@ -221,6 +221,12 @@ public class AdminViewController {
 		model.addAttribute("title","Dashboard");
 		return "admin/dashboard";
 	}
+	@GetMapping("/profile")
+	public String getAdminProfile(Model model,UserDAO userDAO) {
+		model.addAttribute("title","Admin profile");
+		model.addAttribute("userrole","admin");
+		return "admin/adminProfile";
+	}
 
 
 }

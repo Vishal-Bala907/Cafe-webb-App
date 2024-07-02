@@ -1,0 +1,47 @@
+.profile-container {
+	display: flex;
+	justify-content: center;
+	gap: 5rem;
+	padding: 2rem 1rem;
+}
+
+.hidden {
+	visibility: hidden;
+	display: none;
+}
+
+.profile-image {
+	width: 15rem;
+	border-radius: 50%;
+	border: 2px solid;
+	object-fit: cover;
+	height: 15rem;
+}
+
+.pro-inf {
+	display: flex;
+	gap: 20px;
+	font-size: larger;
+}
+
+.profile-info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+#userName {
+	font-size: xx-large;
+	font-weight: 500;
+}
+
+#profile-cover {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	align-items: center;
+}
+
+.pro-hr {
+	width: 80%;
+}
