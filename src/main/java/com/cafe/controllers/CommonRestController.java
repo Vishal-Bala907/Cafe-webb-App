@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cafe.common.services.CommonServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
+import com.cafe.registerService.RegisterService;
 import com.cafe.repos.CategoryRepo;
 
 @RestController
@@ -24,6 +25,9 @@ public class CommonRestController {
 	CategoryRepo categoryRepo;
 	@Autowired
 	CommonServices commonServices;
+	@Autowired
+	RegisterService registerService;
+
 
 	@GetMapping("/category")
 	public ResponseEntity<String[]> categoryList() {
@@ -65,18 +69,19 @@ public class CommonRestController {
 		List<Products> saveToCart = commonServices.getCart();
 		return ResponseEntity.ok().body(saveToCart);
 	}
-	
+
 	@GetMapping("/manage-prod/{id}")
-	public ResponseEntity<Category> getFullCategoryDataForManage(@PathVariable long id){
+	public ResponseEntity<Category> getFullCategoryDataForManage(@PathVariable long id) {
 		Category categoryForManage = commonServices.getCategoryForManage(id);
 		return ResponseEntity.ok().body(categoryForManage);
 	}
-	
+
 	@DeleteMapping("/deleteProduct")
 	public ResponseEntity<List<Products>> deleteProduct(@RequestBody Products products) {
 		List<Products> deleteProduct = commonServices.deleteProduct(products);
 		return ResponseEntity.ok().body(deleteProduct);
 	}
+
 	
 
 }

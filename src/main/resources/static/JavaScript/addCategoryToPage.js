@@ -1,11 +1,27 @@
 let c = "";
 let selectedCategory;
+let userrole = "";
 
 //
 window.addEventListener("load", () => {
 	let data = JSON.parse(sessionStorage.getItem('cate-data'));
-	//createCateCard(data);
-	//	console.log(data)
+
+	fetch("/empAndCus/getprofile")
+		.then(res => {
+			if (!res.ok) {
+				console.error("Some error occured !!!");
+				throw new Error("Unable to fetch");
+			}
+			return res.json();
+		})
+		.then(data => {
+			userrole = data.role;
+		})
+		.catch(error => {
+			console.error("Error handling categories:", error); // Log error for debugging
+		});
+
+
 	console.log("Fetch categories button clicked"); // Debugging statement
 	fullCategoryData()
 		.then(data => {
@@ -18,7 +34,7 @@ window.addEventListener("load", () => {
 })
 
 function createCateCard(data) {
-	console.log("vishal bala",data)
+	console.log("vishal bala", data)
 	data.forEach(cate => {
 		let template = `<div id='cate-${cate.c_Id}' class="category-card">
 
@@ -64,7 +80,13 @@ function getMyData(cate) {
 	fetchDataOfTheCategory(cate.c_Id)
 		.then(data => {
 			sessionStorage.setItem("selected-cate", JSON.stringify(data));
-			window.location.href = "/admin/selectedItemPage";
+			
+			if(userrole==="ROLE_ADMIN"){
+				window.location.href = "/admin/selectedItemPage";	
+			}else{
+				window.location.href = "/user/selectedItemPage";	
+			}
+			
 		})
 		.catch(error => {
 			console.log(error)

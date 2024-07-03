@@ -74,7 +74,6 @@ public class CommonServices {
 		Category cId = categoryRepo.findById(category.getC_Id());
 		cId.setCatagoryName(category.getCatagoryName());
 		if (file.getSize() != 0) {
-			System.out.println("removing file");
 			// removing existing image
 			fileService.removeFile(cId, deleteCoverPath);
 			try {
@@ -85,8 +84,8 @@ public class CommonServices {
 			}
 		}
 
-		categoryRepo.save(cId);
-		return null;
+		Category save = categoryRepo.save(cId);
+		return save;
 	}
 
 	public List<Category> getCategoryList() {
@@ -178,25 +177,13 @@ public class CommonServices {
 			p.setCart(bags); // Assign the list to the product's cart
 
 			bag.add(pro);
-
-			// Debugging to verify the current state
-			/*
-			 * System.out.println("Added Product ID: " + p.getPro_Id() +
-			 * " with UserBag ID: " + b.getCartId());
-			 * System.out.println("Current bags list: " + bags);
-			 * System.out.println("Product's cart after addition: " + p.getCart());
-			 */
 		}
-
-		// Verify the final contents of the bag list
-
-		System.out.println("Final bag list contents:");
-		for (Products pr : bag) {
-			System.out.println("Product ID: " + pr.getPro_Id() + ", Cart:");
-			for (UserBag bg : pr.getCart()) {
-				System.out.println(" - UserBag ID: " + bg.getCartId());
-			}
-		}
+//		for (Products pr : bag) {
+//			System.out.println("Product ID: " + pr.getPro_Id() + ", Cart:");
+//			for (UserBag bg : pr.getCart()) {
+//				System.out.println(" - UserBag ID: " + bg.getCartId());
+//			}
+//		}
 
 		return bag;
 

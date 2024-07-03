@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="https://www.thymeleaf.org"
-	th:replace="~{adminTemplate::adminBase(~{::section})}">
+	>
 <head>
 <meta charset="UTF-8" />
 <title>Document</title>
 </head>
 <body>
 
-	<section th:replace="/common/menu::categories" id="category-cards">
+	<section th:fragment="categories" id="category-cards">
 		<div class="category-card">
 
 			<img class="cate-card-img" th:src="@{/Images/crousel/donuts.jpg}"

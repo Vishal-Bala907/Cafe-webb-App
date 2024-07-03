@@ -6,7 +6,7 @@
 	align-items: center;
 	flex-direction: column;
 	background-color: white;
-	background-image: url("../Images/login-img.jpg");
+	/* background-image: url("../Images/login-img.jpg"); */
 	background-size: cover;
 	border-radius: 3em;
 	overflow: hidden;
@@ -15,14 +15,18 @@
 	background-color: white;
 }
 
-.form-login-input{
-		width: 300px;
+.form-login-input {
+	width: 300px;
 	height: 30px;
 	font-size: x-large;
 	background: transparent;
-	border: none;
-	border-bottom: 2px solid rgb(255, 255, 255);
-	outline: none;
-	color: rgb(0, 255, 255);
+	border: 2px solid navy;
+	border-radius: 10px; outline : none;
+	color: rgb(0, 0, 0);
 	padding-left: 10px;
+	outline: none;
+}
+
+.form-login-input:focus {
+	box-shadow: 2px 2px 5px #006aff85, -2px -2px 5px #006aff85;
 }

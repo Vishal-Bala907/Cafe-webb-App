@@ -140,6 +140,7 @@ public class UserAndEmployeeServices {
 		updatedAddress.setStreet(address.getStreet());
 
 		Address save = addressRepo.save(updatedAddress);
+		save.setAdd_user(null);
 		return save;
 	}
 

@@ -108,4 +108,15 @@ public class FileService {
 		}
 		return prod;
 	}
+	
+	public UserDAO removeUserImage(UserDAO  user, String removePath) {
+		Path path = Paths.get(removePath + File.separator + user.getUser_image());
+		try {
+			Files.delete(path);
+			user.setUser_image("");
+		}catch (Exception e) {
+			System.out.println("Exception while removing product image "+e);
+		}
+		return user;
+	}
 }

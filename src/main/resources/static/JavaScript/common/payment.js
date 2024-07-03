@@ -57,7 +57,8 @@ function paymentSuccessFull() {
 	createOrder()
 	.then(data=>{
 		sessionStorage.setItem('cart',JSON.stringify(data));
-		location.href = "/admin/menu"
+		
+		//location.href = "/admin/menu"
 	})
 	.catch(error=>{
 		console.log(error)

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +26,9 @@ public class RegisterService {
 	PassEncoDeco encoDeco;
 	@Autowired
 	FileService fileservice;
+
+	@Value("${project.delete.profile}")
+	String removeUserImage;
 
 	@Transactional
 	public UserDAO saveUser(UserDAO user, String path, MultipartFile file) throws Exception {
@@ -83,5 +87,20 @@ public class RegisterService {
 
 		}
 
+	}
+
+	public UserDAO updateUser(UserDAO user, String path, MultipartFile file) throws Exception {
+		UserDAO byUsername = userRepo.findById(user.getU_id());
+		if (file.getSize() != 0) {
+			fileservice.removeUserImage(byUsername, path);
+			fileservice.setAndUploadFile(path, byUsername, file);
+		}
+		// checking the password
+		if (!(user.getPassword().isBlank())) {
+			String pass = encoDeco.encode(user.getPassword());
+			byUsername.setPassword(pass);
+		}
+		byUsername.setUsername(user.getUsername());
+		return byUsername;
 	}
 }

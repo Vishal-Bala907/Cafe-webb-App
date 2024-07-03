@@ -2,6 +2,8 @@ package com.cafe.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cafe.entities.Address;
 import com.cafe.entities.UserDAO;
 import com.cafe.fileService.FileService;
 import com.cafe.registerService.RegisterService;
@@ -18,6 +21,8 @@ import com.cafe.repos.AttendenceRepo;
 import com.cafe.repos.OrdersRepo;
 import com.cafe.repos.UserRepo;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @Controller
@@ -47,9 +52,9 @@ public class PublicViewController {
 		model.addAttribute("title", "Login Page");
 		return "Public/login";
 	}
-	
+
 	@PostMapping("/login")
-	public String login(UserDAO dao  ,Model model) {
+	public String login(UserDAO dao, Model model) {
 		model.addAttribute("title", "Login Page");
 		return "Public/login";
 	}
@@ -88,4 +93,36 @@ public class PublicViewController {
 
 		return "Public/index"; // Redirect or show success page
 	}
+
+/* ************************************ */	
+	
+	@GetMapping("/uppage")
+	public String updateProfilePage(UserDAO userDAO , Address address) {
+		return "user/updateProfilePage";
+	}
+	
+	@PostMapping("/updateProfile")
+	public String updateProfile(@Valid UserDAO userDAO, BindingResult bindingResult,
+			@RequestParam("image") MultipartFile image, Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			UserDAO saveUser = registerService.updateUser(userDAO, path, image);
+			userRepo.save(saveUser);
+			this.logout(request, response);
+		} catch (Exception w) {
+			w.printStackTrace();
+
+		}
+//		}
+		return "redirect:/login"; // Redirect or show success page
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("LOGGING OUT <--->");
+		SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+		logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+		return "redirect:/login"; // You can redirect to any page after logout
+	}
+
 }

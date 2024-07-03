@@ -42,6 +42,15 @@
 	align-items: center;
 }
 
+#ip-pro-button {
+	text-decoration: none;
+	padding: 10px 20px;
+	background-color: beige;
+	border-radius: 10px;
+	border: 1px solid;
+	margin: 1rem 0;
+}
+
 .pro-hr {
 	width: 80%;
 }

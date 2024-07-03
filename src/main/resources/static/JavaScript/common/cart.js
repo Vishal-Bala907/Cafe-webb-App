@@ -51,6 +51,48 @@ function populateCart() {
 	})
 }
 
+function updateAddressFromCart(event){
+	event.preventDefault();
+	let add_id = document.getElementById("add_id").value;
+	let country = document.getElementById("country").value;
+	let state = document.getElementById("state").value;
+	let city = document.getElementById("city").value;
+	let street = document.getElementById("street").value;
+	let house_no = document.getElementById("house_no").value;
+	let postal_code = document.getElementById("postal_code").value;
+	
+	let address = JSON.stringify({
+		add_id:add_id,
+		country:country,
+		state:state,
+		city:city,
+		street:street,
+		house_no:house_no,
+		postal_code:postal_code
+	});
+	
+	fetch("/empAndCus/update-address",{
+		method:"PUT",
+		headers:{
+			"Content-Type":"application/json"
+		},
+		body:address
+	})
+	.then(res=>{
+		if(!res.ok){
+			throw new Error("unable to update address");
+		}
+		return res.json();
+	})
+	.then(data=>{
+		console.log(data);
+	})
+	.catch(error=>{
+		console.error("address update error",error)
+	})
+	
+}
+
 function removeFromCart(cart) {
 
 	fetch(`/empAndCus/remove-from-cart/${cart.cart[0].cartId}`)

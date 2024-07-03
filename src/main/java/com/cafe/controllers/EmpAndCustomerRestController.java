@@ -101,5 +101,15 @@ public class EmpAndCustomerRestController {
 		UserDAO profile = andEmployeeServices.profile();
 		return ResponseEntity.ok().body(profile);
 	}
+	
+	@PutMapping("/update-address")
+	public ResponseEntity<Address> updateAddress(@RequestBody Address address) {
+		System.out.println(address);
+		Address updateAddress = andEmployeeServices.updateAddress(address);
+		return ResponseEntity.ok().body(updateAddress);
+	}
+
+	
+	
 
 }

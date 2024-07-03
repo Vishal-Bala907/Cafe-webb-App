@@ -22,8 +22,11 @@ import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
 import com.cafe.fileService.FileService;
 import com.cafe.loginService.LoginUserService;
+import com.cafe.passEncoDeco.PassEncoDeco;
+import com.cafe.registerService.RegisterService;
 import com.cafe.repos.CategoryRepo;
 import com.cafe.repos.ProductsRepo;
+import com.cafe.repos.UserRepo;
 
 import jakarta.validation.Valid;
 
@@ -42,6 +45,17 @@ public class AdminViewController {
 	LoginUserService loginUserService;
 	@Autowired
 	UserAndEmployeeServices andEmployeeServices;
+	@Autowired
+	PassEncoDeco deco;
+	@Value("${project.profile}")
+	private String path;
+
+	@Autowired
+	FileService servce;
+	@Autowired
+	RegisterService registerService;
+	@Autowired
+	UserRepo userRepo;
 
 	@Value("${project.cover}")
 	private String coverImagePath;
@@ -201,32 +215,56 @@ public class AdminViewController {
 	}
 
 	@GetMapping("/cart")
-	public String getAdminCart(Model model,Address address) {
+	public String getAdminCart(Model model, Address address) {
 		model.addAttribute("title", "Admin cart");
 		return "admin/adminrCart";
 	}
-	
-	@PostMapping("/update-address")
-	public String updateAddress(Address address){
-		andEmployeeServices.updateAddress(address);
-		return "admin/adminrCart";
-	}
-	
+
+	/*
+	 * @PostMapping("/update-address") public String updateAddress(Address address)
+	 * { andEmployeeServices.updateAddress(address); return "admin/adminrCart"; }
+	 */
+
 	@GetMapping("/get-undispatched-page")
 	public String getUndispatchedOrdersPage() {
 		return "admin/unDispatchedOrders";
 	}
+
 	@GetMapping("/dashboard")
 	public String getDashboard(Model model) {
-		model.addAttribute("title","Dashboard");
+		model.addAttribute("title", "Dashboard");
 		return "admin/dashboard";
 	}
+
 	@GetMapping("/profile")
-	public String getAdminProfile(Model model,UserDAO userDAO) {
-		model.addAttribute("title","Admin profile");
-		model.addAttribute("userrole","admin");
+	public String getAdminProfile(Model model, UserDAO userDAO) {
+		model.addAttribute("title", "Admin profile");
+		UserDAO loggedInUser = loginUserService.getLoggedInUser();
+		if(loggedInUser.getROLE().equals("ROLE_ADMIN")) {
+			model.addAttribute("userrole", "admin");
+		}
 		return "admin/adminProfile";
 	}
 
+	@GetMapping("/updateProfilePage")
+	public String updateAdminProfilePage(Model model, UserDAO userDAO,Address address) {
+		model.addAttribute("title", "Admin profile");
+		model.addAttribute("userrole", "admin");
+		return "admin/updateAdminProfile";
+	}
+
+//	@PostMapping("/updateProfile")
+//	public String updateAdminProfile(@Valid UserDAO userDAO, BindingResult bindingResult,
+//			@RequestParam("image") MultipartFile image, Model model) {
+//		System.out.println(userDAO);
+//		try {
+//			UserDAO saveUser = registerService.updateUser(userDAO, path, image);
+//			userRepo.save(saveUser);
+//
+//		} catch (Exception w) {
+//				w.printStackTrace();
+//		}
+//		return "Public/index"; // Redirect or show success page
+//	}
 
 }

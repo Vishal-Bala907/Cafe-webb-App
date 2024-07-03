@@ -30,10 +30,10 @@ public class LoginHandler extends SimpleUrlAuthenticationSuccessHandler {
 			if (authority.getAuthority().equals("ROLE_ADMIN")) {
 				return "/admin/dashboard";
 			} else if (authority.getAuthority().equals("ROLE_CUSTOMER")) {
-				return "/user/test";
+				return "/user/userProfile";
 
 			} else if (authority.getAuthority().equals("ROLE_EMPLOYEE")) {
-				return "/user/test";
+				return "/user/userProfile";
 			}
 		}
 		return "/login";

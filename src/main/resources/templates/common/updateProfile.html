@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section th:fragment="updateProfile">
+		<div class="form-main-container" style="flex-direction: column;">
+			<div class="up-form-box">
+
+				<form class="form" th:action="@{/updateProfile}" method="post"
+					enctype="multipart/form-data" th:object="${userDAO}">
+
+					<input type="text" th:field="*{u_id}" id="u_id" hidden="hidden" />
+
+					<div class="selected-image">
+						<img id="selected-image-tag" class="selected-image"
+							th:src="@{/Images/profile-icon.png}" alt="" />
+					</div>
+
+					<div class="input-container">
+						<label class="inp-label" for="name">Username:</label> <input
+							type="text" class="form-control form-login-input" id="name"
+							th:field="*{username}" placeholder="Enter username" required>
+						<span class="input-error" style="color: red;"
+							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+
+						<span style="color: white; font-weight: 500;"
+							th:unless="${#fields.hasErrors('username')}">Enter
+							Username</span>
+					</div>
+
+					<div class="input-container">
+						<label class="inp-label" for="pass">Passowrd:</label>
+						<div class="password-cover">
+							<input type="text" class="form-control form-login-input"
+								id="pass" th:field="*{password}" placeholder="Enter password">
+							<span class="material-symbols-outlined" id="eye"
+								onclick="hideAndShowPassword(event)"> visibility </span>
+						</div>
+						<span class="input-error" style="color: red;"
+							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+
+						<span style="color: white;"
+							th:unless="${#fields.hasErrors('password')}">Leave empty
+							if you dont want to change</span>
+					</div>
+
+					<div class="input-container">
+						<label class="inp-label" for="con-pass">Confirm Passowrd:</label>
+
+						<div class="password-cover">
+							<input type="text" class="form-control form-login-input"
+								id="con-pass" placeholder="Enter password"
+								onkeyUp="mathBothPassword(event)"> <span
+								class="material-symbols-outlined" id="con-eye"
+								onclick="conHideAndShowPassword(event)"> visibility </span>
+						</div>
+						<span id="con-pass-span" class="con-pass-span"></span>
+					</div>
+
+					<div class="input-container">
+						<label class="pencil material-symbols-outlined"
+							title="click here to choose a image" for="img">edit</label> <input
+							type="file" class="form-control input-file" id="img" name="image">
+
+					</div>
+
+					<div>
+						<button style="position: relative; top: -70px;"
+							class="user-submit" type="submit">Submit</button>
+					</div>
+
+				</form>
+			</div>
+
+
+
+			<!-- Address form here -->
+			<div class="add-form-container" style="margin: 3rem 0;">
+
+				<form id="addressForm" th:action="@{/admin/update-address}"
+					method="post" th:object="${address}"
+					onsubmit="updateAddressFromCart(event)">
+					<input type="hidden" id="add_id" th:field="*{add_id}" value="12345">
+
+					<div class="form-group">
+						<label for="country">Country:</label> <input type="text"
+							id="country" th:field="*{country}" required>
+					</div>
+
+					<div class="form-group">
+						<label for="state">State:</label> <input type="text" id="state"
+							th:field="*{state}" required>
+					</div>
+
+					<div class="form-group">
+						<label for="city">City:</label> <input type="text" id="city"
+							th:field="*{city}" required>
+					</div>
+
+					<div class="form-group">
+						<label for="street">Street:</label> <input type="text" id="street"
+							th:field="*{street}" required>
+					</div>
+
+					<div class="form-group">
+						<label for="house_no">House No:</label> <input type="text"
+							id="house_no" th:field="*{house_no}" required>
+					</div>
+
+					<div class="form-group">
+						<label for="postal_code">Postal Code:</label> <input type="number"
+							id="postal_code" th:field="*{postal_code}" required>
+					</div>
+
+					<button id="addUpdateButton" type="submit">Update</button>
+				</form>
+
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript" th:src="@{/JavaScript/common/cart.js}"></script>
+
+		<script type="text/javascript"
+			th:src="@{/JavaScript/common/updateprofile.js}"></script>
+		<script type="text/javascript" th:src="@{/JavaScript/signup.js}"></script>
+	</section>
+</body>
+</html>

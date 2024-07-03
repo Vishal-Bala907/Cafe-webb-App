@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="https://www.thymeleaf.org" th:fragment="adminBase(content)">
+	xmlns:th="https://www.thymeleaf.org" th:fragment="userBase(content)">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,23 +34,14 @@ body {
 	th:href="@{/CSS/publicLayout.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/main.css}">
 <link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/admin/addProducts.css}">
-<link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/admin/category-card.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/menu.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/admin/manageProdPage.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/admin/emp.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/admin/undispatched.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/admin/viewEmpOrCustomers.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/common/cart.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/common/profile.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/admin/dashboard.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/signup.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/admin/addProducts.css}">
 
 </head>
 <body>
@@ -66,9 +57,9 @@ body {
 			<ul class="nav-item-group">
 				<li><a href="#">Help</a></li>
 				<li><a class="material-symbols-outlined"
-					th:href="@{/admin/cart}">shopping_cart</a> <span id="cart">0</span></li>
+					th:href="@{/user/cart}">shopping_cart</a> <span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined"
-					th:href="@{/admin/profile}">account_circle</a></li>
+					th:href="@{/user/profile}">account_circle</a></li>
 				<li><a th:href="@{/login}">login</a></li>
 			</ul>
 		</nav>
@@ -81,18 +72,9 @@ body {
 		<aside id="sidebar-cover" class="sidebar-cover">
 			<ul id="sidebar-ul" class="sidebar-ul">
 
-				<li><a th:href="@{/admin/dashboard}">DashBoard</a></li>
-				<li id="fetch-categories"><a th:href="@{/admin/categories}">Categories</a></li>
-				<li id="fetch-categories"><a th:href="@{/admin/menu}">Menu</a></li>
-				<li><a th:href="@{/admin/get-undispatched-page}">Manage
-						Orders</a></li>
-				<li><a th:href="@{/admin/addProduct}" id="fetch-cate-data">Add</a></li>
-				<li id="manage-categories"><a th:href="@{/admin/manage-cate}">Manage
-						Item</a></li>
-				<li id="manage-categories"><a th:href="@{/admin/addEmp}">Manage/Add
-						Emp.</a></li>
-				<li id="manage-categories"><a th:href="@{/admin/viewCusOrEmp}">View
-						Customer/Emp</a></li>
+				<li id="fetch-categories"><a th:href="@{/user/categories}">Categories</a></li>
+				<li id="fetch-categories"><a th:href="@{/user/menu}">Menu</a></li>
+
 			</ul>
 			<span class="SideBarOpenCloseButton material-symbols-outlined"
 				id="SideBarOpenCloseButton" onclick="SideBarOpenClosefunction()">arrow_forward</span>

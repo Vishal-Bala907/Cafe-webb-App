@@ -44,7 +44,8 @@
 			<div class="add-form-container">
 
 				<form id="addressForm" th:action="@{/admin/update-address}"
-					method="post" th:object="${address}">
+					method="post" th:object="${address}"
+					onsubmit="updateAddressFromCart(event)">
 					<input type="hidden" id="add_id" th:field="*{add_id}" value="12345">
 
 					<div class="form-group">

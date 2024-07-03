@@ -22,13 +22,11 @@
 					<p>Role :</p>
 					<p id="role">Role</p>
 				</div>
-				<div class="pro-inf"
-					th:classappend="${userrole == 'admin' ?'': 'hidden'}">
+				<div th:classappend="${userrole == 'admin' ?'pro-inf': 'hidden'}">
 					<p>Salary :</p>
 					<p id="salary">1200</p>
 				</div>
-				<div class="pro-inf"
-					th:classappend="${userrole == 'admin' ?'': 'hidden'}">
+				<div th:classappend="${userrole == 'admin' ?'pro-inf': 'hidden'}">
 					<p>Post :</p>
 					<p id="post">Post</p>
 				</div>
@@ -42,46 +40,7 @@
 				</div>
 			</section>
 
-			<!-- 			<form th:action="@{/saveUser}" th:object="${userDAO}" method="post"
-				id="userForm">
-				<input type="hidden" th:field="*{u_id}" />
-				<div class="profile-form-group">
-					<label for="username">Username</label> <input type="text"
-						id="username" th:field="*{username}" required>
-					<div class="error" th:if="${#fields.hasErrors('username')}"
-						th:errors="*{username}">Invalid username</div>
-				</div>
-				<div class="profile-form-group">
-					<label for="role">Role</label> <input type="text" id="role"
-						th:field="*{ROLE}" required>
-				</div>
 
-				<div class="profile-form-group">
-					<label for="password">Password</label> <input type="password"
-						id="password" th:field="*{password}" required>
-					<div class="error" th:if="${#fields.hasErrors('password')}"
-						th:errors="*{password}">Invalid password</div>
-				</div>
-				<div class="profile-form-group">
-					<label for="salary">Salary</label> <input type="number" id="salary"
-						th:field="*{salary}" required disabled>
-				</div>
-				<div class="profile-form-group">
-					<label for="post">Post</label> <input type="text" id="post"
-						th:field="*{post}" required disabled>
-				</div>
-				<div class="profile-form-group">
-					<label for="DOJ">Date of Joining</label> <input type="date"
-						id="DOJ" th:field="*{DOJ}" required disabled>
-				</div>
-				<div class="profile-form-group">
-					<label for="DOL">Date of Leaving</label> <input type="date"
-						id="DOL" th:field="*{DOL}" disabled>
-				</div>
-				<div class="profile-form-group">
-					<button class="profile-update-button" type="submit">Submit</button>
-				</div>
-			</form> -->
 		</div>
 		<hr class="pro-hr" />
 		<section style="margin-top: 2rem;">
@@ -114,6 +73,9 @@
 
 			</div>
 		</section>
+
+		<a id="ip-pro-button" th:href="@{/uppage}">Update</a>
+		<!-- <a id="ip-pro-button" th:href="@{/admin/updateProfilePage}" th:classappend="${userrole == 'user' ? '' : 'hidden'}">Update</a> -->
 
 		<script type="text/javascript"
 			th:src="@{/JavaScript/common/profile.js}"></script>

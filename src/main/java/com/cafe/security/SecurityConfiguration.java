@@ -24,11 +24,11 @@ public class SecurityConfiguration {
 	@Bean
 	SecurityFilterChain chain(HttpSecurity security) throws Exception {
 		security.authorizeHttpRequests((auth) -> auth
-				.requestMatchers("/", "/CSS/**", "/JavaScript/**", "/Public/**", "/Images/**",
-						"/common/**", "/Images/cover/**", "/login", "/signup-page", "/register")
-				.permitAll()
-				.requestMatchers("admin/**", "/admin/**", "/empAndCus/**").hasRole("ADMIN")
-				.requestMatchers("/common/**","/api/**").hasAnyRole("ADMIN", "CUSTOMER","EMPLOYEE").anyRequest().authenticated())
+				.requestMatchers("/", "/CSS/**", "/JavaScript/**", "/Public/**", "/Images/**", "/common/**",
+						"/Images/cover/**", "/login", "/signup-page", "/register")
+				.permitAll().requestMatchers("admin/**", "/admin/**").hasRole("ADMIN")
+				.requestMatchers("/common/**", "user/**", "/api/**", "/empAndCus/**")
+				.hasAnyRole("ADMIN", "CUSTOMER", "EMPLOYEE").anyRequest().authenticated())
 				.rememberMe(me -> me.tokenValiditySeconds(60 * 60 * 24 * 7));
 
 		security.csrf(csrf -> csrf.disable());

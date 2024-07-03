@@ -11,6 +11,7 @@ function getProfileDetails() {
 			return res.json();
 		})
 		.then(data => {
+			console.log(data)
 			setProfileData(data);
 		}).catch(err => {
 			console.error(err)
@@ -25,6 +26,8 @@ function setProfileData(data) {
 	let role = "";
 	if (data.role === "ROLE_ADMIN") {
 		role = "ADMIN";
+	}else if(data.role === "ROLE_CUSTOMER"){
+		role = "CUSTOMER";
 	}
 	document.getElementById("role").innerText = role;
 

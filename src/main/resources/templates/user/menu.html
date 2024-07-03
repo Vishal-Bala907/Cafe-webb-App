@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	th:replace="~{userTemplate::userBase(~{::section})}">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class="main-section-menu">
+
+		<ul id="menu-cate" class="cate-ul">
+
+		</ul>
+		<div id="menu-section" class="menu-section"></div>
+
+		<script type="text/javascript" th:src="@{/JavaScript/menu.js}"></script>
+	</section>
+</body>
+</html>
