@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.cafe.entities.Address;
 import com.cafe.entities.UserDAO;
 import com.cafe.fileService.FileService;
+import com.cafe.loginService.LoginUserService;
 import com.cafe.registerService.RegisterService;
 import com.cafe.repos.AttendenceRepo;
 import com.cafe.repos.OrdersRepo;
@@ -38,6 +39,8 @@ public class PublicViewController {
 	AttendenceRepo attendenceRepo;
 	@Autowired
 	OrdersRepo ordersRepo;
+	@Autowired
+	LoginUserService loginUserService;
 
 	@Value("${project.profile}")
 	private String path;
@@ -94,13 +97,23 @@ public class PublicViewController {
 		return "Public/index"; // Redirect or show success page
 	}
 
-/* ************************************ */	
-	
+	/* ************************************ */
+
 	@GetMapping("/uppage")
-	public String updateProfilePage(UserDAO userDAO , Address address) {
-		return "user/updateProfilePage";
+	public String updateProfilePage(UserDAO userDAO, Address address) {
+		String role = loginUserService.getLoggedInUser().getROLE();
+		if (role.equals("ROLE_ADMIN")) {
+
+			return "admin/updateAdminProfile";
+		} else if (role.equals("ROLE_CUSTOMER")) {
+
+			return "user/updateProfilePage";
+		} else {
+
+			return "user/updateProfilePage";
+		}
 	}
-	
+
 	@PostMapping("/updateProfile")
 	public String updateProfile(@Valid UserDAO userDAO, BindingResult bindingResult,
 			@RequestParam("image") MultipartFile image, Model model, HttpServletRequest request,

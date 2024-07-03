@@ -91,11 +91,13 @@ document.getElementById('max-income-item').innerText = incomeKey[0];
 		document.getElementById('min-sold-income').innerText = incomeValue[0];
 	}
 	 else {
-		document.getElementById('max-income-item').innerText = incomeKey[1];
-		document.getElementById('max-sold-income').innerText = incomeValue[1];
+		 let i = incomeValue[0] > incomeValue[1] ? 0 : 1;
+		let j = i == 1 ? 0 : 1;
+		document.getElementById('max-income-item').innerText = incomeKey[i];
+		document.getElementById('max-sold-income').innerText = incomeValue[i];
 
-		document.getElementById('min-income-item').innerText = incomeKey[0];
-		document.getElementById('min-sold-income').innerText = incomeValue[0];
+		document.getElementById('min-income-item').innerText = incomeKey[j];
+		document.getElementById('min-sold-income').innerText = incomeValue[j];
 	}
 }
 

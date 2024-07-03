@@ -15,10 +15,11 @@ public class PaymentController {
 
     @GetMapping("/create-order/{amount}")
     public String createOrder(@PathVariable("amount") double amount) {
-    	System.out.println("payment" + amount);
+    	int amt = (int)amount;
         try {
-            return paymentService.createOrder(amount);
+            return paymentService.createOrder(amt);
         } catch (Exception e) {
+        	System.out.println(e.getMessage());
             return "Error: " + e.getMessage();
         }
     	

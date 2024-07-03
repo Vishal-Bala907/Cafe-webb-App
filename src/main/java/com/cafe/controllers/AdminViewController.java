@@ -111,27 +111,27 @@ public class AdminViewController {
 	// Adding category
 	@PostMapping("/addItem")
 	public String addNewProduct(@Valid @ModelAttribute("products") Products products, BindingResult bindingResult,
-			@RequestParam("itmimage") MultipartFile file, Model model) {
+			@RequestParam("itmimage") MultipartFile file, Model model,Category category) {
 		// Handle validation errors
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("category", new Category());
-			model.addAttribute("products", new Products());
 			return "admin/addProductPage";
 		}
+		
+		// saving product image
 		fileService.getAndSetProductImage(productImagePath, products, file);
+			
+		commonServices.addNewProduct(products);
+		
+//		Category bycatagoryName = categoryRepo.findBycatagoryName(products.getCategoryName());
+//		products.setProductName(products.getProductName().toLowerCase());
+//
+//		products.setCategory(bycatagoryName);
+//		products.setDiscountedPrice(
+//				products.getProductPrice() - (products.getDiscount() / 100) * products.getDiscount());
+//
+//		// Saved item
+//		productsRepo.save(products);
 
-		Category bycatagoryName = categoryRepo.findBycatagoryName(products.getCategoryName());
-		products.setProductName(products.getProductName().toLowerCase());
-
-		products.setCategory(bycatagoryName);
-		products.setDiscountedPrice(
-				products.getProductPrice() - (products.getDiscount() / 100) * products.getDiscount());
-
-		// Saved item
-		productsRepo.save(products);
-
-		model.addAttribute("category", new Category());
-		model.addAttribute("products", new Products());
 		return "admin/addProductPage";
 	}
 

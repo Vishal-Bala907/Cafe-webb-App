@@ -1,7 +1,7 @@
 document.getElementById('rzp-button1').onclick = function(e) {
 	let amount = Number(document.getElementById('amt').innerText)
-
-	fetch('/api/payment/create-order/' + amount, {
+	//alert(amount)
+	fetch(`/api/payment/create-order/${amount}`, {
 		mode: 'no-cors',
 		method: 'GET',
 	})

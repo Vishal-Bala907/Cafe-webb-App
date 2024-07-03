@@ -47,26 +47,40 @@ public class CommonServices {
 		if (bycatagoryName != null) {
 			throw new Exception("a category with the same name is already exists");
 		} else {
-			Products products = new Products();
-			products.setDiscount(10);
-			products.setProductImage("null");
-			products.setProductName("none");
-			products.setProductPrice(234);
-			products.setSold(0);
-			products.setCategory(category);
-
-			List<Products> proList = new ArrayList<Products>();
-			proList.add(products);
-			category.setProducts(proList);
+//			Products products = new Products();
+//			products.setDiscount(10);
+//			products.setProductImage("null");
+//			products.setProductName("none");
+//			products.setProductPrice(234);
+//			products.setSold(0);
+//			products.setCategory(category);
+//
+//			List<Products> proList = new ArrayList<Products>();
+//			proList.add(products);
+//			category.setProducts(proList);
 
 			Category save = categoryRepo.save(category);
 
 			// deleting extra data
-			productsRepo.deleteByForeingKey(save.getC_Id());
+			// productsRepo.deleteByForeingKey(save.getC_Id());
 
 			return save;
 		}
 
+	}
+
+	public Products addNewProduct(Products products) {
+		Category bycatagoryName = categoryRepo.findBycatagoryName(products.getCategoryName());
+		String proname = products.getProductName().toLowerCase();
+
+		products.setProductName(proname);
+		products.setCategory(bycatagoryName);
+		products.setDiscountedPrice(
+				products.getProductPrice() - ((products.getDiscount() / 100) * products.getDiscount()));
+
+		// Saved item
+		Products save = productsRepo.save(products);
+		return save;
 	}
 
 	public Category categoryUpdateService(Category category, String coverimagepath, MultipartFile file) {
@@ -125,6 +139,7 @@ public class CommonServices {
 		cart.setUserDAO(loggedInUser);
 
 		bagRepo.save(cart);
+		
 		List<Products> bag = new ArrayList<Products>();
 		List<UserBag> existedCart = loggedInUser.getCart();
 //		// getting all card items
@@ -142,8 +157,7 @@ public class CommonServices {
 		UserDAO loggedInUser = loginUserService.getLoggedInUser();
 		Address address = loggedInUser.getAddress();
 		address.setAdd_user(null);
-		
-		
+
 		List<Products> bag = new ArrayList<Products>();
 		List<UserBag> existedCart = loggedInUser.getCart();
 		Products p;
@@ -152,17 +166,19 @@ public class CommonServices {
 		for (UserBag b : existedCart) {
 			List<UserBag> bags = new ArrayList<>(); // New list created each iteration
 			p = b.getProductsInCart();
-
-			Products pro = new Products();
-			pro.setCategory(null);
-			pro.setDiscount(p.getDiscount());
-			pro.setPro_Id(p.getPro_Id());
-			pro.setProductName(p.getProductName());
-			pro.setCategoryName(p.getCategoryName());
-			pro.setSold(p.getSold());
-			pro.setDiscountedPrice(p.getDiscountedPrice());
-			pro.setProductImage(p.getProductImage());
-			pro.setProductPrice(p.getProductPrice());
+//			p.setCategory(null);
+			
+			
+//			Products pro = new Products();
+//			pro.setCategory(null);
+//			pro.setDiscount(p.getDiscount());
+//			pro.setPro_Id(p.getPro_Id());
+//			pro.setProductName(p.getProductName());
+//			pro.setCategoryName(p.getCategoryName());
+//			pro.setSold(p.getSold());
+//			pro.setDiscountedPrice(p.getDiscountedPrice());
+//			pro.setProductImage(p.getProductImage());
+//			pro.setProductPrice(p.getProductPrice());
 
 			b.setUserDAO(null);
 			b.setProductsInCart(null);
@@ -170,21 +186,13 @@ public class CommonServices {
 			// System.out.println("Processing UserBag: " + b);
 			bags.add(b);
 
-			pro.setCart(bags);
-			System.out.println(p.getPro_Id());
+//			pro.setCart(bags);
 			p.setCart(null);
 			p.setCategory(null);
 			p.setCart(bags); // Assign the list to the product's cart
 
-			bag.add(pro);
+			bag.add(p);
 		}
-//		for (Products pr : bag) {
-//			System.out.println("Product ID: " + pr.getPro_Id() + ", Cart:");
-//			for (UserBag bg : pr.getCart()) {
-//				System.out.println(" - UserBag ID: " + bg.getCartId());
-//			}
-//		}
-
 		return bag;
 
 	}

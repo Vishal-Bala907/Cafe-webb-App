@@ -234,8 +234,6 @@ public class UserAndEmployeeServices {
 		List<Orders> data = null;
 		Map<Long, Long> map = new HashMap<>();
 
-		System.out.println(time);
-
 		if (time.equals("today")) {
 			date = LocalDate.now();
 			isTimeStamp = true;
@@ -290,7 +288,6 @@ public class UserAndEmployeeServices {
 				// namemap.put(p.getProductName(), (double) 0);
 				totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
 			}
-
 		}
 
 		// System.out.println(totalIncomeByProd);
