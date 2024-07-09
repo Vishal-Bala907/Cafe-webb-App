@@ -137,5 +137,19 @@ public class PublicViewController {
 		logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
 		return "redirect:/login"; // You can redirect to any page after logout
 	}
+	
+	@GetMapping("/profile")
+	public String getProfile() {
+		String role = loginUserService.getLoggedInUser().getROLE();
+		if(role.equals("ROLE_ADMIN")) {
+			return "redirect:/admin/profile";
+		}else if(role.equals("ROLE_CUSTOMER")) {
+			return "redirect:/user/userProfile";
+		}else if(role.equals("ROLE_EMPLOYEE")) {
+			return "redirect:/user/userProfile";
+		}
+		
+		return "Public/index";
+	}
 
 }

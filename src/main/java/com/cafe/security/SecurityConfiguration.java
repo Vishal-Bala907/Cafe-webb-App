@@ -27,7 +27,7 @@ public class SecurityConfiguration {
 				.requestMatchers("/", "/CSS/**", "/JavaScript/**", "/Public/**", "/Images/**", "/common/**",
 						"/Images/cover/**", "/login", "/signup-page", "/register")
 				.permitAll().requestMatchers("admin/**", "/admin/**").hasRole("ADMIN")
-				.requestMatchers("/common/**", "user/**", "/api/**", "/empAndCus/**")
+				.requestMatchers("/common/**", "user/**", "/api/**", "/empAndCus/**","/foo/**")
 				.hasAnyRole("ADMIN", "CUSTOMER", "EMPLOYEE").anyRequest().authenticated())
 				.rememberMe(me -> me.tokenValiditySeconds(60 * 60 * 24 * 7));
 

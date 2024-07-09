@@ -13,6 +13,7 @@
 	height: 45em;
 	background-color: white;
 	position: relative;
+	overflow: overlay;
 }
 
 .container {

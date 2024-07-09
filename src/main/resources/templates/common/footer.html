@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section th:fragment="footer" id="footer-cover">
+		<footer class="footer">
+			<p class="footer-up-text">Welcome to [Cafe Name], your go-to spot
+				for premium coffee and a relaxing environment. From expertly brewed
+				beverages to scrumptious treats, we’ve got everything you need for a
+				perfect break!</p>
+
+			<div class="footer-content">
+				<div class="footer-navs">
+					<ul class="footer-ul">
+						<li><a th:href="@{/foo/menu}">menu</a></li>
+						<li><a th:href="@{/foo/categories}">categories</a></li>
+						<li><a th:href="@{/foo/login}">login</a></li>
+						<li><a th:href="@{/foo/logout}">logout</a></li>
+						<li><a th:href="@{/foo/signup}">signup</a></li>
+					</ul>
+				</div>
+
+				<div class="contacts">
+					<ul class="contacts-ul">
+						<li><a href="https://github.com/Vishal-Bala907"
+							target="_blank"><span class="devicon--github margin"></span>Github</a></li>
+						<li><a
+							href="https://www.instagram.com/dev_vishalbala?igsh=MWU5eW56bmN4NGVqZg=="
+							target="_blank"><span class="skill-icons--instagram margin"></span>Instagram</a></li>
+						<li><a
+							href="https://x.com/dev_VishalBala?t=yzzpVQE1iljmp4sCByUojQ&s=08"
+							target="_blank"><span class="bi--twitter-x margin"></span>Twitter</a></li>
+						<li><a
+							href="https://www.linkedin.com/in/vishal-bala-4311a817a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+							target="_blank"><span class="skill-icons--linkedin margin"></span>LinkedIn</a>
+						</li>
+						<li><a href="tel:+9079018357" target="_blank"><span
+								class="logos--whatsapp-icon margin"></span>Whatsapp</a></li>
+					</ul>
+				</div>
+
+			</div>
+			<p class="last-footer-itm">&copy; 2024 [Cafe Name]. All rights
+				reserved.</p>
+		</footer>
+	</section>
+</body>
+</html>

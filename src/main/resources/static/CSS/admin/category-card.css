@@ -22,9 +22,9 @@
 }
 
 .cate-card-img, .man-cate-card-img {
-	width: 25em;
-	height: 20em;
-	object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .cate-name , .man-cate-name{

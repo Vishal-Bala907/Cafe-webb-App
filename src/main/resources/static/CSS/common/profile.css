@@ -3,6 +3,7 @@
 	justify-content: center;
 	gap: 5rem;
 	padding: 2rem 1rem;
+	flex-wrap: wrap;
 }
 
 .hidden {
@@ -10,14 +11,19 @@
 	display: none;
 }
 
-.profile-image {
+/* .profile-image {
 	width: 15rem;
 	border-radius: 50%;
 	border: 2px solid;
 	object-fit: cover;
 	height: 15rem;
-}
-
+	width: 40%;
+	border-radius: 50%;
+	border: 2px solid;
+	object-fit: cover;
+	height: 15rem;
+	height: 40%;
+} */
 .pro-inf {
 	display: flex;
 	gap: 20px;
@@ -53,4 +59,54 @@
 
 .pro-hr {
 	width: 80%;
+}
+
+@media screen and (max-width:535px) {
+	.profile-image-cover {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+		flex-direction: column;
+	}
+	.profile-image {
+		/* width: 15rem;
+	border-radius: 50%;
+	border: 2px solid;
+	object-fit: cover;
+	height: 15rem; */
+		/* width: 40%; */
+		border-radius: 50%;
+		border: 2px solid;
+		object-fit: cover;
+		/* height: 15rem; */
+		/* height: 40%; */
+		width: 10em;
+		height: 10em;
+	}
+}
+
+@media screen and (min-width:535px) {
+	.profile-image-cover {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+		flex-direction: row;
+	}
+	.profile-image {
+		/* width: 15rem;
+	border-radius: 50%;
+	border: 2px solid;
+	object-fit: cover;
+	height: 15rem; */
+		/* width: 40%; */
+		border-radius: 50%;
+		border: 2px solid;
+		object-fit: cover;
+		/* height: 15rem; */
+		/* height: 70%; */
+		width: 15em;
+		height: 15em;
+	}
 }

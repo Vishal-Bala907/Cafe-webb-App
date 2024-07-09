@@ -42,6 +42,8 @@ body {
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/signup.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/admin/addProducts.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/footer-icons.css}">
 
 </head>
 <body>
@@ -49,17 +51,14 @@ body {
 		<nav class="nav-header" id="header">
 			<ul class="nav-item-group">
 				<li><a th:href="@{/}">Home</a></li>
-				<li><a href="#">Coffee</a></li>
-				<li><a href="#">Tea</a></li>
-				<li><a href="#">Pastries</a></li>
-				<li><a href="#">Cakes</a></li>
+				<li id="fetch-categories"><a th:href="@{/user/categories}">Categories</a></li>
+				<li id="fetch-categories"><a th:href="@{/user/menu}">Menu</a></li>
 			</ul>
 			<ul class="nav-item-group">
-				<li><a href="#">Help</a></li>
 				<li><a class="material-symbols-outlined"
 					th:href="@{/user/cart}">shopping_cart</a> <span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined"
-					th:href="@{/user/profile}">account_circle</a></li>
+					th:href="@{/user/userProfile}">account_circle</a></li>
 				<li><a th:href="@{/login}">login</a></li>
 			</ul>
 		</nav>
@@ -85,6 +84,7 @@ body {
 		</main>
 	</div>
 
+	<footer th:replace="/common/footer::footer"></footer>
 
 
 

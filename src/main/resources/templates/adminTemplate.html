@@ -51,20 +51,25 @@ body {
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/admin/dashboard.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/signup.css}">
-
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/footer-icons.css}">
 </head>
 <body>
 	<header th:fragment="header">
 		<nav class="nav-header" id="header">
 			<ul class="nav-item-group">
 				<li><a th:href="@{/}">Home</a></li>
-				<li><a href="#">Coffee</a></li>
-				<li><a href="#">Tea</a></li>
-				<li><a href="#">Pastries</a></li>
-				<li><a href="#">Cakes</a></li>
+				<li><a th:href="@{/admin/dashboard}">DashBoard</a></li>
+				<li><a th:href="@{/admin/get-undispatched-page}">Manage
+						Orders</a></li>
+				<li id="manage-categories"><a th:href="@{/admin/manage-cate}">Manage
+						Item</a></li>
+				<li id="manage-categories"><a th:href="@{/admin/addEmp}">Manage/Add
+						Emp.</a></li>
+				<li id="manage-categories"><a th:href="@{/admin/viewCusOrEmp}">View
+						Customer/Emp</a></li>
 			</ul>
 			<ul class="nav-item-group">
-				<li><a href="#">Help</a></li>
 				<li><a class="material-symbols-outlined"
 					th:href="@{/admin/cart}">shopping_cart</a> <span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined"
@@ -102,7 +107,7 @@ body {
 			<div th:replace="${content}"></div>
 		</main>
 	</div>
-
+<footer th:replace="/common/footer::footer"></footer>
 
 
 
