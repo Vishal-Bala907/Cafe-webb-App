@@ -104,6 +104,11 @@ document.getElementById('max-income-item').innerText = incomeKey[0];
 // Graph related data
 
 function createGraph() {
+/*	console.log("Dashboard Data ",dashBoardData)
+	console.log("all sales Data ",allSales)
+	console.log("income Data ",income)
+	console.log("qt Data ",qt)
+	console.log("graph Data ",graph)*/
 
 	const data = {
 		labels: Object.keys(allSales),
@@ -112,14 +117,15 @@ function createGraph() {
 				label: 'Income Graph',
 				data: Object.values(allSales),
 				borderColor: 'blue',
-				//backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red),
-				fill: false
+				backgroundColor: "#0062ff4d",
+				fill: true
 			}, {
 				label: 'Sales Graph',
 				data: Object.values(graph),
 				borderColor: 'red',
 				//backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red),
-				fill: false
+				backgroundColor: "#ff000014",
+				fill: true
 			}
 		]
 	};
@@ -137,7 +143,8 @@ function createGraph() {
 				}
 			},
 			interaction: {
-				intersect: false,
+				intersect: true,
+//				intersect: false,
 			}
 		},
 	};

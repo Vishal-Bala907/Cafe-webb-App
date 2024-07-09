@@ -7,6 +7,7 @@ let userCartInSession = [];
 window.addEventListener('load', () => {
 	userCartInSession = JSON.parse(sessionStorage.getItem('cart'))
 	populateCart();
+	populateCart();
 	calculateTotal();
 	setAddressDetails();
 })

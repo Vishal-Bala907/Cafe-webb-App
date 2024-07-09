@@ -45,6 +45,7 @@ function menuCategoryClicked(item) {
 function setMenuLayout() {
 	let menuItems = JSON.parse(sessionStorage.getItem("selected-menu-cate"))
 	let productsTemplate = ""
+	console.log("jhh sduo hf \n",menuItems)
 	menuItems.forEach((prod) => {
 
 		let SameCateProds = `<div class="item-card">
@@ -59,7 +60,7 @@ function setMenuLayout() {
 			</div>
 			<div class="price">
 				<p class="mrp" style="text-decoration: line-through;">Rs: ${prod.productPrice}</p>
-				<p class="actual">Rs: ${parseInt(prod.productPrice - prod.productPrice * (prod.discount / 100))} only</p>
+				<p class="actual">Rs: ${prod.discountedPrice} only</p>
 			</div>
 
 			<div class="button">

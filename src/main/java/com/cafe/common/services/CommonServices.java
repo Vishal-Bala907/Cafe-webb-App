@@ -76,7 +76,7 @@ public class CommonServices {
 		products.setProductName(proname);
 		products.setCategory(bycatagoryName);
 		products.setDiscountedPrice(
-				products.getProductPrice() - ((products.getDiscount() / 100) * products.getDiscount()));
+				products.getProductPrice() - ((products.getDiscount() / 100) * 100 ));
 
 		// Saved item
 		Products save = productsRepo.save(products);

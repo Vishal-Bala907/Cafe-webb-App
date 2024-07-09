@@ -284,9 +284,10 @@ public class UserAndEmployeeServices {
 		for (Products p : all) {
 			if (map.containsKey(p.getPro_Id())) {
 				namemap.put(p.getProductName(), (double) map.get(p.getPro_Id()));
+				totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * map.get(p.getPro_Id()));
 			} else {
 				// namemap.put(p.getProductName(), (double) 0);
-				totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
+				//totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
 			}
 		}
 
