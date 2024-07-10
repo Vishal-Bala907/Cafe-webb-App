@@ -7,6 +7,8 @@
 	background-color: black;
 	padding: 1em 0;
 	background-color: #e3ebff;
+	background-image: url(../Images/Coffee-shop-amico.png);
+	background-size: contain;
 }
 
 .selected-image {
@@ -18,23 +20,36 @@
 
 .password-cover {
 	position: relative;
+	width: 100%;
 }
 
-.form-box, .up-form-box {
-	width: 80%;
-	height: 50em;
+.form-box {
+	width: fit-content;
+	height: fit-content;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	border-radius: 1em;
+	box-shadow: 5px 5px 31px #00000091, inset 5px 5px 15px #fff9f9, inset
+		-5px -5px 25px #83838300;
 	background-color: white;
-	/* background-image: url(../Images/login.jpg); */
-	background-size: cover;
-	border-radius: 3em;
-	overflow: hidden;
-	box-shadow: 5px 5px 31px #0000004a, inset 5px 5px 15px #ffffff, inset
-		-5px -5px 25px #8383830a;
-	background-color: #0000001c;
+	padding: 12% 5% 5% 5%;
+	position: relative;
+}
+
+.up-form-box {
+	width: fit-content;
+	height: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 1em;
+	box-shadow: 5px 5px 31px #00000091, inset 5px 5px 15px #fff9f9, inset
+		-5px -5px 25px #83838300;
+	background-color: white;
+	padding: 4% 5%;
 }
 
 .up-form-box {
@@ -46,17 +61,17 @@
 	height: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	flex-direction: column;
-	backdrop-filter: blur(15px);
 }
 
 .input-container {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-between;
+	align-items: flex-start;
 	flex-direction: column;
 	margin: 1em 0;
+	gap: 5px;
+	width: 90%;
 }
 
 .form-login-input {
@@ -78,19 +93,20 @@
 
 #eye, #con-eye {
 	position: absolute;
-	right: 10px;
+	right: -25px;
 	cursor: pointer;
-	background-color: transparent;
 	border: 2px solid;
 	border-radius: 4px;
 	border-color: #ffffff8f;
+	top: 3px;
+	float: right;
 }
 
 .inp-label {
-	color: black;
+	color: #00000078;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 .input-error {
@@ -133,10 +149,11 @@
 	border: none;
 	font-weight: 500;
 	font-size: 1rem;
-	background-color: white;
+	background-color: #008bff;
 	cursor: pointer;
-	box-shadow: 2px 2px 9px #ffffff7a, inset 1px 1px 5px #5f5f5f, inset
-		-.51px -1px 6px #00000096;
+	box-shadow: 2px 2px 9px #3e80ff, inset 1px 1px 5px #dfdfdfc7, inset
+		-.51px -1px 6px #0038e5;
+	color: white;
 }
 
 .form-alt-link {
@@ -149,6 +166,7 @@
 	opacity: 0;
 	z-index: -1;
 	border: 2px solid black;
+	display: none;
 }
 
 .div-file-inp {
@@ -167,8 +185,8 @@
 	cursor: pointer;
 	font-size: xx-large;
 	position: relative;
-	top: -12em;
-	right: -1.6em;
+	top: -12.9em;
+	right: -6.4em;
 	transform: rotate(-3deg);
 }
 
@@ -180,6 +198,6 @@
 
 .user-submit:hover {
 	color: white;
-	background-color: black;
+	background-color: #08ffaa;
 	cursor: pointer;
 }

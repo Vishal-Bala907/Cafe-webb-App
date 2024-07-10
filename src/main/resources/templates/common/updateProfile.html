@@ -15,7 +15,8 @@
 
 					<input type="text" th:field="*{u_id}" id="u_id" hidden="hidden" />
 
-					<div class="selected-image">
+					<div class="selected-image align-self-center"
+						style="align-self: center;">
 						<img id="selected-image-tag" class="selected-image"
 							th:src="@{/Images/profile-icon.png}" alt="" />
 					</div>
@@ -43,7 +44,7 @@
 						<span class="input-error" style="color: red;"
 							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
 
-						<span style="color: white;"
+						<span style="color: black; font-size: small;"
 							th:unless="${#fields.hasErrors('password')}">Leave empty
 							if you dont want to change</span>
 					</div>

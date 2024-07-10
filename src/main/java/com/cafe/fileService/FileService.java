@@ -110,6 +110,9 @@ public class FileService {
 	}
 	
 	public UserDAO removeUserImage(UserDAO  user, String removePath) {
+		
+		System.out.println("REMOVING IMAGE");
+		
 		Path path = Paths.get(removePath + File.separator + user.getUser_image());
 		try {
 			Files.delete(path);

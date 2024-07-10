@@ -7,7 +7,7 @@
 .nav-item-group>li {
 	cursor: pointer;
 	position: relative;
-	font-size: .7em;
+	font-size: 0.6em;
 }
 
 .nav-item-group>li::after {
@@ -51,10 +51,11 @@
 	0%{
 	color: black;
 	width: 0%;
-		}
+	}
+
 100%{
-	color:navy;
-	width:100%;
+color:navy;
+width:100%;
 }
 
 /* ********************************** */

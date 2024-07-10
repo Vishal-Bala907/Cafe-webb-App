@@ -14,7 +14,7 @@
 				<form class="form" th:action="@{/register}" method="post"
 					enctype="multipart/form-data" th:object="${userDAO}">
 
-					<div class="selected-image">
+					<div class="selected-image align-self-center">
 						<img id="selected-image-tag" class="selected-image"
 							th:src="@{/Images/profile-icon.png}" alt="" />
 					</div>
@@ -61,14 +61,14 @@
 						<span id="con-pass-span" class="con-pass-span"></span>
 					</div>
 
-					<div class="input-container">
+					<div class="input-container fit-content align-self-center">
 						<label class="div-file-inp" title="click here to choose a image"
 							for="img">Select Image</label> <input type="file"
 							class="form-control input-file" id="img" name="image">
 
 					</div>
 
-					<div>
+					<div class="align-self-center">
 						<button class="user-submit" type="submit">Submit</button>
 					</div>
 
@@ -78,8 +78,10 @@
 								th:href="@{/login}"> Login... </a></strong>
 						</p>
 					</section>
+					
 
 				</form>
+					<p class="form-heading-su">Sign-up</p>
 
 			</div>
 		</div>

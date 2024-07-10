@@ -92,7 +92,7 @@ public class RegisterService {
 	public UserDAO updateUser(UserDAO user, String path, MultipartFile file) throws Exception {
 		UserDAO byUsername = userRepo.findById(user.getU_id());
 		if (file.getSize() != 0) {
-			fileservice.removeUserImage(byUsername, path);
+			fileservice.removeUserImage(byUsername, removeUserImage);
 			fileservice.setAndUploadFile(path, byUsername, file);
 		}
 		// checking the password
