@@ -21,7 +21,7 @@ public class FooterViewController {
 		} else if (role.equals("ROLE_CUSTOMER")) {
 			return "redirect:/user/menu";
 		} else if (role.equals("ROLE_EMPLOYEE")) {
-			return "redirect:/user/menu";
+			return "redirect:/emp/menu";
 		}
 		return "redirect:/login";
 	}
@@ -34,7 +34,7 @@ public class FooterViewController {
 		} else if (role.equals("ROLE_CUSTOMER")) {
 			return "redirect:/user/categories";
 		} else if (role.equals("ROLE_EMPLOYEE")) {
-			return "redirect:/user/categories";
+			return "redirect:/emp/categories";
 		}
 		return "redirect:/login";
 	}

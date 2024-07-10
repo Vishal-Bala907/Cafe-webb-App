@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section th:fragment="error" id="items-cards">
+		<div class="error-page">
+			<div class="error-wrapper">
+				<div class="error-container">
+					<div class="error-graphic">
+						<img th:src="@{/images/error404.png}" alt="Coffee Spill"
+					
+						>
+					</div>
+					<h1 class="error-title">404</h1>
+					<p class="error-message">We can't seem to find the page you're
+						looking for.</p>
+					<p class="error-message">Why don't you enjoy a cup of coffee
+						while we get this sorted out?</p>
+					<a href="/" class="home-button">Back to Home</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

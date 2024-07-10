@@ -1,5 +1,7 @@
 package com.cafe.repos;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +20,7 @@ public interface ProductsRepo extends JpaRepository<Products, Long> {
 	
 	@Query("SELECT p FROM Products p WHERE p.pro_Id =:id")
 	Products findByproId(long id);
+	
+	@Query("SELECT p FROM Products p WHERE p.productName =:name")
+	List<Products> findByName(String name);
 }

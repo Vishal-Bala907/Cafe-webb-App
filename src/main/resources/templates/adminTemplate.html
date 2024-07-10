@@ -50,9 +50,19 @@ body {
 	th:href="@{/CSS/common/profile.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/admin/dashboard.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/about.css}">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/signup.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/footer.css}">
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/common/footer-icons.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/footer.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/footer-icons.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/billing.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/error.css}">
 </head>
 <body>
 	<header th:fragment="header">
@@ -74,7 +84,8 @@ body {
 					th:href="@{/admin/cart}">shopping_cart</a> <span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined"
 					th:href="@{/admin/profile}">account_circle</a></li>
-				<li><a th:href="@{/login}">login</a></li>
+				<li><a th:href="@{/logout}">logout</a></li>
+				<li><a th:href="@{/admin/about}">About</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -98,6 +109,7 @@ body {
 						Emp.</a></li>
 				<li id="manage-categories"><a th:href="@{/admin/viewCusOrEmp}">View
 						Customer/Emp</a></li>
+				<li><a th:href="@{/admin/offline-bill}">Offline Bill</a></li>
 			</ul>
 			<span class="SideBarOpenCloseButton material-symbols-outlined"
 				id="SideBarOpenCloseButton" onclick="SideBarOpenClosefunction()">arrow_forward</span>
@@ -107,7 +119,7 @@ body {
 			<div th:replace="${content}"></div>
 		</main>
 	</div>
-<footer th:replace="/common/footer::footer"></footer>
+	<footer th:replace="/common/footer::footer"></footer>
 
 
 

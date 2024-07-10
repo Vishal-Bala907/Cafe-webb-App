@@ -1,15 +1,15 @@
 .cate-ul {
 	display: flex;
-	/* justify-content: center; */
 	place-content: flex-start;
 	align-items: center;
 	list-style: none;
 	gap: 10px;
-	flex-wrap: wrap;
 	padding: 10px;
 	background-color: #175373;
 	color: white;
 	font-weight: 300;
+	overflow: scroll;
+	white-space: nowrap;
 }
 
 .cate-ul>li {

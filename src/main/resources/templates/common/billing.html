@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section th:fragment="billing" id="billing-section">
+		<div class="items-selection">
+			<div class="search">
+				<input class="search-offline" type="search" name="" id="off-bill-search" />
+				<button class="user-submit" onclick="searchForTheItem()">Search</button>
+			</div>
+			<div class="menu-selec">
+				<section th:fragment="menu" class="main-section-menu">
+
+					<ul id="menu-cate" class="cate-ul">
+
+					</ul>
+					<div id="menu-section" class="menu-section"></div>
+
+				</section>
+			</div>
+		</div>
+		<div class="bill">
+			<table class="off-table">
+				<thead class="thead">
+					<tr class="tr">
+						<th class="td">S.N</th>
+						<th class="td">Name</th>
+						<th class="td">Price</th>
+						<th class="td">Q.T</th>
+					</tr>
+				</thead>
+				<tbody class="tbody" id="tbody">
+
+				</tbody>
+			</table>
+			<div class="off-button-cover">
+				<button class="off-create-order" onclick="createOfflineBill()">Create
+					Order</button>
+			</div>
+		</div>
+			<span class="material-symbols-outlined offline-close" 
+			onclick="openCloseBill()"
+			> open_in_full </span>
+			
+		<section id="search-result">
+			
+		</section>
+			<span class="material-symbols-outlined offline-close-search" 
+			onclick="CloseSearchedItemPage()"
+			id="search-close"
+			> close </span>
+			
+		<script type="text/javascript"
+			th:src="@{/JavaScript/common/off-menu.js}"></script>
+		<script type="text/javascript"
+			th:src="@{/JavaScript/common/off-menu-search.js}"></script>
+	</section>
+</body>
+</html>

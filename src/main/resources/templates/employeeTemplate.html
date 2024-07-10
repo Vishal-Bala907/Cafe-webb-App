@@ -14,12 +14,6 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 	rel="stylesheet">
 <link rel="icon" type="image/x-icon" th:href="@{/Images/favicon.ico}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/common/billing.css}">
-<link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/common/error.css}">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style type="text/css">
 * {
 	padding: 0px;
@@ -49,27 +43,34 @@ body {
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/admin/addProducts.css}">
 <link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/about.css}">
+<link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/common/footer.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/CSS/common/footer-icons.css}">
 <link rel="stylesheet" type="text/css"
-	th:href="@{/CSS/common/about.css}">
+	th:href="@{/CSS/common/billing.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/CSS/common/error.css}">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
 	<header th:fragment="header">
 		<nav class="nav-header" id="header">
 			<ul class="nav-item-group">
 				<li><a th:href="@{/}">Home</a></li>
-				<li id="fetch-categories"><a th:href="@{/user/categories}">Categories</a></li>
-				<li id="fetch-categories"><a th:href="@{/user/menu}">Menu</a></li>
+				<li id="fetch-categories"><a th:href="@{/emp/categories}">Categories</a></li>
+				<li id="fetch-categories"><a th:href="@{/emp/menu}">Menu</a></li>
 			</ul>
 			<ul class="nav-item-group">
+				<li><a class="material-symbols-outlined" th:href="@{/emp/cart}">shopping_cart</a>
+					<span id="cart">0</span></li>
 				<li><a class="material-symbols-outlined"
-					th:href="@{/user/cart}">shopping_cart</a> <span id="cart">0</span></li>
-				<li><a class="material-symbols-outlined"
-					th:href="@{/user/userProfile}">account_circle</a></li>
+					th:href="@{/emp/userProfile}">account_circle</a></li>
 				<li><a th:href="@{/logout}">logout</a></li>
-				<li><a th:href="@{/user/about}">About</a></li>
+				<li><a th:href="@{/emp/emp-about}">About</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -81,9 +82,9 @@ body {
 		<aside id="sidebar-cover" class="sidebar-cover">
 			<ul id="sidebar-ul" class="sidebar-ul">
 
-				<li id="fetch-categories"><a th:href="@{/user/categories}">Categories</a></li>
-				<li id="fetch-categories"><a th:href="@{/user/menu}">Menu</a></li>
-
+				<li id="fetch-categories"><a th:href="@{/emp/categories}">Categories</a></li>
+				<li id="fetch-categories"><a th:href="@{/emp/menu}">Menu</a></li>
+				<li><a th:href="@{/emp/offline-bill}">Offline Bill</a></li>
 			</ul>
 			<span class="SideBarOpenCloseButton material-symbols-outlined"
 				id="SideBarOpenCloseButton" onclick="SideBarOpenClosefunction()">arrow_forward</span>

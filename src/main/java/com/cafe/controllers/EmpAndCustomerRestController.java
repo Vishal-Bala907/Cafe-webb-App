@@ -28,6 +28,8 @@ public class EmpAndCustomerRestController {
 	UserAndEmployeeServices andEmployeeServices;
 	@Autowired
 	CommonServices commonServices;
+	@Autowired
+	OfflineBillingController billingController;
 
 	@GetMapping("/userByName/{username}")
 	public UserDAO getUserDetailsByName(@PathVariable String username, Model model) {
@@ -109,7 +111,19 @@ public class EmpAndCustomerRestController {
 		return ResponseEntity.ok().body(updateAddress);
 	}
 
+	@PutMapping("/create-off-bill")
+	public ResponseEntity<Map<String,String>> updateBillFromOfflineOrder(@RequestBody List<Products> list){
+		
+		Map<String , String> order = billingController.createOfflineOrder(list);
+		
+		return ResponseEntity.ok().body(order);
+	}
 	
+	@GetMapping("/off-search/{name}")
+	public ResponseEntity<List<Products>> getOfflineSearchedItem(@PathVariable("name") String name){
+		List<Products> list = billingController.getSearchedItems(name);
+		return ResponseEntity.ok().body(list);
+	}
 	
 
 }

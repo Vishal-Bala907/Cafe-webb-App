@@ -7,42 +7,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cafe.entities.Address;
 
 @Controller
-@RequestMapping("/user")
-public class UserViewController {
-	
+@RequestMapping("/emp")
+public class EmployeeViewController {
 	@GetMapping("/userProfile")
 	public String testUser() {
-		return "/user/userProfile";
+		return "employee/userProfile";
 	}
-	
+
 	@GetMapping("/categories")
 	public String getCategoryPage() {
-		return "user/categories";
+		return "employee/categories";
 	}
-	
+
 	@GetMapping("/selectedItemPage")
 	public String getSelectedItemPage() {
-		return "user/SelectedCategoryItems";
+		return "employee/SelectedCategoryItems";
 	}
-	
+
 	@GetMapping("/menu")
 	public String getMenuPage() {
-		return "user/menu";
+		return "employee/menu";
 	}
-	
+
 	@GetMapping("/cart")
 	public String getCartPage(Address address) {
-		return "user/usercart";
+		return "employee/usercart";
+	}
+
+	@GetMapping("/offline-bill")
+	public String getOfflineBilling() {
+		return "employee/offliineBill";
 	}
 	
 	@GetMapping("/error")
 	public String errorPage() {
-		return "user/error";
+		return "employee/error";
 	}
 	
-	@GetMapping("/about")
+	@GetMapping("/emp-about")
 	public String getAboutPage() {
-		return "user/userAbout";
+		return "employee/employeeAbout";
 	}
-
 }

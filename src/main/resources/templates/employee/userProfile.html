@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="https://www.thymeleaf.org"
-	th:replace="~{userTemplate::userBase(~{::section})}">
+	th:replace="~{employeeTemplate::userBase(~{::section})}">
 <head>
 <meta charset="UTF-8" />
 <title>Document</title>
 </head>
 <body>
 	<!-- Products will be dynamically added on addProducts.js -->
-	<section th:replace="~{/common/categoryView :: categoryViewCards}">
-		
+	
+	<section th:replace="~{/common/profile::profile}" id="profile-cover">
+	
 	</section>
 </body>
 </html>

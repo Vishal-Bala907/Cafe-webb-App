@@ -25,4 +25,7 @@ public interface OrdersRepo extends JpaRepository<Orders, Long> {
 
 	@Query("SELECT o FROM Orders o WHERE o.timestamp >=:timestamp")
 	List<Orders> findByDate(@Param("timestamp") long timestamp); 
+	
+	@Query("SELECT o FROM Orders o WHERE o.cancled = false")
+	List<Orders> findAll(); 
 }

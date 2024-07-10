@@ -33,7 +33,7 @@ public class LoginHandler extends SimpleUrlAuthenticationSuccessHandler {
 				return "/user/userProfile";
 
 			} else if (authority.getAuthority().equals("ROLE_EMPLOYEE")) {
-				return "/user/userProfile";
+				return "/emp/userProfile";
 			}
 		}
 		return "/login";

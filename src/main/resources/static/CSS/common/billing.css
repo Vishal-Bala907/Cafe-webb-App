@@ -1,0 +1,143 @@
+.off-inp {
+	width: 45px;
+	border-radius: 4px;
+}
+
+.incre-decre {
+	font-weight: 600;
+	padding: 0px 10px;
+	background-color: blue;
+	color: white;
+	cursor: pointer;
+}
+
+.off-button {
+	display: flex;
+	gap: 5px;
+	padding: 5px;
+}
+
+.td {
+	border-right: 1px solid #00000052;
+}
+
+.tr {
+	background-color: #51aeff30;
+}
+
+.thead {
+	height: 4.7rem;
+}
+
+#billing-section {
+	display: flex;
+}
+
+#search-result {
+	height: 80%;
+	width: 98%;
+	display: none;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 10px;
+	background-color: #d9faff;
+	position: absolute;
+	bottom: -70px;
+}
+
+.search-item-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #d4efef;
+	width: fit-content;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 10px 10px;
+	height: fit-content;
+}
+
+.off-create-order {
+	padding: 8px 25px;
+	border-radius: 10px;
+	background-color: white;
+	cursor: pointer;
+}
+
+.off-table {
+	border: 2px solid;
+	width: 100%;
+}
+
+.offline-close {
+	width: fit-content;
+	height: fit-content;
+	font-size: xx-large;
+	position: absolute;
+	top: 0px;
+	right: 0;
+	cursor: pointer;
+	display: none;
+}
+
+.off-button-cover {
+	padding: 10px;
+	background-color: cadetblue;
+	align-self: center;
+}
+
+#search-close {
+	position: absolute;
+	left: 0;
+	top: 200px;
+	cursor: pointer;
+	display: none;
+}
+
+.search {
+	padding: 5px;
+}
+
+.search-offline {
+	border: none;
+	background: transparent;
+	border-bottom: 2px solid;
+	font-size: 1em;
+	outline: none;
+	margin: 0 15px;
+}
+
+@media screen and (min-width: 860px) {
+	.bill {
+		width: 40%;
+		background-color: #00fff60f;
+		display: flex;
+		flex-direction: column;
+	}
+	.items-selection {
+		width: 60%;
+	}
+	.offline-close {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 860px) {
+	.bill {
+		width: 60%;
+		background-color: #f0f0f0;
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		right: 0;
+		height: 100%;
+	}
+	.items-selection {
+		width: 100%;
+	}
+	.offline-close {
+		display: flex;
+	}
+}

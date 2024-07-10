@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<!-- Products will be dynamically added on addProducts.js -->
+	<section th:fragment="about">
+		<div class="about-container">
+			<div class="about-card">
+				<img th:src="@{/Images/About1w.png}" alt="Cafe Web App">
+				
+				<div class="about-card-body">
+					<h1 class="about-card-title">About Cafe Web App</h1>
+					<p class="about-card-text">Welcome to the Cafe Web App, your
+						go-to solution for managing your cafe's operations seamlessly.
+						Built using Spring Boot, this application offers a robust and
+						scalable solution for cafe management.</p>
+					<p class="about-card-text">Our app provides a range of features
+						including order management, inventory tracking, customer
+						management, and sales reporting. With an intuitive interface and
+						powerful backend, managing your cafe has never been easier.</p>
+					<p class="about-card-text">The Cafe Web App leverages the power
+						of Spring Boot to deliver high performance and reliability.
+						Whether you're a small cafe or a large chain, our app is designed
+						to meet your needs and help you grow your business.</p>
+				</div>
+			</div>
+			<div class="about-card">
+				<div class="about-card-body">
+					<h1 class="about-card-title">About Me</h1>
+					<p class="about-card-text">Hi, I'm Vishal Bala from Kota,
+						Rajasthan. I am a professional software developer with knowledge
+						in:</p>
+					<ul>
+						<li>Spring Boot</li>
+						<li>MERN</li>
+						<li>Hibernate</li>
+						<li>C/C++</li>
+						<li>Java</li>
+						<li>JavaScript</li>
+						<li>And many more...</li>
+					</ul>
+					<h3>Contact Me</h3>
+					<div class="about-contact-buttons">
+						<a href="https://wa.me/9079018358" class="whatsapp"> <i
+							class="fab fa-whatsapp"></i> WhatsApp
+						</a> <a href="mailto:vishal.bala.100@gmail.com" class="email"> <i
+							class="fas fa-envelope"></i> Email
+						</a> <a
+							href="https://www.linkedin.com/in/vishal-bala-4311a817a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+							class="linkedin"> <i class="fab fa-linkedin"></i> LinkedIn
+						</a> <a
+							href="https://www.instagram.com/dev_vishalbala?igsh=MWU5eW56bmN4NGVqZg=="
+							class="instagram"> <i class="fab fa-instagram"></i> Instagram
+						</a> <a
+							href="https://x.com/dev_VishalBala?t=yzzpVQE1iljmp4sCByUojQ&s=08"
+							class="twitter"> <i class="fab fa-twitter"></i> Twitter
+						</a> <a href="https://github.com/Vishal-Bala907/Cafe-webb-App"
+							class="github"> <i class="fab fa-github"></i> GitHub
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

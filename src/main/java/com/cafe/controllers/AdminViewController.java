@@ -252,6 +252,21 @@ public class AdminViewController {
 		model.addAttribute("userrole", "admin");
 		return "admin/updateAdminProfile";
 	}
+	
+	@GetMapping("/offline-bill")
+	public String getOfflineBilling() {
+		return "admin/offliineBill";
+	}
+	
+	@GetMapping("/error")
+	public String errorPage() {
+		return "admin/error";
+	}
+	
+	@GetMapping("/about")
+	public String getAboutPage() {
+		return "admin/adminAbout";
+	}
 
 //	@PostMapping("/updateProfile")
 //	public String updateAdminProfile(@Valid UserDAO userDAO, BindingResult bindingResult,

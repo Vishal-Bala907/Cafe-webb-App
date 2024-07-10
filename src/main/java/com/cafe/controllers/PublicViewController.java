@@ -103,15 +103,15 @@ public class PublicViewController {
 	public String updateProfilePage(UserDAO userDAO, Address address) {
 		String role = loginUserService.getLoggedInUser().getROLE();
 		if (role.equals("ROLE_ADMIN")) {
-
 			return "admin/updateAdminProfile";
 		} else if (role.equals("ROLE_CUSTOMER")) {
 
 			return "user/updateProfilePage";
-		} else {
+		} else if (role.equals("ROLE_EMPLOYEE")) {
 
-			return "user/updateProfilePage";
+			return "employee/updateProfilePage";
 		}
+		return "Public/signup";
 	}
 
 	@PostMapping("/updateProfile")
@@ -137,19 +137,33 @@ public class PublicViewController {
 		logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
 		return "redirect:/login"; // You can redirect to any page after logout
 	}
-	
+
 	@GetMapping("/profile")
 	public String getProfile() {
 		String role = loginUserService.getLoggedInUser().getROLE();
-		if(role.equals("ROLE_ADMIN")) {
+		if (role.equals("ROLE_ADMIN")) {
 			return "redirect:/admin/profile";
-		}else if(role.equals("ROLE_CUSTOMER")) {
+		} else if (role.equals("ROLE_CUSTOMER")) {
 			return "redirect:/user/userProfile";
-		}else if(role.equals("ROLE_EMPLOYEE")) {
-			return "redirect:/user/userProfile";
+		} else if (role.equals("ROLE_EMPLOYEE")) {
+			return "redirect:/emp/userProfile";
 		}
-		
+
 		return "Public/index";
 	}
+
+	@GetMapping("/about")
+	public String getAboutPage() {
+		return "Public/publicAbout";
+	}
+
+	/*
+	 * @GetMapping("/error") public String handleError() {
+	 * System.out.println("hello"); String role =
+	 * loginUserService.getLoggedInUser().getROLE(); if (role.equals("ROLE_ADMIN"))
+	 * { return "redirect:/admin/error"; } else if (role.equals("ROLE_CUSTOMER")) {
+	 * return "redirect:/user/userProfile"; } else if (role.equals("ROLE_EMPLOYEE"))
+	 * { return "redirect:/emp/userProfile"; } return "Public/index"; }
+	 */
 
 }
