@@ -235,6 +235,8 @@ public class CommonServices {
 		prod.setDiscount(products.getDiscount());
 		prod.setProductPrice(products.getProductPrice());
 		prod.setSold(products.getSold());
+		double price = prod.getProductPrice() - ((prod.getProductPrice()/100)*products.getDiscount());
+		prod.setDiscountedPrice(price);
 		if (file.getSize() != 0) {
 			fileService.deleteProductImage(prod, deleteProductPath);
 			fileService.getAndSetProductImage(productImagePath, prod, file);

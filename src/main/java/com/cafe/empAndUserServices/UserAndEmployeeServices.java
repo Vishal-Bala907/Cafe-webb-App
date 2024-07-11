@@ -287,7 +287,8 @@ public class UserAndEmployeeServices {
 				totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * map.get(p.getPro_Id()));
 			} else {
 				// namemap.put(p.getProductName(), (double) 0);
-				//totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * p.getSold());
+				// totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() *
+				// p.getSold());
 			}
 		}
 
