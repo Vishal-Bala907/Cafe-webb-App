@@ -21,6 +21,7 @@ function getProfileDetailsForUpdate() {
 function setProfileDataForUpdate(data) {
 	console.log(data)
 	document.getElementById("name").value = data.username;
+	document.getElementById("email").value = data.email;
 	document.getElementById("u_id").value = data.u_id;
 
 

@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Email;
 
 @Entity
 public class UserDAO {
@@ -29,6 +30,9 @@ public class UserDAO {
 
 	@Length(min = 5, message = "Password must be 5 to 20 characters in length")
 	private String password;
+	
+	@Email
+	private String email;
 
 	private long salary;
 	private String post;
@@ -164,34 +168,24 @@ public class UserDAO {
 		this.attendence = attendence;
 	}
 
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	@Override
 	public String toString() {
 		return "UserDAO [u_id=" + u_id + ", ROLE=" + ROLE + ", username=" + username + ", password=" + password
-				+ ", salary=" + salary + ", post=" + post + ", user_image=" + user_image + ", DOJ=" + DOJ + ", DOL="
-				+ DOL + ", cart=" + cart + ", address=" + address + ", orders=" + orders + ", attendence=" + attendence
-				+ "]";
+				+ ", email=" + email + ", salary=" + salary + ", post=" + post + ", DOL=" + DOL + ", DOJ=" + DOJ
+				+ ", user_image=" + user_image + ", address=" + address + "]";
 	}
 
-	public UserDAO(String rOLE,
-			@Length(min = 5, max = 20, message = "Username must be 5 to 20 characters in length") String username,
-			@Length(min = 5, message = "Password must be 5 to 20 characters in length") String password, long salary,
-			String post, String user_image, String dOJ, String dOL, List<UserBag> cart, Address address,
-			List<Orders> orders, List<Attendence> attendence) {
-		super();
-		ROLE = rOLE;
-		this.username = username;
-		this.password = password;
-		this.salary = salary;
-		this.post = post;
-		this.user_image = user_image;
-		DOJ = dOJ;
-		DOL = dOL;
-		this.cart = cart;
-		this.address = address;
-		this.orders = orders;
-		this.attendence = attendence;
-	}
 
 	
-
 }

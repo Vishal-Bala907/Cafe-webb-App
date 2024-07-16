@@ -28,9 +28,21 @@
 						<span class="input-error" style="color: red;"
 							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
 
-						<span style="color: white; font-weight: 500;"
+						<span style="color: #7f7f7f; font-weight: 500;"
 							th:unless="${#fields.hasErrors('username')}">Enter
 							Username</span>
+					</div>
+
+					<!-- Email  -->
+					<div class="input-container">
+						<label class="inp-label" for="name">Email:</label> <input
+							type="email" class="form-control form-login-input" id="email"
+							th:field="*{email}" placeholder="Enter username" required>
+						<span class="input-error" style="color: red;"
+							th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+						<span style="color: #7f7f7f; font-weight: 500;"
+							th:unless="${#fields.hasErrors('email')}">Enter Email</span>
 					</div>
 
 					<div class="input-container">

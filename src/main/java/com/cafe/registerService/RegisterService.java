@@ -101,6 +101,7 @@ public class RegisterService {
 			byUsername.setPassword(pass);
 		}
 		byUsername.setUsername(user.getUsername());
+		byUsername.setEmail(user.getEmail());
 		return byUsername;
 	}
 }

@@ -49,7 +49,7 @@
 	box-shadow: 5px 5px 31px #00000091, inset 5px 5px 15px #fff9f9, inset
 		-5px -5px 25px #83838300;
 	background-color: white;
-	padding: 4% 5%;
+	padding: 7% 5%;
 }
 
 .up-form-box {
@@ -185,7 +185,7 @@
 	cursor: pointer;
 	font-size: xx-large;
 	position: relative;
-	top: -12.9em;
+	top: -16.9em;
 	right: -6.4em;
 	transform: rotate(-3deg);
 }

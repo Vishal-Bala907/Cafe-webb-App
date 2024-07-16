@@ -46,6 +46,12 @@
 .add-form-container {
 	width: 100%;
 	margin: 2rem 0 1rem 0;
+	margin: 3rem 0;
+	background-color: white;
+	padding: 5% 18px;
+	box-sizing: border-box;
+	border-radius: 20px;
+	box-shadow: 4px 4px 10px;
 }
 
 #addressForm {
@@ -63,6 +69,7 @@
 .form-group {
 	display: flex;
 	flex-direction: column;
+	flex: 1 0 8rem;
 }
 
 .form-group input {

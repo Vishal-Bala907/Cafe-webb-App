@@ -93,6 +93,13 @@ function cardClicked(user) {
 	} else if (user.role === "ROLE_ADMIN") {
 		role = "ADMIN";
 	}
+	
+	if(user.email == null){
+		document.getElementById("email").innerText = "unavailable";
+	}else{
+		document.getElementById("email").innerText = user.email;
+	}
+	
 	document.getElementById('userimage').src = `../${user.user_image}`;
 	document.getElementById('username').innerText = user.username;
 	document.getElementById('post').innerText = user.post;

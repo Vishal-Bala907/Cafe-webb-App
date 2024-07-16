@@ -21,6 +21,13 @@ function getProfileDetails() {
 function setProfileData(data) {
 	console.log(data)
 	document.getElementById("userName").innerText = data.username;
+	
+	if(data.email == null){
+		document.getElementById("email").innerText = "unavailable";
+	}else{
+		document.getElementById("email").innerText = data.email;
+	}
+	
 	document.getElementById("salary").innerText = data.salary;
 
 	let role = "";
@@ -28,6 +35,8 @@ function setProfileData(data) {
 		role = "ADMIN";
 	}else if(data.role === "ROLE_CUSTOMER"){
 		role = "CUSTOMER";
+	}else if(data.role === "ROLE_EMPLOYEE"){
+		role = "EMPLOYEE"
 	}
 	document.getElementById("role").innerText = role;
 

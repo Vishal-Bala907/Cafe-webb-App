@@ -78,6 +78,8 @@
 
 #myChart {
 	width: 100%;
+	max-width: 1200px !important;
+	max-height: 800px !important;
 }
 
 .graph {
