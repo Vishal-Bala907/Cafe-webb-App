@@ -35,13 +35,14 @@ function setProducts(selectedCategoryProds) {
 			<div class="button">
 				
 				<button id="add-button-${prod.pro_Id}" class="item-buy-buttons" >Add</button>
-				<button class="item-buy-buttons" >Buy</button>
+				
 			</div>
 
 		</div>`
 
 		productsTemplateCate = productsTemplateCate + SameCateProds;
 	})
+	/*<button class="item-buy-buttons" >Buy</button> */
 	document.getElementById("items-cards").innerHTML = productsTemplateCate;
 	selectedCategoryProds.forEach((prod) => {
 		document.getElementById(`add-button-${prod.pro_Id}`).addEventListener('click', () => {

@@ -7,9 +7,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.cafe.loginService.LoginUserService;
-import com.cafe.loginhandler.LoginHandler;
 import com.cafe.passEncoDeco.PassEncoDeco;
+import com.cafe.services.LoginHandler;
+import com.cafe.services.LoginUserService;
 
 @Configuration
 public class SecurityConfiguration {

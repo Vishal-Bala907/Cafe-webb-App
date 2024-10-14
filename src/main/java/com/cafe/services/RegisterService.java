@@ -1,4 +1,4 @@
-package com.cafe.registerService;
+package com.cafe.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import com.cafe.entities.Address;
 import com.cafe.entities.Attendence;
 import com.cafe.entities.Orders;
 import com.cafe.entities.UserDAO;
-import com.cafe.fileService.FileService;
 import com.cafe.passEncoDeco.PassEncoDeco;
 import com.cafe.repos.UserRepo;
 

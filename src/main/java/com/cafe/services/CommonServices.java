@@ -1,4 +1,4 @@
-package com.cafe.common.services;
+package com.cafe.services;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,8 +14,6 @@ import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserBag;
 import com.cafe.entities.UserDAO;
-import com.cafe.fileService.FileService;
-import com.cafe.loginService.LoginUserService;
 import com.cafe.repos.BagRepo;
 import com.cafe.repos.CategoryRepo;
 import com.cafe.repos.ProductsRepo;

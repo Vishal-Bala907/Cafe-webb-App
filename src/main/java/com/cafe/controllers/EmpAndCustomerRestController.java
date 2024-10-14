@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cafe.common.services.CommonServices;
-import com.cafe.empAndUserServices.UserAndEmployeeServices;
 import com.cafe.entities.Address;
 import com.cafe.entities.Orders;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
+import com.cafe.services.CommonServices;
+import com.cafe.services.UserAndEmployeeServices;
 
 @RestController
 @RequestMapping("/empAndCus")

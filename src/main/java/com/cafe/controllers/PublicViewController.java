@@ -15,12 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe.entities.Address;
 import com.cafe.entities.UserDAO;
-import com.cafe.fileService.FileService;
-import com.cafe.loginService.LoginUserService;
-import com.cafe.registerService.RegisterService;
 import com.cafe.repos.AttendenceRepo;
 import com.cafe.repos.OrdersRepo;
 import com.cafe.repos.UserRepo;
+import com.cafe.services.FileService;
+import com.cafe.services.LoginUserService;
+import com.cafe.services.RegisterService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

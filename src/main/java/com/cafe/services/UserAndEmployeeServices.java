@@ -1,4 +1,4 @@
-package com.cafe.empAndUserServices;
+package com.cafe.services;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,6 @@ import com.cafe.entities.Address;
 import com.cafe.entities.Orders;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
-import com.cafe.loginService.LoginUserService;
 import com.cafe.repos.AddressRepo;
 import com.cafe.repos.BagRepo;
 import com.cafe.repos.OrdersRepo;
@@ -265,7 +265,6 @@ public class UserAndEmployeeServices {
 		}
 
 		for (Orders o : data) {
-
 			// if two prods are same
 			if (map.containsKey(o.getO_p_id())) {
 				// update the value
@@ -277,21 +276,28 @@ public class UserAndEmployeeServices {
 		}
 
 		// updating the names and also getting all products that has not been sold yet
-		Map<String, Double> namemap = new HashMap<>();
+		Map<String, Double> namemap = new HashMap<>(); // sold qt
 
-		Map<String, Double> totalIncomeByProd = new HashMap<>();
+		Map<String, Double> totalIncomeByProd = new HashMap<>(); // income
 
 		for (Products p : all) {
 			if (map.containsKey(p.getPro_Id())) {
 				namemap.put(p.getProductName(), (double) map.get(p.getPro_Id()));
 				totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() * map.get(p.getPro_Id()));
-			} else {
-				// namemap.put(p.getProductName(), (double) 0);
-				// totalIncomeByProd.put(p.getProductName(), p.getDiscountedPrice() *
-				// p.getSold());
 			}
 		}
-
+		
+		// getting sold qt
+		Optional<Double> maxsold = namemap.values().stream().max(Double::compare);
+		Optional<Double> minSold = namemap.values().stream().min(Double::compare);
+		Optional<Double> maxIncome = totalIncomeByProd.values().stream().max(Double::compare);
+		Optional<Double> minIncome = totalIncomeByProd.values().stream().min(Double::compare);
+		
+		System.out.println("Max sold is "+ maxsold.orElse((double) 0));
+		System.out.println("Min sold is "+ minSold.orElse((double) 0));
+		System.out.println("Max income is "+ maxIncome.orElse((double) 0));
+		System.out.println("Min income is "+ minIncome.orElse((double) 0));
+		
 		// System.out.println(totalIncomeByProd);
 
 		// Max income and min Income

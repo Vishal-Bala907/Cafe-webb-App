@@ -66,13 +66,14 @@ function setMenuLayout() {
 			<div class="button">
 				
 				<button id="add-button-${prod.pro_Id}" class="item-buy-buttons" >Add</button>
-				<button class="item-buy-buttons" >Buy</button>
+				
 			</div>
 
 		</div>`
 
 		productsTemplate = productsTemplate + SameCateProds;
 	})
+	/*<button class="item-buy-buttons" >Buy</button>*/
 
 	document.getElementById("menu-section").innerHTML = "";
 	document.getElementById("menu-section").innerHTML = productsTemplate;

@@ -1,4 +1,4 @@
-package com.cafe.loginService;
+package com.cafe.services;
 
 import java.util.Collections;
 

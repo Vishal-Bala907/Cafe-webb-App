@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cafe.common.services.CommonServices;
-import com.cafe.empAndUserServices.UserAndEmployeeServices;
 import com.cafe.entities.Address;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
 import com.cafe.entities.UserDAO;
-import com.cafe.fileService.FileService;
-import com.cafe.loginService.LoginUserService;
 import com.cafe.passEncoDeco.PassEncoDeco;
-import com.cafe.registerService.RegisterService;
 import com.cafe.repos.CategoryRepo;
 import com.cafe.repos.ProductsRepo;
 import com.cafe.repos.UserRepo;
+import com.cafe.services.CommonServices;
+import com.cafe.services.FileService;
+import com.cafe.services.LoginUserService;
+import com.cafe.services.RegisterService;
+import com.cafe.services.UserAndEmployeeServices;
 
 import jakarta.validation.Valid;
 

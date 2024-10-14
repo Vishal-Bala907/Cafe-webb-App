@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cafe.common.services.CommonServices;
 import com.cafe.entities.Category;
 import com.cafe.entities.Products;
-import com.cafe.registerService.RegisterService;
 import com.cafe.repos.CategoryRepo;
+import com.cafe.services.CommonServices;
+import com.cafe.services.RegisterService;
 
 @RestController
 @RequestMapping("/common")

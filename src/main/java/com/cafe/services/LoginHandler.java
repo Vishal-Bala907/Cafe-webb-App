@@ -1,4 +1,4 @@
-package com.cafe.loginhandler;
+package com.cafe.services;
 
 import java.io.IOException;
 import java.util.Collection;
